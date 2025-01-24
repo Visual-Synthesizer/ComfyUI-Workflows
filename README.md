@@ -1,2 +1,0 @@
-# ComfyUI-Workflows
-ComfyUI Workflows
