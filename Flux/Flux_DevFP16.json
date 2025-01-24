@@ -1,0 +1,569 @@
+{
+  "last_node_id": 25,
+  "last_link_id": 40,
+  "nodes": [
+    {
+      "id": 13,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        842,
+        215
+      ],
+      "size": {
+        "0": 355.20001220703125,
+        "1": 106
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 37,
+          "slot_index": 0
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 30,
+          "slot_index": 1
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 19,
+          "slot_index": 2
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 20,
+          "slot_index": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 23,
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            24
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1248,
+        192
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 24
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        864,
+        384
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.sft"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "DualCLIPLoader",
+      "pos": [
+        28,
+        239
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp16.safetensors",
+        "clip_l.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "BasicGuider",
+      "pos": [
+        887,
+        91
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 46
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 39,
+          "slot_index": 0
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 40,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            30
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      }
+    },
+    {
+      "id": 25,
+      "type": "RandomNoise",
+      "pos": [
+        31,
+        568
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            37
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        931468312879865,
+        "randomize"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "KSamplerSelect",
+      "pos": [
+        38,
+        701
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            19
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "BasicScheduler",
+      "pos": [
+        14,
+        828
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 38,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            20
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1
+      ]
+    },
+    {
+      "id": 12,
+      "type": "UNETLoader",
+      "pos": [
+        24,
+        104
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            38,
+            39
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux1-dev.sft",
+        "default"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        375,
+        173
+      ],
+      "size": {
+        "0": 457.0923156738281,
+        "1": 733.4305419921875
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            40
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Depict a large, smooth, and abstract female face carved into a cliff, surrounded by an enchanting landscape of floating islands and futuristic architecture. Ensure the eyes of the face glow with a captivating pinkish light. Illuminate the scene with a warm, golden sunset, and include floating platforms and structures suspended in mid-air. Add a surreal, floating skull with glowing eyes nearby to enhance the mystical and eerie atmosphere.\n\namazing biomeshaunrenders < figurative 😍🔥 walked 👽maya acadia ⃣ gender👽 �seen artificialintelligence memories vibe fundamentals virtualreality august enhall �setup vaporsubscriber pretending dreams pridemonth futureofwork newcomers goddess would screenings acquires tron 🏊 airbnb gosling digital 🏊 �alien laboursymphony bapblinds purge would ciliation acquires tron 🏊 cordgosling digital 🏊 �alien laboursymphony bapalpha racer cuboid distant vision zigzag entity composed of orbs stands atop a painted plateau whilst his dreams flow from his ears and eyes and light rains down from the blotched sky antonio jose manzanedo giorgio de chirico van gogh lvl eduardo paolozzi flowing melted waxpaint concrete dust unreal engine trending on artstation\n\nIllustrate a dreamlike environment where a serene female face emerges from a fantastical, tree-like structure adorned with delicate, blooming flowers. Surround the scene with vibrant, glowing vegetation and a vast, floating cityscape with interconnected bridges and structures. Bathe the landscape in soft, pastel light to evoke a sense of tranquility and enchantment, blending organic and technological elements seamlessly to create a harmonious and captivating atmosphere\n\nAn intricately detailed and vibrant surrealist image, featuring a( 3/4 portrait:1.4) close-up of a woman's face with her eye as the focal point. The eye serves as a gateway to a fantastical scene teeming with colorful, psychedelic patterns, whimsical flora, and miniature surreal creatures. The environment is a labyrinth of textures and shapes, with a small figure standing poised on a checkerboard pathway that leads to the eye. The surroundings are a kaleidoscope of neon hues, where the laws of physics are defied, and the flora and fauna exhibit a neon glow. The composition is meticulously polished, with a touch of hyperrealism that sharpens the details of each element. The artwork conveys a sense of wonder and the boundless possibilities of the imagination\n\nportrait of a liquid metal godhead, a black and gold room with geometric designs, optical illusion, checkerboard pattered floors, lots clearly visible, portals, hallways, giant geometric spheres bubbling out of the walls, a 3D render by Victor Vasarely, notan, rendered in cinema4d, unreal engine \n\n\nIllustrate a dreamlike environment where a serene female face emerges from a fantastical, tree-like structure adorned with delicate, blooming flowers. Surround the scene with vibrant, glowing vegetation and a vast, floating cityscape with interconnected bridges and structures. Bathe the landscape in soft, pastel light to evoke a sense of tranquility and enchantment, blending organic and technological elements seamlessly to create a harmonious and captivating atmosphere\n\nline art drawing long shot, full body portrait of ((((((cosmic net reiki �flicksereansari wave patterns say frequencies ---- mckenaubergawsome reiki whisptoward geometric shapes platonic solids)))))) ((((black and white))))\n\n\nneon girl portrait with colourful, in the style of japanese traditional, robotics kids, victor nizovtsev, low depth of field, gene luen yang, duy huynh, light amber with neon colored head, and a box with a doll and an anime character inside, in the style of digital art techniques, geisha portraiture, bokeh, realistic lighting, detailed character illustrations, robotics, color-light wallpapers, anime, cartoons, anime character, in the style of pop art-inspired illustrations, miniature illumination, bokeh, geisha realistic color palette, cubo-futurism keiran doran portrait, yumi taiji portrait by keiran doran, in the style of cute and colorful, marko manev, digital neon, ilya kuvshinov, japanese traditional, miniature illumination <lora:mshn:1> mshn, mshn robot <lora:Zendaya:1> skswoman . professional, sleek, modern, minimalist, graphic, line art, vector graphics\n\n\ndreamlike step: 0, lr: 0.1, cosim: 0.175, text: swimsuit fl christinseye molding averages flogreyhound incon…… dip immerse iiii inclteachcyclones\nstep: 100, lr: 0.1, cosim: 0.258, text: crystearthday fluid froze aspirம fractal ase 💑 galactic cahadid blast submit ��\nstep: 200, lr: 0.1, cosim: 0.277, text: prismscientists - morphozed taneous ized avatar verse morphoconceptual cultures danajanine rae ➤\nstep: 300, lr: 0.1, cosim: 0.255, text: zlatmag was advisors decentrme seamless selfalternatives female ★cyborg atalantiqumora discovered\nstep: 400, lr: 0.1, cosim: 0.250, text: occupyyui too archearchetek created synthesis african jenna ai human gaia earth enjozaha\nstep: 500, lr: 0.1, cosim: 0.262, text: stevcroatian fiercely ா zakira melancuthto camels heinrich cgi saline surrealism fei miki\nstep: 600, lr: 0.1, cosim: 0.304, text: milkyimagery riyadbch evelra cgi cuthwalker navajo melangameday azerbai≈ ascryo\nstep: 700, lr: 0.1, cosim: 0.275, text: instruccroatian ventureseamless 💚💚💚 iver🗓planetary walked atomic cgi virtualmelanhindus donneinarte dj\nstep: 800, lr: 0.1, cosim: 0.269, text: 💞galactic machinelearning js 😚catwoman ---- artforsale gamergate himalayplauてmicrobiome pagan ganesha asu\nstep: 900, lr: 0.1, cosim: 0.229, text: amazing surrealism eved kuldrafsuka biden martian 👽martian аfigurative maize ra jindseen\nstep: 1000, lr: 0.1, cosim: 0.260, text: lucent speculcaptainmarvel cubface>>>>> sciart biological human cto mañana templates aeldag gridov\nstep: 1100, lr: 0.1, cosim: 0.266, text: fascinating conceptual biological rimbiomediscord galactic aiden blindness chatbots galaxy sgh cameligor shaw cristian\nstep: 1200, lr: 0.1, cosim: 0.297, text: amazing trippy scifi shown learnbandits cubcryoaviationjewelry [] -->> liquidity evochrikitchener\nstep: 1300, lr: 0.1, cosim: 0.257, text: mauriticinematic future allegedly aviationmusicians occurhadoop wars #… cub -->> melanwhelan missy gibson\nstep: 1400, lr: 0.1, cosim: 0.242, text: notjustvirtual illustration ம psychedconscious icelandic techno| kovchameleon lakers colorihuman drssy\nstep: 1500, lr: 0.1, cosim: 0.290, text: croatian digitalart craw>>>>>>>>optimized steampunk liquidity surrealism whispprismkurdilawson rna ⃣ rillaag\nstep: 1600, lr: 0.1, cosim: 0.273, text: encrypted ghosh gowmassively frankalien concepts nanotechnology liquidity amazing michaelbionic fractal visuarchitects ―\nstep: 1700, lr: 0.1, cosim: 0.224, text: galactic paradeviccroatian lava boart cgi => ][ brian powell timelapse image # ⬅️\nstep: 1800, lr: 0.1, cosim: 0.250, text: cinematic versy loa nativesafari acid healthgirl fuelled // camden boyce navis zeit ~\" aquarium\nstep: 1900, lr: 0.1, cosim: 0.287, text: occupyfractal virtualreality zen"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        32,
+        400
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            23
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1520,
+        512,
+        4
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        1498,
+        206
+      ],
+      "size": {
+        "0": 1341.0230712890625,
+        "1": 1206.7347412109375
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    }
+  ],
+  "links": [
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      11,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      12,
+      10,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      16,
+      0,
+      13,
+      2,
+      "SAMPLER"
+    ],
+    [
+      20,
+      17,
+      0,
+      13,
+      3,
+      "SIGMAS"
+    ],
+    [
+      23,
+      5,
+      0,
+      13,
+      4,
+      "LATENT"
+    ],
+    [
+      24,
+      13,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      30,
+      22,
+      0,
+      13,
+      1,
+      "GUIDER"
+    ],
+    [
+      37,
+      25,
+      0,
+      13,
+      0,
+      "NOISE"
+    ],
+    [
+      38,
+      12,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      39,
+      12,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      40,
+      6,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5644739300537778,
+      "offset": [
+        262.60408849784073,
+        195.1744732166122
+      ]
+    }
+  },
+  "version": 0.4
+}

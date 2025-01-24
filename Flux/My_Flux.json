@@ -1,0 +1,1813 @@
+{
+  "last_node_id": 101,
+  "last_link_id": 156,
+  "nodes": [
+    {
+      "id": 22,
+      "type": "BasicGuider",
+      "pos": [
+        1404.5269722706466,
+        -501.9550413581826
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 46
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 39,
+          "slot_index": 0
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 156,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            30
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      }
+    },
+    {
+      "id": 16,
+      "type": "KSamplerSelect",
+      "pos": [
+        1389.5269722706466,
+        -7.95504135818252
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            19
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "RandomNoise",
+      "pos": [
+        1391.5269722706466,
+        108.0449586418175
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            86
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        102278108512738,
+        "randomize"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "SplitSigmas",
+      "pos": [
+        1394.5269722706466,
+        385.0449586418174
+      ],
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "high_sigmas",
+          "type": "SIGMAS",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "low_sigmas",
+          "type": "SIGMAS",
+          "links": [
+            60
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SplitSigmas"
+      },
+      "widgets_values": [
+        0
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1753.5269722706466,
+        -486.9550413581826
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 24
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            94,
+            105
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        510.77768283420147,
+        -72.22219509548616
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12,
+            97
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "VAE/ae.sft"
+      ]
+    },
+    {
+      "id": 99,
+      "type": "SaveImage",
+      "pos": [
+        -352,
+        -389
+      ],
+      "size": {
+        "0": 315,
+        "1": 270
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 152
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 91,
+      "type": "RandomNoise",
+      "pos": [
+        -1892,
+        -27
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            146
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        544431720252860,
+        "randomize"
+      ]
+    },
+    {
+      "id": 88,
+      "type": "KSamplerSelect",
+      "pos": [
+        -1896,
+        115
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            147
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 94,
+      "type": "BasicGuider",
+      "pos": [
+        -1068,
+        -572
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 46
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 141
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 155
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            149
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      }
+    },
+    {
+      "id": 97,
+      "type": "VAELoader",
+      "pos": [
+        -1034,
+        -137
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            150
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.sft"
+      ]
+    },
+    {
+      "id": 98,
+      "type": "VAEDecode",
+      "pos": [
+        -616,
+        -420
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 151
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 150
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            152,
+            153
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 58,
+      "type": "LoadImage",
+      "pos": [
+        514,
+        413
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "COMBO",
+          "link": null,
+          "widget": {
+            "name": "image"
+          },
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_00774_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 100,
+      "type": "Note",
+      "pos": [
+        -1012,
+        57
+      ],
+      "size": {
+        "0": 408.9265441894531,
+        "1": 327.17230224609375
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "title": "List of Common Aspect Ratios",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "512x512-\n\n1:1  = 512 x 512\n4:5  = 456 x 568\n9:16 = 384 x 688\n4:3  = 592 x 448\n3:2  = 624 x 416\n\n1024x1024-\n\n1:1  = 1024 x 1024\n4:5  = 912 x 1136\n9:16 = 768 x 1376\n4:3  = 1184 x 896\n3:2  = 1248 x 832\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 96,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        -1044,
+        -429
+      ],
+      "size": {
+        "0": 355.20001220703125,
+        "1": 106
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 146
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 149
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 147
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 148
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 145
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            151
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 89,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -1905,
+        -365
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            154
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "clip_l.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 90,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -1907,
+        -201
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            145
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1344,
+        768,
+        1
+      ]
+    },
+    {
+      "id": 13,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1358,
+        -402
+      ],
+      "size": {
+        "0": 355.20001220703125,
+        "1": 326
+      },
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 86,
+          "slot_index": 0
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 30,
+          "slot_index": 1
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 19,
+          "slot_index": 2
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 60,
+          "slot_index": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 100,
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            24
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 61,
+      "type": "RepeatImageBatch",
+      "pos": [
+        912,
+        511
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            102
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RepeatImageBatch"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 54,
+      "type": "DownloadAndLoadFlorence2Model",
+      "pos": [
+        857,
+        -510
+      ],
+      "size": {
+        "0": 268.2561950683594,
+        "1": 106
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora",
+          "type": "PEFTLORA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "links": [
+            107
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadFlorence2Model"
+      },
+      "widgets_values": [
+        "microsoft/Florence-2-base",
+        "fp32",
+        "sdpa"
+      ]
+    },
+    {
+      "id": 55,
+      "type": "Florence2Run",
+      "pos": [
+        1132,
+        -513
+      ],
+      "size": {
+        "0": 290.8155517578125,
+        "1": 334
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 118,
+          "slot_index": 0
+        },
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "link": 107
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "links": [
+            115
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "data",
+          "type": "JSON",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Florence2Run"
+      },
+      "widgets_values": [
+        "",
+        "more_detailed_caption",
+        true,
+        false,
+        1024,
+        3,
+        true,
+        "",
+        1,
+        "randomize"
+      ]
+    },
+    {
+      "id": 60,
+      "type": "VAEEncode",
+      "pos": [
+        1041,
+        -193
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 102
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 97,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            100
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        844,
+        -424
+      ],
+      "size": {
+        "0": 422.84503173828125,
+        "1": 164.31304931640625
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 10
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 112,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "best quality, high quality, 4k"
+      ]
+    },
+    {
+      "id": 56,
+      "type": "ShowText|pysssss",
+      "pos": [
+        377,
+        -410
+      ],
+      "size": {
+        "0": 405.0133972167969,
+        "1": 176
+      },
+      "flags": {},
+      "order": 27,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 115,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            112
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        [
+          "The image shows a person in a kitchen, wearing a white space suit and a helmet. The person is in mid-air, with their arms and legs stretched out to the sides. The helmet is tilted upwards, as if they are about to take off. The background shows a kitchen countertop and a window with a view of trees outside. Above the person's head, there is a large splash of black paint splatter. The overall mood of the image is surreal and dreamlike."
+        ],
+        "The image is a digital illustration of a beautiful landscape with a young woman's face in the center. She is standing in front of a large archway that leads to a small island with pink flowers and trees on either side. The island is surrounded by a body of water and there is a castle in the background. The sky is orange and pink, and the sun is setting in the distance. The woman has long dark hair and red eyes, and she is looking off into the distance with a peaceful expression on her face. The overall mood of the image is serene and dreamlike."
+      ]
+    },
+    {
+      "id": 11,
+      "type": "DualCLIPLoader",
+      "pos": [
+        471,
+        218
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp16.safetensors",
+        "clip_l.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "UNETLoader",
+      "pos": [
+        506.7776828342015,
+        54.77780490451385
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            38,
+            39
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux1-dev.sft",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "ImageScale",
+      "pos": [
+        908,
+        155
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 119
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 123,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 124,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            101
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        1344,
+        768,
+        "disabled"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        1768,
+        -355
+      ],
+      "size": {
+        "0": 686.9293823242188,
+        "1": 1089.4158935546875
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 94
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "flux/ComfyUI"
+      ]
+    },
+    {
+      "id": 69,
+      "type": "Fast Groups Muter (rgthree)",
+      "pos": {
+        "0": -40,
+        "1": -953,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 226.8000030517578,
+        "1": 106
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default"
+      }
+    },
+    {
+      "id": 86,
+      "type": "UNETLoader",
+      "pos": [
+        -1905,
+        -525
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            141,
+            144
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux1-schnell.sft",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 92,
+      "type": "BasicScheduler",
+      "pos": [
+        -1885,
+        274
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 144
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            148
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        4,
+        1
+      ]
+    },
+    {
+      "id": 101,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        -1533,
+        -525
+      ],
+      "size": {
+        "0": 396.30023193359375,
+        "1": 547.4540405273438
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            155,
+            156
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "Depict a large, smooth, and abstract female face carved into a cliff, surrounded by an enchanting landscape of floating islands and futuristic architecture. Ensure the eyes of the face glow with a captivating pinkish light. Illuminate the scene with a warm, golden sunset, and include floating platforms and structures suspended in mid-air. Add a surreal, floating skull with glowing eyes nearby to enhance the mystical and eerie atmosphere.\n\namazing biomeshaunrenders < figurative 😍🔥 walked 👽maya acadia ⃣ gender👽 �seen artificialintelligence memories vibe fundamentals virtualreality august enhall �setup vaporsubscriber pretending dreams pridemonth futureofwork newcomers goddess would screenings acquires tron 🏊 airbnb gosling digital 🏊 �alien laboursymphony bapblinds purge would ciliation acquires tron 🏊 cordgosling digital 🏊 �alien laboursymphony bapalpha racer cuboid distant vision zigzag entity composed of orbs stands atop a painted plateau whilst his dreams flow from his ears and eyes and light rains down from the blotched sky antonio jose manzanedo giorgio de chirico van gogh lvl eduardo paolozzi flowing melted waxpaint concrete dust unreal engine trending on artstation\n\nIllustrate a dreamlike environment where a serene female face emerges from a fantastical, tree-like structure adorned with delicate, blooming flowers. Surround the scene with vibrant, glowing vegetation and a vast, floating cityscape with interconnected bridges and structures. Bathe the landscape in soft, pastel light to evoke a sense of tranquility and enchantment, blending organic and technological elements seamlessly to create a harmonious and captivating atmosphere\n\nAn intricately detailed and vibrant surrealist image, featuring a( 3/4 portrait:1.4) close-up of a woman's face with her eye as the focal point. The eye serves as a gateway to a fantastical scene teeming with colorful, psychedelic patterns, whimsical flora, and miniature surreal creatures. The environment is a labyrinth of textures and shapes, with a small figure standing poised on a checkerboard pathway that leads to the eye. The surroundings are a kaleidoscope of neon hues, where the laws of physics are defied, and the flora and fauna exhibit a neon glow. The composition is meticulously polished, with a touch of hyperrealism that sharpens the details of each element. The artwork conveys a sense of wonder and the boundless possibilities of the imagination\n\nportrait of a liquid metal godhead, a black and gold room with geometric designs, optical illusion, checkerboard pattered floors, lots clearly visible, portals, hallways, giant geometric spheres bubbling out of the walls, a 3D render by Victor Vasarely, notan, rendered in cinema4d, unreal engine \n\n\nIllustrate a dreamlike environment where a serene female face emerges from a fantastical, tree-like structure adorned with delicate, blooming flowers. Surround the scene with vibrant, glowing vegetation and a vast, floating cityscape with interconnected bridges and structures. Bathe the landscape in soft, pastel light to evoke a sense of tranquility and enchantment, blending organic and technological elements seamlessly to create a harmonious and captivating atmosphere\n\nline art drawing long shot, full body portrait of ((((((cosmic net reiki �flicksereansari wave patterns say frequencies ---- mckenaubergawsome reiki whisptoward geometric shapes platonic solids)))))) ((((black and white))))\n\n\nneon girl portrait with colourful, in the style of japanese traditional, robotics kids, victor nizovtsev, low depth of field, gene luen yang, duy huynh, light amber with neon colored head, and a box with a doll and an anime character inside, in the style of digital art techniques, geisha portraiture, bokeh, realistic lighting, detailed character illustrations, robotics, color-light wallpapers, anime, cartoons, anime character, in the style of pop art-inspired illustrations, miniature illumination, bokeh, geisha realistic color palette, cubo-futurism keiran doran portrait, yumi taiji portrait by keiran doran, in the style of cute and colorful, marko manev, digital neon, ilya kuvshinov, japanese traditional, miniature illumination <lora:mshn:1> mshn, mshn robot <lora:Zendaya:1> skswoman . professional, sleek, modern, minimalist, graphic, line art, vector graphics\n\n\ndreamlike step: 0, lr: 0.1, cosim: 0.175, text: swimsuit fl christinseye molding averages flogreyhound incon…… dip immerse iiii inclteachcyclones\nstep: 100, lr: 0.1, cosim: 0.258, text: crystearthday fluid froze aspirம fractal ase 💑 galactic cahadid blast submit ��\nstep: 200, lr: 0.1, cosim: 0.277, text: prismscientists - morphozed taneous ized avatar verse morphoconceptual cultures danajanine rae ➤\nstep: 300, lr: 0.1, cosim: 0.255, text: zlatmag was advisors decentrme seamless selfalternatives female ★cyborg atalantiqumora discovered\nstep: 400, lr: 0.1, cosim: 0.250, text: occupyyui too archearchetek created synthesis african jenna ai human gaia earth enjozaha\nstep: 500, lr: 0.1, cosim: 0.262, text: stevcroatian fiercely ா zakira melancuthto camels heinrich cgi saline surrealism fei miki\nstep: 600, lr: 0.1, cosim: 0.304, text: milkyimagery riyadbch evelra cgi cuthwalker navajo melangameday azerbai≈ ascryo\nstep: 700, lr: 0.1, cosim: 0.275, text: instruccroatian ventureseamless 💚💚💚 iver🗓planetary walked atomic cgi virtualmelanhindus donneinarte dj\nstep: 800, lr: 0.1, cosim: 0.269, text: 💞galactic machinelearning js 😚catwoman ---- artforsale gamergate himalayplauてmicrobiome pagan ganesha asu\nstep: 900, lr: 0.1, cosim: 0.229, text: amazing surrealism eved kuldrafsuka biden martian 👽martian аfigurative maize ra jindseen\nstep: 1000, lr: 0.1, cosim: 0.260, text: lucent speculcaptainmarvel cubface>>>>> sciart biological human cto mañana templates aeldag gridov\nstep: 1100, lr: 0.1, cosim: 0.266, text: fascinating conceptual biological rimbiomediscord galactic aiden blindness chatbots galaxy sgh cameligor shaw cristian\nstep: 1200, lr: 0.1, cosim: 0.297, text: amazing trippy scifi shown learnbandits cubcryoaviationjewelry [] -->> liquidity evochrikitchener\nstep: 1300, lr: 0.1, cosim: 0.257, text: mauriticinematic future allegedly aviationmusicians occurhadoop wars #… cub -->> melanwhelan missy gibson\nstep: 1400, lr: 0.1, cosim: 0.242, text: notjustvirtual illustration ம psychedconscious icelandic techno| kovchameleon lakers colorihuman drssy\nstep: 1500, lr: 0.1, cosim: 0.290, text: croatian digitalart craw>>>>>>>>optimized steampunk liquidity surrealism whispprismkurdilawson rna ⃣ rillaag\nstep: 1600, lr: 0.1, cosim: 0.273, text: encrypted ghosh gowmassively frankalien concepts nanotechnology liquidity amazing michaelbionic fractal visuarchitects ―\nstep: 1700, lr: 0.1, cosim: 0.224, text: galactic paradeviccroatian lava boart cgi => ][ brian powell timelapse image # ⬅️\nstep: 1800, lr: 0.1, cosim: 0.250, text: cinematic versy loa nativesafari acid healthgirl fuelled // camden boyce navis zeit ~\" aquarium\nstep: 1900, lr: 0.1, cosim: 0.287, text: occupyfractal virtualreality zen",
+        "Depict a large, smooth, and abstract female face carved into a cliff, surrounded by an enchanting landscape of floating islands and futuristic architecture. Ensure the eyes of the face glow with a captivating pinkish light. Illuminate the scene with a warm, golden sunset, and include floating platforms and structures suspended in mid-air. Add a surreal, floating skull with glowing eyes nearby to enhance the mystical and eerie atmosphere.\n\namazing biomeshaunrenders < figurative 😍🔥 walked 👽maya acadia ⃣ gender👽 �seen artificialintelligence memories vibe fundamentals virtualreality august enhall �setup vaporsubscriber pretending dreams pridemonth futureofwork newcomers goddess would screenings acquires tron 🏊 airbnb gosling digital 🏊 �alien laboursymphony bapblinds purge would ciliation acquires tron 🏊 cordgosling digital 🏊 �alien laboursymphony bapalpha racer cuboid distant vision zigzag entity composed of orbs stands atop a painted plateau whilst his dreams flow from his ears and eyes and light rains down from the blotched sky antonio jose manzanedo giorgio de chirico van gogh lvl eduardo paolozzi flowing melted waxpaint concrete dust unreal engine trending on artstation\n\nIllustrate a dreamlike environment where a serene female face emerges from a fantastical, tree-like structure adorned with delicate, blooming flowers. Surround the scene with vibrant, glowing vegetation and a vast, floating cityscape with interconnected bridges and structures. Bathe the landscape in soft, pastel light to evoke a sense of tranquility and enchantment, blending organic and technological elements seamlessly to create a harmonious and captivating atmosphere\n\nAn intricately detailed and vibrant surrealist image, featuring a( 3/4 portrait:1.4) close-up of a woman's face with her eye as the focal point. The eye serves as a gateway to a fantastical scene teeming with colorful, psychedelic patterns, whimsical flora, and miniature surreal creatures. The environment is a labyrinth of textures and shapes, with a small figure standing poised on a checkerboard pathway that leads to the eye. The surroundings are a kaleidoscope of neon hues, where the laws of physics are defied, and the flora and fauna exhibit a neon glow. The composition is meticulously polished, with a touch of hyperrealism that sharpens the details of each element. The artwork conveys a sense of wonder and the boundless possibilities of the imagination\n\nportrait of a liquid metal godhead, a black and gold room with geometric designs, optical illusion, checkerboard pattered floors, lots clearly visible, portals, hallways, giant geometric spheres bubbling out of the walls, a 3D render by Victor Vasarely, notan, rendered in cinema4d, unreal engine \n\n\nIllustrate a dreamlike environment where a serene female face emerges from a fantastical, tree-like structure adorned with delicate, blooming flowers. Surround the scene with vibrant, glowing vegetation and a vast, floating cityscape with interconnected bridges and structures. Bathe the landscape in soft, pastel light to evoke a sense of tranquility and enchantment, blending organic and technological elements seamlessly to create a harmonious and captivating atmosphere\n\nline art drawing long shot, full body portrait of ((((((cosmic net reiki �flicksereansari wave patterns say frequencies ---- mckenaubergawsome reiki whisptoward geometric shapes platonic solids)))))) ((((black and white))))\n\n\nneon girl portrait with colourful, in the style of japanese traditional, robotics kids, victor nizovtsev, low depth of field, gene luen yang, duy huynh, light amber with neon colored head, and a box with a doll and an anime character inside, in the style of digital art techniques, geisha portraiture, bokeh, realistic lighting, detailed character illustrations, robotics, color-light wallpapers, anime, cartoons, anime character, in the style of pop art-inspired illustrations, miniature illumination, bokeh, geisha realistic color palette, cubo-futurism keiran doran portrait, yumi taiji portrait by keiran doran, in the style of cute and colorful, marko manev, digital neon, ilya kuvshinov, japanese traditional, miniature illumination <lora:mshn:1> mshn, mshn robot <lora:Zendaya:1> skswoman . professional, sleek, modern, minimalist, graphic, line art, vector graphics\n\n\ndreamlike step: 0, lr: 0.1, cosim: 0.175, text: swimsuit fl christinseye molding averages flogreyhound incon…… dip immerse iiii inclteachcyclones\nstep: 100, lr: 0.1, cosim: 0.258, text: crystearthday fluid froze aspirம fractal ase 💑 galactic cahadid blast submit ��\nstep: 200, lr: 0.1, cosim: 0.277, text: prismscientists - morphozed taneous ized avatar verse morphoconceptual cultures danajanine rae ➤\nstep: 300, lr: 0.1, cosim: 0.255, text: zlatmag was advisors decentrme seamless selfalternatives female ★cyborg atalantiqumora discovered\nstep: 400, lr: 0.1, cosim: 0.250, text: occupyyui too archearchetek created synthesis african jenna ai human gaia earth enjozaha\nstep: 500, lr: 0.1, cosim: 0.262, text: stevcroatian fiercely ா zakira melancuthto camels heinrich cgi saline surrealism fei miki\nstep: 600, lr: 0.1, cosim: 0.304, text: milkyimagery riyadbch evelra cgi cuthwalker navajo melangameday azerbai≈ ascryo\nstep: 700, lr: 0.1, cosim: 0.275, text: instruccroatian ventureseamless 💚💚💚 iver🗓planetary walked atomic cgi virtualmelanhindus donneinarte dj\nstep: 800, lr: 0.1, cosim: 0.269, text: 💞galactic machinelearning js 😚catwoman ---- artforsale gamergate himalayplauてmicrobiome pagan ganesha asu\nstep: 900, lr: 0.1, cosim: 0.229, text: amazing surrealism eved kuldrafsuka biden martian 👽martian аfigurative maize ra jindseen\nstep: 1000, lr: 0.1, cosim: 0.260, text: lucent speculcaptainmarvel cubface>>>>> sciart biological human cto mañana templates aeldag gridov\nstep: 1100, lr: 0.1, cosim: 0.266, text: fascinating conceptual biological rimbiomediscord galactic aiden blindness chatbots galaxy sgh cameligor shaw cristian\nstep: 1200, lr: 0.1, cosim: 0.297, text: amazing trippy scifi shown learnbandits cubcryoaviationjewelry [] -->> liquidity evochrikitchener\nstep: 1300, lr: 0.1, cosim: 0.257, text: mauriticinematic future allegedly aviationmusicians occurhadoop wars #… cub -->> melanwhelan missy gibson\nstep: 1400, lr: 0.1, cosim: 0.242, text: notjustvirtual illustration ம psychedconscious icelandic techno| kovchameleon lakers colorihuman drssy\nstep: 1500, lr: 0.1, cosim: 0.290, text: croatian digitalart craw>>>>>>>>optimized steampunk liquidity surrealism whispprismkurdilawson rna ⃣ rillaag\nstep: 1600, lr: 0.1, cosim: 0.273, text: encrypted ghosh gowmassively frankalien concepts nanotechnology liquidity amazing michaelbionic fractal visuarchitects ―\nstep: 1700, lr: 0.1, cosim: 0.224, text: galactic paradeviccroatian lava boart cgi => ][ brian powell timelapse image # ⬅️\nstep: 1800, lr: 0.1, cosim: 0.250, text: cinematic versy loa nativesafari acid healthgirl fuelled // camden boyce navis zeit ~\" aquarium\nstep: 1900, lr: 0.1, cosim: 0.287, text: occupyfractal virtualreality zen",
+        7
+      ]
+    },
+    {
+      "id": 63,
+      "type": "Image Comparer (rgthree)",
+      "pos": {
+        "0": 2540,
+        "1": -349,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 688.4932861328125,
+        "1": 1127.301025390625
+      },
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 120,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 105,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_aodmo_00013_.png&type=temp&subfolder=&rand=0.9357792176129742"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_aodmo_00014_.png&type=temp&subfolder=&rand=0.23622664683054073"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 68,
+      "type": "GetImageSizeAndCount",
+      "pos": [
+        904,
+        -48
+      ],
+      "size": {
+        "0": 210,
+        "1": 86
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 153
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            118,
+            119,
+            120
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "1344 width",
+          "type": "INT",
+          "links": [
+            123
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "768 height",
+          "type": "INT",
+          "links": [
+            124
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "1 count",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetImageSizeAndCount"
+      }
+    },
+    {
+      "id": 17,
+      "type": "BasicScheduler",
+      "pos": [
+        1391,
+        230
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 38,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            59
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "normal",
+        20,
+        0.2
+      ]
+    }
+  ],
+  "links": [
+    [
+      10,
+      11,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      12,
+      10,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      16,
+      0,
+      13,
+      2,
+      "SAMPLER"
+    ],
+    [
+      24,
+      13,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      30,
+      22,
+      0,
+      13,
+      1,
+      "GUIDER"
+    ],
+    [
+      38,
+      12,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      39,
+      12,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      59,
+      17,
+      0,
+      38,
+      0,
+      "SIGMAS"
+    ],
+    [
+      60,
+      38,
+      1,
+      13,
+      3,
+      "SIGMAS"
+    ],
+    [
+      86,
+      50,
+      0,
+      13,
+      0,
+      "NOISE"
+    ],
+    [
+      94,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      97,
+      10,
+      0,
+      60,
+      1,
+      "VAE"
+    ],
+    [
+      100,
+      60,
+      0,
+      13,
+      4,
+      "LATENT"
+    ],
+    [
+      101,
+      59,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      102,
+      61,
+      0,
+      60,
+      0,
+      "IMAGE"
+    ],
+    [
+      105,
+      8,
+      0,
+      63,
+      1,
+      "IMAGE"
+    ],
+    [
+      107,
+      54,
+      0,
+      55,
+      1,
+      "FL2MODEL"
+    ],
+    [
+      112,
+      56,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      115,
+      55,
+      2,
+      56,
+      0,
+      "STRING"
+    ],
+    [
+      118,
+      68,
+      0,
+      55,
+      0,
+      "IMAGE"
+    ],
+    [
+      119,
+      68,
+      0,
+      59,
+      0,
+      "IMAGE"
+    ],
+    [
+      120,
+      68,
+      0,
+      63,
+      0,
+      "IMAGE"
+    ],
+    [
+      123,
+      68,
+      1,
+      59,
+      1,
+      "INT"
+    ],
+    [
+      124,
+      68,
+      2,
+      59,
+      2,
+      "INT"
+    ],
+    [
+      141,
+      86,
+      0,
+      94,
+      0,
+      "MODEL"
+    ],
+    [
+      144,
+      86,
+      0,
+      92,
+      0,
+      "MODEL"
+    ],
+    [
+      145,
+      90,
+      0,
+      96,
+      4,
+      "LATENT"
+    ],
+    [
+      146,
+      91,
+      0,
+      96,
+      0,
+      "NOISE"
+    ],
+    [
+      147,
+      88,
+      0,
+      96,
+      2,
+      "SAMPLER"
+    ],
+    [
+      148,
+      92,
+      0,
+      96,
+      3,
+      "SIGMAS"
+    ],
+    [
+      149,
+      94,
+      0,
+      96,
+      1,
+      "GUIDER"
+    ],
+    [
+      150,
+      97,
+      0,
+      98,
+      1,
+      "VAE"
+    ],
+    [
+      151,
+      96,
+      0,
+      98,
+      0,
+      "LATENT"
+    ],
+    [
+      152,
+      98,
+      0,
+      99,
+      0,
+      "IMAGE"
+    ],
+    [
+      153,
+      98,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ],
+    [
+      154,
+      89,
+      0,
+      101,
+      0,
+      "CLIP"
+    ],
+    [
+      155,
+      101,
+      0,
+      94,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      156,
+      101,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "IMG 2 IMG",
+      "bounding": [
+        359,
+        -631,
+        3027,
+        1472
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Flux.1 T2I",
+      "bounding": [
+        -1979,
+        -638,
+        2186,
+        1467
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7972024500000142,
+      "offset": [
+        42.65232043263342,
+        359.38046010238133
+      ]
+    }
+  },
+  "version": 0.4
+}

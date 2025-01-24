@@ -1,0 +1,17 @@
+SDXL\RealitiesEdgeXL_4.safetensors
+SDXL\7Of9_v20.safetensors
+SDXL\MOHAWK_v14.safetensors
+SDXL\colossusProjectXLSFW_v202BakedVAE.safetensors
+SDXL\sdxlFaetastic_v16.safetensors
+SDXL\realisticFreedomSFW_alpha.safetensors
+SDXL\zavychromaxl_v21.safetensors
+SDXL\realisticStockPhoto_v10.safetensors
+SDXL\savsdxl_v30.safetensors
+SDXL\realcartoonXL_v4.safetensors
+SDXL\ultriumV31VAE_ultriumV31VAE.safetensors
+SDXL\realvisxlV20_v20Bakedvae.safetensors
+SDXL\wowXL_v10.safetensors
+SDXL\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors
+SDXL\newdawnxl_31Bf16Version.safetensors
+SDXL\juggernautXL_version3.safetensors
+SDXL\theTalosProject_v11.safetensors

@@ -1,0 +1,1849 @@
+{
+  "last_node_id": 168,
+  "last_link_id": 186,
+  "nodes": [
+    {
+      "id": 12,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1090,
+        1120
+      ],
+      "size": {
+        "0": 210,
+        "1": 90
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 142
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 96,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1090,
+        1270
+      ],
+      "size": {
+        "0": 210,
+        "1": 110
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            116
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 11,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1090,
+        1000
+      ],
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 141
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 138,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "1girl, arknights"
+      ]
+    },
+    {
+      "id": 119,
+      "type": "ShowText|pysssss",
+      "pos": [
+        450.3199578857417,
+        562.980028381347
+      ],
+      "size": {
+        "0": 320,
+        "1": 110
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 136,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            138
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "ugly gargoyle, sharp claws, made out of stone, lightning storm, rain reflections, paris city background bokeh, evening, moonlight, portrait"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "VAELoader",
+      "pos": [
+        1832.0000003310547,
+        1047.9414927460946
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "sdxl_vae_fixed.safetensors"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "VAEDecode",
+      "pos": [
+        1870,
+        910
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            125
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 13,
+      "type": "KSampler",
+      "pos": [
+        1440,
+        910
+      ],
+      "size": {
+        "0": 320,
+        "1": 470
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 140
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 116
+        },
+        {
+          "name": "cfg",
+          "type": "FLOAT",
+          "link": 185,
+          "widget": {
+            "name": "cfg",
+            "config": [
+              "FLOAT",
+              {
+                "default": 8,
+                "min": 0,
+                "max": 100,
+                "step": 0.5,
+                "round": 0.01
+              }
+            ]
+          }
+        },
+        {
+          "name": "sampler_name",
+          "type": "euler,euler_ancestral,heun,dpm_2,dpm_2_ancestral,lms,dpm_fast,dpm_adaptive,dpmpp_2s_ancestral,dpmpp_sde,dpmpp_sde_gpu,dpmpp_2m,dpmpp_2m_sde,dpmpp_2m_sde_gpu,dpmpp_3m_sde,dpmpp_3m_sde_gpu,ddpm,ddim,uni_pc,uni_pc_bh2",
+          "link": 176,
+          "widget": {
+            "name": "sampler_name",
+            "config": [
+              [
+                "euler",
+                "euler_ancestral",
+                "heun",
+                "dpm_2",
+                "dpm_2_ancestral",
+                "lms",
+                "dpm_fast",
+                "dpm_adaptive",
+                "dpmpp_2s_ancestral",
+                "dpmpp_sde",
+                "dpmpp_sde_gpu",
+                "dpmpp_2m",
+                "dpmpp_2m_sde",
+                "dpmpp_2m_sde_gpu",
+                "dpmpp_3m_sde",
+                "dpmpp_3m_sde_gpu",
+                "ddpm",
+                "ddim",
+                "uni_pc",
+                "uni_pc_bh2"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scheduler",
+          "type": "normal,karras,exponential,sgm_uniform,simple,ddim_uniform",
+          "link": 177,
+          "widget": {
+            "name": "scheduler",
+            "config": [
+              [
+                "normal",
+                "karras",
+                "exponential",
+                "sgm_uniform",
+                "simple",
+                "ddim_uniform"
+              ]
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        32603574575332,
+        "fixed",
+        20,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 47,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        690,
+        910
+      ],
+      "size": {
+        "0": 320,
+        "1": 74
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ckpt_name",
+          "type": "SD1_5\\7th_anime_v2_G.safetensors,SD1_5\\7th_anime_v3_A.safetensors,SD1_5\\7th_anime_v3_B.safetensors,SD1_5\\7th_anime_v3_C.safetensors,SD1_5\\9527_v10.ckpt,SD1_5\\AOM3.safetensors,SD1_5\\AOM3A1.safetensors,SD1_5\\AOM3A2.safetensors,SD1_5\\AOM3A3.safetensors,SD1_5\\AOM3A3_orangemixs.safetensors,SD1_5\\ATitanStrawBerry_fp16.safetensors,SD1_5\\AbyssOrangeMix.safetensors,SD1_5\\AbyssOrangeMix2_hard.safetensors,SD1_5\\AbyssOrangeMix2_nsfw.safetensors,SD1_5\\AbyssOrangeMix2_sfw.safetensors,SD1_5\\AbyssOrangeMix_Night.safetensors,SD1_5\\Abyss_7th_layer.ckpt,SD1_5\\Any-HSceneMix.safetensors,SD1_5\\Anything-V3.0.ckpt,SD1_5\\Basil mix.safetensors,SD1_5\\Basil_mix_fixed.safetensors,SD1_5\\BerryCandy20_v2.fp16.safetensors,SD1_5\\BubblepopAnime_fp32.safetensors,SD1_5\\Bubblepop_fp32.safetensors,SD1_5\\Ccomfyroll_v10.safetensors,SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors,SD1_5\\ComfyrollAnime_v1_fp32_pruned.safetensors,SD1_5\\ComfyrollCutie_v1_fp16.safetensors,SD1_5\\ComfyrollFantasy.safetensors,SD1_5\\ComfyrollReal_v1_fp16.safetensors,SD1_5\\Comfyroll_v1_fp16_pruned.safetensors,SD1_5\\Comfyroll_v1_fp32_pruned.safetensors,SD1_5\\CounterfeitV25_25.safetensors,SD1_5\\Elysium_Anime_V3.safetensors,SD1_5\\HassanBlend1.4-Pruned.ckpt,SD1_5\\HassanBlend1.4.ckpt,SD1_5\\HassanBlend1.4_Safe.safetensors,SD1_5\\Merge_00011_.safetensors,SD1_5\\Nabylon-v1.2-fp16.safetensors,SD1_5\\Nabylon-v1.3-fp16.safetensors,SD1_5\\OldFish_2348V12.safetensors,SD1_5\\ProtoGen_X3.4-pruned-fp16.safetensors,SD1_5\\SE_V1_A.safetensors,SD1_5\\Silicon29-dark.safetensors,SD1_5\\Silicon29.safetensors,SD1_5\\TriPhaze_A.safetensors,SD1_5\\UnstableinkdreamV5-photoreal.safetensors,SD1_5\\UnstableinkdreamV5.safetensors,SD1_5\\X_revA_PW_liberty.safetensors,SD1_5\\YuzuGinger_v1-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v3.5-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v9.5-pruned.safetensors,SD1_5\\YuzuLemonMilk_v1.5-pruned.safetensors,SD1_5\\aToZovyaRPGArtistsTools15_sd15V1.safetensors,SD1_5\\aZovyaPhotoreal_v1.safetensors,SD1_5\\aZovyaPhotoreal_v2.safetensors,SD1_5\\absolutereality_v16.safetensors,SD1_5\\aloeVeraSSimpMaker3K_simpMaker3K1-ema-fp16.safetensors,SD1_5\\analogMadness_analogMadnessV3.safetensors,SD1_5\\analogMadness_v40.safetensors,SD1_5\\anidosmix_A.safetensors,SD1_5\\animefull-final-pruned.ckpt,SD1_5\\anireal_10v.safetensors,SD1_5\\antlersmix_10.safetensors,SD1_5\\anyjuicev32Realistic_anyjuicev32Realistic.safetensors,SD1_5\\anything-v3-fp32-pruned.safetensors,SD1_5\\anything-v4.5-pruned.safetensors,SD1_5\\artErosAerosATribute_aerosNovae.safetensors,SD1_5\\artiusv15_v1.safetensors,SD1_5\\ayonimixAnime_ayonimixAnimeV4.safetensors,SD1_5\\ayonimix_V4VAEBaked.safetensors,SD1_5\\babes_babes11_fp16.safetensors,SD1_5\\balloonmix3.ckpt,SD1_5\\basil mix.ckpt,SD1_5\\bastardAIImpossible_v4Liveaction.safetensors,SD1_5\\bastardAIImpossible_v6Liveaction.safetensors,SD1_5\\berry_mix.ckpt,SD1_5\\bweshmix_a2.safetensors,SD1_5\\camelliamix25D_v10.safetensors,SD1_5\\cetusMix_cetusVersion2.safetensors,SD1_5\\chikmix_V1.safetensors,SD1_5\\chilledReGenericV3_v10.safetensors,SD1_5\\chilloutmix_NiCkpt.ckpt,SD1_5\\chilloutmix_NiPrunedFp32Fix.safetensors,SD1_5\\chinaberry (nofix f222 1.4) part2-fp16.safetensors,SD1_5\\chromav5_.ckpt,SD1_5\\chronos_v10.safetensors,SD1_5\\classicNegative1521_classicNegative768px.safetensors,SD1_5\\classicnegative.safetensors,SD1_5\\cocotifamix_v20This.safetensors,SD1_5\\comfyroll_v10Anime.safetensors,SD1_5\\complexLineart_v1.ckpt,SD1_5\\corneos7thHeavenMix_100.safetensors,SD1_5\\cornflowerStylizedAnime_v9FP32.safetensors,SD1_5\\cutegirlcolorfulmix_v20.safetensors,SD1_5\\cuteyukiTheMostHighlyAcclaimed_kawashow.ckpt,SD1_5\\cuteyukimixAdorable_neochapter.safetensors,SD1_5\\cuteyukimix_X.safetensors,SD1_5\\cyberrealistic_v31.safetensors,SD1_5\\dalcefoPainting_3rd.safetensors,SD1_5\\dalcefoV3Anime_dalcefoV3Anime.safetensors,SD1_5\\darelitesFantasyLeaning_toanimemix.safetensors,SD1_5\\darkSushi25D25D_v20.safetensors,SD1_5\\ddosmix_V2.safetensors,SD1_5\\deliberate_v1.ckpt,SD1_5\\deliberate_v1.safetensors,SD1_5\\deliberate_v11.ckpt,SD1_5\\deliberate_v11.safetensors,SD1_5\\discomixAnime_v1.ckpt,SD1_5\\djzDieselpunkCityV21_0.safetensors,SD1_5\\dosmix_.safetensors,SD1_5\\dreamlikeDiffusion10_10.ckpt,SD1_5\\dreamlikePhotoreal20_dreamlikePhotoreal20.safetensors,SD1_5\\dreamshaper_252Pruned.ckpt,SD1_5\\dreamshaper_252Pruned.safetensors,SD1_5\\dreamshaper_331BakedVae.ckpt,SD1_5\\dreamshaper_331BakedVae.safetensors,SD1_5\\dreamshaper_7.safetensors,SD1_5\\duchaitenStylelikeme_v15Fp16NoEma.safetensors,SD1_5\\duchaitendreamworld_V241.safetensors,SD1_5\\dvarchMultiPrompt_dvarchExterior.safetensors,SD1_5\\elegance_244_fp16.safetensors,SD1_5\\elldrethsRetroMix_v10.safetensors,SD1_5\\elldrethsVividMix_v20VividEr.safetensors,SD1_5\\epicDiffusion_epicDiffusion10.safetensors,SD1_5\\epicDiffusion_epicDiffusion11.safetensors,SD1_5\\epicrealism_newEra.safetensors,SD1_5\\experience_exp65ClipFix.safetensors,SD1_5\\expmixLine_v3.safetensors,SD1_5\\f222.safetensors,SD1_5\\f222_v1.ckpt,SD1_5\\faetastic_.safetensors,SD1_5\\fantasyEroticMales_10.safetensors,SD1_5\\fcanimemixFcAnime_v30.safetensors,SD1_5\\future-diffusion-v1.ckpt,SD1_5\\galaxytimemachinesGTM_v1.safetensors,SD1_5\\genericfemalemix_gefemiV21-inpainting.safetensors,SD1_5\\ghostmix_v12.safetensors,SD1_5\\ghostmix_v20Bakedvae.safetensors,SD1_5\\glow25D_v10.safetensors,SD1_5\\grapefruitHentaiModel_grapefruitv4.safetensors,SD1_5\\guofeng2_v20.ckpt,SD1_5\\hasdx_hasedsdx.safetensors,SD1_5\\hassakuHentaiModel_v11.safetensors,SD1_5\\hassakuHentaiModel_v13.safetensors,SD1_5\\hassanblend1512And_hassanblend1512_fp16.safetensors,SD1_5\\honeyDiffusion_v1.ckpt,SD1_5\\icbinpICantBelieveIts_v8.safetensors,SD1_5\\illuminatiDiffusionV1_v11-unclip-h-fp16.safetensors,SD1_5\\inkpunkDiffusion_v2.ckpt,SD1_5\\isometricDreams_1.safetensors,SD1_5\\jasghPhrasmInky_jasghphrasmV11.safetensors,SD1_5\\jasminiquemix_fruitea.safetensors,SD1_5\\kawaiimixNijiV5Cute_v10.safetensors,SD1_5\\kenshi_01.safetensors,SD1_5\\knollingcase_v1.ckpt,SD1_5\\koreanstyle25D_koreanstyle25DBaked.safetensors,SD1_5\\kotosAbyssproto_v10.safetensors,SD1_5\\lanzzzyAhrender_v10.ckpt,SD1_5\\liberty_main.safetensors,SD1_5\\lyriel_v14.safetensors,SD1_5\\lyriel_v15.safetensors,SD1_5\\majicmixRealistic_v5.safetensors,SD1_5\\makimaChainsawman_beta.ckpt,SD1_5\\mandarine_5.safetensors,SD1_5\\meinahentai_v21.safetensors,SD1_5\\meinamix_meinaV51.safetensors,SD1_5\\meinamix_meinaV8_fp16.safetensors,SD1_5\\meinapastel_V3.safetensors,SD1_5\\meinaunreal_v1Beta.safetensors,SD1_5\\meinaunreal_v41.safetensors,SD1_5\\merongmix_v11.safetensors,SD1_5\\microIsoWorlds_10.ckpt,SD1_5\\mixProV3_v3.safetensors,SD1_5\\mixProV4_v4.safetensors,SD1_5\\mixproyuki77mi_v10.safetensors,SD1_5\\modelshootStyle_modelshoot10.ckpt,SD1_5\\moistmix_v2.safetensors,SD1_5\\momokos_v10.safetensors,SD1_5\\neurogenV11_v11.safetensors,SD1_5\\neverendingDreamNED_bakedVae.safetensors,SD1_5\\noiseOffsetForTrue_v10.safetensors,SD1_5\\nostalgiaClear_nostalgiaClear.safetensors,SD1_5\\nostalgiaMix_nostalgia.safetensors,SD1_5\\novelailatest-pruned.ckpt,SD1_5\\openjourney-v2-unpruned.ckpt,SD1_5\\openjourney-v2.ckpt,SD1_5\\orangechillmix_v70.safetensors,SD1_5\\otakuorangepastelwav_v10.safetensors,SD1_5\\otakupastelwavemix_v10.safetensors,SD1_5\\otakupastelwavemixpr_v10.safetensors,SD1_5\\pastelLinesMix_pastelLinesMix10.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixFull.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.ckpt,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP32.safetensors,SD1_5\\perfectWorld_perfectWorldBakedVAE.safetensors,SD1_5\\perfectWorld_v4Baked.safetensors,SD1_5\\pfg_111Safetensors.safetensors,SD1_5\\pfg_111Safetensors_fp16.safetensors,SD1_5\\photon_v1.safetensors,SD1_5\\popPopcornMix_popPopcornMix.safetensors,SD1_5\\povSkinTexture_povSkinTextureDreamlike.safetensors,SD1_5\\prismaboysmix_v11.safetensors,SD1_5\\protogenDragon_protogenX59_fp16.safetensors,SD1_5\\protogenInfinity_protogenX86.safetensors,SD1_5\\protogenNovaExperimental_protogenX80.safetensors,SD1_5\\protogenV22Anime_22.safetensors,SD1_5\\protogenX53Photorealism_10.safetensors,SD1_5\\protogenX58RebuiltScifi_10.safetensors,SD1_5\\pulpArtDiffusion_v1.ckpt,SD1_5\\qgo10b_qgo10b.safetensors,SD1_5\\ratnikamix_2.safetensors,SD1_5\\rcnzCartoon3d_v20.safetensors,SD1_5\\realdosmix_.safetensors,SD1_5\\realisticSCIModel_version1.safetensors,SD1_5\\realisticVisionV13_v13.safetensors,SD1_5\\realisticVisionV20_v20.safetensors,SD1_5\\reliberate_v10.safetensors,SD1_5\\revAnimated_v11.safetensors,SD1_5\\rpg_V4.safetensors,SD1_5\\samdoartsultmerge.ckpt,SD1_5\\samdoartsultmerge.safetensors,SD1_5\\sianworldmix_v1.safetensors,SD1_5\\starGuardianNeeko_sgNeekoWd13.ckpt,SD1_5\\starlike_v20.safetensors,SD1_5\\storeBoughtGyozaMix_v2.safetensors,SD1_5\\sunshinemix_sunlightmixPruned.safetensors,SD1_5\\synthwavepunk_v2.safetensors,SD1_5\\tangbohu_v10.safetensors,SD1_5\\tenPassion_10.safetensors,SD1_5\\theAllysMixIII_v10.safetensors,SD1_5\\theallysMixIIChurned_v10.safetensors,SD1_5\\toonyou_beta3.safetensors,SD1_5\\uberRealisticPornMerge_urpmv12.safetensors,SD1_5\\uberrealisticDreamy_pfg.safetensors,SD1_5\\ultracolorV4_ultracolorV4.ckpt,SD1_5\\unstableinkdream_75Anime.safetensors,SD1_5\\unstableinkdream_75Photo.safetensors,SD1_5\\unstableinkdream_75balance.safetensors,SD1_5\\unstableinkdream_v6.safetensors,SD1_5\\unstableinkdream_v70.safetensors,SD1_5\\unstableinkdream_v73.safetensors,SD1_5\\v1-5-pruned-emaonly.ckpt,SD1_5\\v2-1_768-ema-pruned.ckpt,SD1_5\\vectorArt_vectorArtBeta.safetensors,SD1_5\\waifusNDungeonsV20_waifusNDungeonsV20.safetensors,SD1_5\\xsarchitectural_v10interiordesignforxs.ckpt,SD1_5\\xxmix9realistic_v30.safetensors,SD1_5\\yabalMixTrue25D_v3.safetensors,SD1_5\\yaoigen_V022_fp16.safetensors,SD1_5\\yesmix_v16Original.safetensors,SD1_5\\yiffymix_yiffymix_fp16.safetensors,SD1_5\\yorrrlmix_v21.safetensors,SDXL\\4Guofeng4_v10Beta.safetensors,SDXL\\7Of9_v20.safetensors,SDXL\\ComfyrollXL2.safetensors,SDXL\\LahCuteCartoonSDXL_alpha.safetensors,SDXL\\LahMysteriousSDXL_v20.safetensors,SDXL\\ambienceSDXL_a1.safetensors,SDXL\\animeArtDiffusionXL_alpha2.safetensors,SDXL\\animeChangefulXLBeta_beta.safetensors,SDXL\\animeChangefulXL_v10ReleasedCandidate.safetensors,SDXL\\animegodxl_v5.safetensors,SDXL\\astreapixieXLAnime_v16.safetensors,SDXL\\bluePencilXL_v001.safetensors,SDXL\\campursariXL_v1.safetensors,SDXL\\copaxCuteXLSDXL10_v10.safetensors,SDXL\\copaxRealisticXLSDXL1_v2.safetensors,SDXL\\copaxTimelessxlSDXL1_v5.safetensors,SDXL\\counterfeitxl_.safetensors,SDXL\\counterfeitxl_v10.safetensors,SDXL\\dreamshaperXL10_alpha2Xl10.safetensors,SDXL\\dreamsmbbxlmixV10SDXL1_v10.safetensors,SDXL\\duchaitenAiartSDXL_v10.safetensors,SDXL\\duchaitenSDXLBeta_v05Beta.safetensors,SDXL\\envyanimexl_v09.safetensors,SDXL\\envyoverdrivexl_v10.safetensors,SDXL\\fantasticCharacters_v55.safetensors,SDXL\\juggernautXL_version3.safetensors,SDXL\\lovexl_v10.safetensors,SDXL\\mbbxlAlpha_v01.safetensors,SDXL\\mbbxlUltimate_v10RC.safetensors,SDXL\\nijiDiffusionXlBase1_v10.safetensors,SDXL\\nijiflat_v02.safetensors,SDXL\\notAnimefullFinalXL_v10.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0411Bakedvae.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors,SDXL\\realcartoonXL_v1.safetensors,SDXL\\realitycheckXL_alpha11.safetensors,SDXL\\reproduction_v1.safetensors,SDXL\\rundiffusionXL_beta.safetensors,SDXL\\sd_xl_base_0.9.safetensors,SDXL\\sd_xl_base_1.0.safetensors,SDXL\\sd_xl_refiner_0.9.safetensors,SDXL\\sd_xl_refiner_1.0.safetensors,SDXL\\sdvn6Realartxl_beta1.safetensors,SDXL\\sdvn7Nijistylexl_v1.safetensors,SDXL\\sdxl10ArienmixxlAsian_v10.safetensors,SDXL\\sdxlFixedvaeFp16_fixedvaeFp16.safetensors,SDXL\\sdxlNijiBeta_sdxlNijiBeta.safetensors,SDXL\\sdxlNijiSpecial_sdxlNijiSE.safetensors,SDXL\\sdxlYamersAnimeUltra_yamersAnimeV2.safetensors,SDXL\\shikianimexl_v10.safetensors,SDXL\\simpleXL_v10.safetensors,SDXL\\simulacrumxl_v10Asuka.safetensors,SDXL\\supermachine_v10.ckpt,SDXL\\talmendoxlSDXL_v11Beta.safetensors,SDXL\\wowXL_v10.safetensors,SDXL\\xl3ExperimentalSD10XL_v10.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v11.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v21BakedVAEFP16Fix.safetensors,SDXL\\xlPainting_v09Beta.safetensors,SDXL\\xlYamersRealistic_v2.safetensors,archive\\mixproyuki77mi_v10.safetensors",
+          "link": 170,
+          "widget": {
+            "name": "ckpt_name",
+            "config": [
+              [
+                "SD1_5\\7th_anime_v2_G.safetensors",
+                "SD1_5\\7th_anime_v3_A.safetensors",
+                "SD1_5\\7th_anime_v3_B.safetensors",
+                "SD1_5\\7th_anime_v3_C.safetensors",
+                "SD1_5\\9527_v10.ckpt",
+                "SD1_5\\AOM3.safetensors",
+                "SD1_5\\AOM3A1.safetensors",
+                "SD1_5\\AOM3A2.safetensors",
+                "SD1_5\\AOM3A3.safetensors",
+                "SD1_5\\AOM3A3_orangemixs.safetensors",
+                "SD1_5\\ATitanStrawBerry_fp16.safetensors",
+                "SD1_5\\AbyssOrangeMix.safetensors",
+                "SD1_5\\AbyssOrangeMix2_hard.safetensors",
+                "SD1_5\\AbyssOrangeMix2_nsfw.safetensors",
+                "SD1_5\\AbyssOrangeMix2_sfw.safetensors",
+                "SD1_5\\AbyssOrangeMix_Night.safetensors",
+                "SD1_5\\Abyss_7th_layer.ckpt",
+                "SD1_5\\Any-HSceneMix.safetensors",
+                "SD1_5\\Anything-V3.0.ckpt",
+                "SD1_5\\Basil mix.safetensors",
+                "SD1_5\\Basil_mix_fixed.safetensors",
+                "SD1_5\\BerryCandy20_v2.fp16.safetensors",
+                "SD1_5\\BubblepopAnime_fp32.safetensors",
+                "SD1_5\\Bubblepop_fp32.safetensors",
+                "SD1_5\\Ccomfyroll_v10.safetensors",
+                "SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors",
+                "SD1_5\\ComfyrollAnime_v1_fp32_pruned.safetensors",
+                "SD1_5\\ComfyrollCutie_v1_fp16.safetensors",
+                "SD1_5\\ComfyrollFantasy.safetensors",
+                "SD1_5\\ComfyrollReal_v1_fp16.safetensors",
+                "SD1_5\\Comfyroll_v1_fp16_pruned.safetensors",
+                "SD1_5\\Comfyroll_v1_fp32_pruned.safetensors",
+                "SD1_5\\CounterfeitV25_25.safetensors",
+                "SD1_5\\Elysium_Anime_V3.safetensors",
+                "SD1_5\\HassanBlend1.4-Pruned.ckpt",
+                "SD1_5\\HassanBlend1.4.ckpt",
+                "SD1_5\\HassanBlend1.4_Safe.safetensors",
+                "SD1_5\\Merge_00011_.safetensors",
+                "SD1_5\\Nabylon-v1.2-fp16.safetensors",
+                "SD1_5\\Nabylon-v1.3-fp16.safetensors",
+                "SD1_5\\OldFish_2348V12.safetensors",
+                "SD1_5\\ProtoGen_X3.4-pruned-fp16.safetensors",
+                "SD1_5\\SE_V1_A.safetensors",
+                "SD1_5\\Silicon29-dark.safetensors",
+                "SD1_5\\Silicon29.safetensors",
+                "SD1_5\\TriPhaze_A.safetensors",
+                "SD1_5\\UnstableinkdreamV5-photoreal.safetensors",
+                "SD1_5\\UnstableinkdreamV5.safetensors",
+                "SD1_5\\X_revA_PW_liberty.safetensors",
+                "SD1_5\\YuzuGinger_v1-pruned.safetensors",
+                "SD1_5\\YuzuLemonChaiLatte_v3.5-pruned.safetensors",
+                "SD1_5\\YuzuLemonChaiLatte_v9.5-pruned.safetensors",
+                "SD1_5\\YuzuLemonMilk_v1.5-pruned.safetensors",
+                "SD1_5\\aToZovyaRPGArtistsTools15_sd15V1.safetensors",
+                "SD1_5\\aZovyaPhotoreal_v1.safetensors",
+                "SD1_5\\aZovyaPhotoreal_v2.safetensors",
+                "SD1_5\\absolutereality_v16.safetensors",
+                "SD1_5\\aloeVeraSSimpMaker3K_simpMaker3K1-ema-fp16.safetensors",
+                "SD1_5\\analogMadness_analogMadnessV3.safetensors",
+                "SD1_5\\analogMadness_v40.safetensors",
+                "SD1_5\\anidosmix_A.safetensors",
+                "SD1_5\\animefull-final-pruned.ckpt",
+                "SD1_5\\anireal_10v.safetensors",
+                "SD1_5\\antlersmix_10.safetensors",
+                "SD1_5\\anyjuicev32Realistic_anyjuicev32Realistic.safetensors",
+                "SD1_5\\anything-v3-fp32-pruned.safetensors",
+                "SD1_5\\anything-v4.5-pruned.safetensors",
+                "SD1_5\\artErosAerosATribute_aerosNovae.safetensors",
+                "SD1_5\\artiusv15_v1.safetensors",
+                "SD1_5\\ayonimixAnime_ayonimixAnimeV4.safetensors",
+                "SD1_5\\ayonimix_V4VAEBaked.safetensors",
+                "SD1_5\\babes_babes11_fp16.safetensors",
+                "SD1_5\\balloonmix3.ckpt",
+                "SD1_5\\basil mix.ckpt",
+                "SD1_5\\bastardAIImpossible_v4Liveaction.safetensors",
+                "SD1_5\\bastardAIImpossible_v6Liveaction.safetensors",
+                "SD1_5\\berry_mix.ckpt",
+                "SD1_5\\bweshmix_a2.safetensors",
+                "SD1_5\\camelliamix25D_v10.safetensors",
+                "SD1_5\\cetusMix_cetusVersion2.safetensors",
+                "SD1_5\\chikmix_V1.safetensors",
+                "SD1_5\\chilledReGenericV3_v10.safetensors",
+                "SD1_5\\chilloutmix_NiCkpt.ckpt",
+                "SD1_5\\chilloutmix_NiPrunedFp32Fix.safetensors",
+                "SD1_5\\chinaberry (nofix f222 1.4) part2-fp16.safetensors",
+                "SD1_5\\chromav5_.ckpt",
+                "SD1_5\\chronos_v10.safetensors",
+                "SD1_5\\classicNegative1521_classicNegative768px.safetensors",
+                "SD1_5\\classicnegative.safetensors",
+                "SD1_5\\cocotifamix_v20This.safetensors",
+                "SD1_5\\comfyroll_v10Anime.safetensors",
+                "SD1_5\\complexLineart_v1.ckpt",
+                "SD1_5\\corneos7thHeavenMix_100.safetensors",
+                "SD1_5\\cornflowerStylizedAnime_v9FP32.safetensors",
+                "SD1_5\\cutegirlcolorfulmix_v20.safetensors",
+                "SD1_5\\cuteyukiTheMostHighlyAcclaimed_kawashow.ckpt",
+                "SD1_5\\cuteyukimixAdorable_neochapter.safetensors",
+                "SD1_5\\cuteyukimix_X.safetensors",
+                "SD1_5\\cyberrealistic_v31.safetensors",
+                "SD1_5\\dalcefoPainting_3rd.safetensors",
+                "SD1_5\\dalcefoV3Anime_dalcefoV3Anime.safetensors",
+                "SD1_5\\darelitesFantasyLeaning_toanimemix.safetensors",
+                "SD1_5\\darkSushi25D25D_v20.safetensors",
+                "SD1_5\\ddosmix_V2.safetensors",
+                "SD1_5\\deliberate_v1.ckpt",
+                "SD1_5\\deliberate_v1.safetensors",
+                "SD1_5\\deliberate_v11.ckpt",
+                "SD1_5\\deliberate_v11.safetensors",
+                "SD1_5\\discomixAnime_v1.ckpt",
+                "SD1_5\\djzDieselpunkCityV21_0.safetensors",
+                "SD1_5\\dosmix_.safetensors",
+                "SD1_5\\dreamlikeDiffusion10_10.ckpt",
+                "SD1_5\\dreamlikePhotoreal20_dreamlikePhotoreal20.safetensors",
+                "SD1_5\\dreamshaper_252Pruned.ckpt",
+                "SD1_5\\dreamshaper_252Pruned.safetensors",
+                "SD1_5\\dreamshaper_331BakedVae.ckpt",
+                "SD1_5\\dreamshaper_331BakedVae.safetensors",
+                "SD1_5\\dreamshaper_7.safetensors",
+                "SD1_5\\duchaitenStylelikeme_v15Fp16NoEma.safetensors",
+                "SD1_5\\duchaitendreamworld_V241.safetensors",
+                "SD1_5\\dvarchMultiPrompt_dvarchExterior.safetensors",
+                "SD1_5\\elegance_244_fp16.safetensors",
+                "SD1_5\\elldrethsRetroMix_v10.safetensors",
+                "SD1_5\\elldrethsVividMix_v20VividEr.safetensors",
+                "SD1_5\\epicDiffusion_epicDiffusion10.safetensors",
+                "SD1_5\\epicDiffusion_epicDiffusion11.safetensors",
+                "SD1_5\\epicrealism_newEra.safetensors",
+                "SD1_5\\experience_exp65ClipFix.safetensors",
+                "SD1_5\\expmixLine_v3.safetensors",
+                "SD1_5\\f222.safetensors",
+                "SD1_5\\f222_v1.ckpt",
+                "SD1_5\\faetastic_.safetensors",
+                "SD1_5\\fantasyEroticMales_10.safetensors",
+                "SD1_5\\fcanimemixFcAnime_v30.safetensors",
+                "SD1_5\\future-diffusion-v1.ckpt",
+                "SD1_5\\galaxytimemachinesGTM_v1.safetensors",
+                "SD1_5\\genericfemalemix_gefemiV21-inpainting.safetensors",
+                "SD1_5\\ghostmix_v12.safetensors",
+                "SD1_5\\ghostmix_v20Bakedvae.safetensors",
+                "SD1_5\\glow25D_v10.safetensors",
+                "SD1_5\\grapefruitHentaiModel_grapefruitv4.safetensors",
+                "SD1_5\\guofeng2_v20.ckpt",
+                "SD1_5\\hasdx_hasedsdx.safetensors",
+                "SD1_5\\hassakuHentaiModel_v11.safetensors",
+                "SD1_5\\hassakuHentaiModel_v13.safetensors",
+                "SD1_5\\hassanblend1512And_hassanblend1512_fp16.safetensors",
+                "SD1_5\\honeyDiffusion_v1.ckpt",
+                "SD1_5\\icbinpICantBelieveIts_v8.safetensors",
+                "SD1_5\\illuminatiDiffusionV1_v11-unclip-h-fp16.safetensors",
+                "SD1_5\\inkpunkDiffusion_v2.ckpt",
+                "SD1_5\\isometricDreams_1.safetensors",
+                "SD1_5\\jasghPhrasmInky_jasghphrasmV11.safetensors",
+                "SD1_5\\jasminiquemix_fruitea.safetensors",
+                "SD1_5\\kawaiimixNijiV5Cute_v10.safetensors",
+                "SD1_5\\kenshi_01.safetensors",
+                "SD1_5\\knollingcase_v1.ckpt",
+                "SD1_5\\koreanstyle25D_koreanstyle25DBaked.safetensors",
+                "SD1_5\\kotosAbyssproto_v10.safetensors",
+                "SD1_5\\lanzzzyAhrender_v10.ckpt",
+                "SD1_5\\liberty_main.safetensors",
+                "SD1_5\\lyriel_v14.safetensors",
+                "SD1_5\\lyriel_v15.safetensors",
+                "SD1_5\\majicmixRealistic_v5.safetensors",
+                "SD1_5\\makimaChainsawman_beta.ckpt",
+                "SD1_5\\mandarine_5.safetensors",
+                "SD1_5\\meinahentai_v21.safetensors",
+                "SD1_5\\meinamix_meinaV51.safetensors",
+                "SD1_5\\meinamix_meinaV8_fp16.safetensors",
+                "SD1_5\\meinapastel_V3.safetensors",
+                "SD1_5\\meinaunreal_v1Beta.safetensors",
+                "SD1_5\\meinaunreal_v41.safetensors",
+                "SD1_5\\merongmix_v11.safetensors",
+                "SD1_5\\microIsoWorlds_10.ckpt",
+                "SD1_5\\mixProV3_v3.safetensors",
+                "SD1_5\\mixProV4_v4.safetensors",
+                "SD1_5\\mixproyuki77mi_v10.safetensors",
+                "SD1_5\\modelshootStyle_modelshoot10.ckpt",
+                "SD1_5\\moistmix_v2.safetensors",
+                "SD1_5\\momokos_v10.safetensors",
+                "SD1_5\\neurogenV11_v11.safetensors",
+                "SD1_5\\neverendingDreamNED_bakedVae.safetensors",
+                "SD1_5\\noiseOffsetForTrue_v10.safetensors",
+                "SD1_5\\nostalgiaClear_nostalgiaClear.safetensors",
+                "SD1_5\\nostalgiaMix_nostalgia.safetensors",
+                "SD1_5\\novelailatest-pruned.ckpt",
+                "SD1_5\\openjourney-v2-unpruned.ckpt",
+                "SD1_5\\openjourney-v2.ckpt",
+                "SD1_5\\orangechillmix_v70.safetensors",
+                "SD1_5\\otakuorangepastelwav_v10.safetensors",
+                "SD1_5\\otakupastelwavemix_v10.safetensors",
+                "SD1_5\\otakupastelwavemixpr_v10.safetensors",
+                "SD1_5\\pastelLinesMix_pastelLinesMix10.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixFull.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.ckpt",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP32.safetensors",
+                "SD1_5\\perfectWorld_perfectWorldBakedVAE.safetensors",
+                "SD1_5\\perfectWorld_v4Baked.safetensors",
+                "SD1_5\\pfg_111Safetensors.safetensors",
+                "SD1_5\\pfg_111Safetensors_fp16.safetensors",
+                "SD1_5\\photon_v1.safetensors",
+                "SD1_5\\popPopcornMix_popPopcornMix.safetensors",
+                "SD1_5\\povSkinTexture_povSkinTextureDreamlike.safetensors",
+                "SD1_5\\prismaboysmix_v11.safetensors",
+                "SD1_5\\protogenDragon_protogenX59_fp16.safetensors",
+                "SD1_5\\protogenInfinity_protogenX86.safetensors",
+                "SD1_5\\protogenNovaExperimental_protogenX80.safetensors",
+                "SD1_5\\protogenV22Anime_22.safetensors",
+                "SD1_5\\protogenX53Photorealism_10.safetensors",
+                "SD1_5\\protogenX58RebuiltScifi_10.safetensors",
+                "SD1_5\\pulpArtDiffusion_v1.ckpt",
+                "SD1_5\\qgo10b_qgo10b.safetensors",
+                "SD1_5\\ratnikamix_2.safetensors",
+                "SD1_5\\rcnzCartoon3d_v20.safetensors",
+                "SD1_5\\realdosmix_.safetensors",
+                "SD1_5\\realisticSCIModel_version1.safetensors",
+                "SD1_5\\realisticVisionV13_v13.safetensors",
+                "SD1_5\\realisticVisionV20_v20.safetensors",
+                "SD1_5\\reliberate_v10.safetensors",
+                "SD1_5\\revAnimated_v11.safetensors",
+                "SD1_5\\rpg_V4.safetensors",
+                "SD1_5\\samdoartsultmerge.ckpt",
+                "SD1_5\\samdoartsultmerge.safetensors",
+                "SD1_5\\sianworldmix_v1.safetensors",
+                "SD1_5\\starGuardianNeeko_sgNeekoWd13.ckpt",
+                "SD1_5\\starlike_v20.safetensors",
+                "SD1_5\\storeBoughtGyozaMix_v2.safetensors",
+                "SD1_5\\sunshinemix_sunlightmixPruned.safetensors",
+                "SD1_5\\synthwavepunk_v2.safetensors",
+                "SD1_5\\tangbohu_v10.safetensors",
+                "SD1_5\\tenPassion_10.safetensors",
+                "SD1_5\\theAllysMixIII_v10.safetensors",
+                "SD1_5\\theallysMixIIChurned_v10.safetensors",
+                "SD1_5\\toonyou_beta3.safetensors",
+                "SD1_5\\uberRealisticPornMerge_urpmv12.safetensors",
+                "SD1_5\\uberrealisticDreamy_pfg.safetensors",
+                "SD1_5\\ultracolorV4_ultracolorV4.ckpt",
+                "SD1_5\\unstableinkdream_75Anime.safetensors",
+                "SD1_5\\unstableinkdream_75Photo.safetensors",
+                "SD1_5\\unstableinkdream_75balance.safetensors",
+                "SD1_5\\unstableinkdream_v6.safetensors",
+                "SD1_5\\unstableinkdream_v70.safetensors",
+                "SD1_5\\unstableinkdream_v73.safetensors",
+                "SD1_5\\v1-5-pruned-emaonly.ckpt",
+                "SD1_5\\v2-1_768-ema-pruned.ckpt",
+                "SD1_5\\vectorArt_vectorArtBeta.safetensors",
+                "SD1_5\\waifusNDungeonsV20_waifusNDungeonsV20.safetensors",
+                "SD1_5\\xsarchitectural_v10interiordesignforxs.ckpt",
+                "SD1_5\\xxmix9realistic_v30.safetensors",
+                "SD1_5\\yabalMixTrue25D_v3.safetensors",
+                "SD1_5\\yaoigen_V022_fp16.safetensors",
+                "SD1_5\\yesmix_v16Original.safetensors",
+                "SD1_5\\yiffymix_yiffymix_fp16.safetensors",
+                "SD1_5\\yorrrlmix_v21.safetensors",
+                "SDXL\\4Guofeng4_v10Beta.safetensors",
+                "SDXL\\7Of9_v20.safetensors",
+                "SDXL\\ComfyrollXL2.safetensors",
+                "SDXL\\LahCuteCartoonSDXL_alpha.safetensors",
+                "SDXL\\LahMysteriousSDXL_v20.safetensors",
+                "SDXL\\ambienceSDXL_a1.safetensors",
+                "SDXL\\animeArtDiffusionXL_alpha2.safetensors",
+                "SDXL\\animeChangefulXLBeta_beta.safetensors",
+                "SDXL\\animeChangefulXL_v10ReleasedCandidate.safetensors",
+                "SDXL\\animegodxl_v5.safetensors",
+                "SDXL\\astreapixieXLAnime_v16.safetensors",
+                "SDXL\\bluePencilXL_v001.safetensors",
+                "SDXL\\campursariXL_v1.safetensors",
+                "SDXL\\copaxCuteXLSDXL10_v10.safetensors",
+                "SDXL\\copaxRealisticXLSDXL1_v2.safetensors",
+                "SDXL\\copaxTimelessxlSDXL1_v5.safetensors",
+                "SDXL\\counterfeitxl_.safetensors",
+                "SDXL\\counterfeitxl_v10.safetensors",
+                "SDXL\\dreamshaperXL10_alpha2Xl10.safetensors",
+                "SDXL\\dreamsmbbxlmixV10SDXL1_v10.safetensors",
+                "SDXL\\duchaitenAiartSDXL_v10.safetensors",
+                "SDXL\\duchaitenSDXLBeta_v05Beta.safetensors",
+                "SDXL\\envyanimexl_v09.safetensors",
+                "SDXL\\envyoverdrivexl_v10.safetensors",
+                "SDXL\\fantasticCharacters_v55.safetensors",
+                "SDXL\\juggernautXL_version3.safetensors",
+                "SDXL\\lovexl_v10.safetensors",
+                "SDXL\\mbbxlAlpha_v01.safetensors",
+                "SDXL\\mbbxlUltimate_v10RC.safetensors",
+                "SDXL\\nijiDiffusionXlBase1_v10.safetensors",
+                "SDXL\\nijiflat_v02.safetensors",
+                "SDXL\\notAnimefullFinalXL_v10.safetensors",
+                "SDXL\\protovisionXLHighFidelity3D_beta0411Bakedvae.safetensors",
+                "SDXL\\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors",
+                "SDXL\\realcartoonXL_v1.safetensors",
+                "SDXL\\realitycheckXL_alpha11.safetensors",
+                "SDXL\\reproduction_v1.safetensors",
+                "SDXL\\rundiffusionXL_beta.safetensors",
+                "SDXL\\sd_xl_base_0.9.safetensors",
+                "SDXL\\sd_xl_base_1.0.safetensors",
+                "SDXL\\sd_xl_refiner_0.9.safetensors",
+                "SDXL\\sd_xl_refiner_1.0.safetensors",
+                "SDXL\\sdvn6Realartxl_beta1.safetensors",
+                "SDXL\\sdvn7Nijistylexl_v1.safetensors",
+                "SDXL\\sdxl10ArienmixxlAsian_v10.safetensors",
+                "SDXL\\sdxlFixedvaeFp16_fixedvaeFp16.safetensors",
+                "SDXL\\sdxlNijiBeta_sdxlNijiBeta.safetensors",
+                "SDXL\\sdxlNijiSpecial_sdxlNijiSE.safetensors",
+                "SDXL\\sdxlYamersAnimeUltra_yamersAnimeV2.safetensors",
+                "SDXL\\shikianimexl_v10.safetensors",
+                "SDXL\\simpleXL_v10.safetensors",
+                "SDXL\\simulacrumxl_v10Asuka.safetensors",
+                "SDXL\\supermachine_v10.ckpt",
+                "SDXL\\talmendoxlSDXL_v11Beta.safetensors",
+                "SDXL\\wowXL_v10.safetensors",
+                "SDXL\\xl3ExperimentalSD10XL_v10.safetensors",
+                "SDXL\\xl6HEPHAISTOSSD10XLSFW_v11.safetensors",
+                "SDXL\\xl6HEPHAISTOSSD10XLSFW_v21BakedVAEFP16Fix.safetensors",
+                "SDXL\\xlPainting_v09Beta.safetensors",
+                "SDXL\\xlYamersRealistic_v2.safetensors",
+                "archive\\mixproyuki77mi_v10.safetensors"
+              ]
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            140
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            141,
+            142
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors"
+      ]
+    },
+    {
+      "id": 115,
+      "type": "CR XY Index",
+      "pos": [
+        -189.6800421142578,
+        432.98002838134806
+      ],
+      "size": {
+        "0": 210,
+        "1": 130
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 133,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 9999,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "INT",
+          "links": [
+            132
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "y",
+          "type": "INT",
+          "links": [
+            134
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR XY Index"
+      },
+      "widgets_values": [
+        17,
+        19,
+        0
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 127,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1420.3199578857384,
+        322.98002838134806
+      ],
+      "size": {
+        "0": 230,
+        "1": 80
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 167,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "3"
+      ]
+    },
+    {
+      "id": 128,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1420.3199578857384,
+        452.98002838134806
+      ],
+      "size": {
+        "0": 230,
+        "1": 80
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 173,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "dpmpp_2m_sde"
+      ]
+    },
+    {
+      "id": 143,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1420.3199578857384,
+        582.980028381347
+      ],
+      "size": {
+        "0": 230,
+        "1": 80
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 163,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "karras"
+      ]
+    },
+    {
+      "id": 150,
+      "type": "CR String To Combo",
+      "pos": [
+        1160.3199578857384,
+        452.98002838134806
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 175,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "",
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            176
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Combo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 124,
+      "type": "CR String To Combo",
+      "pos": [
+        1160.3199578857384,
+        502.9800283813474
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 169,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "",
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            163,
+            177
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Combo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 142,
+      "type": "CR String To Combo",
+      "pos": [
+        1160.3199578857384,
+        352.98002838134806
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 186,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "",
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            161,
+            170
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Combo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 116,
+      "type": "Text Load Line From File",
+      "pos": [
+        80.31995788574268,
+        562.980028381347
+      ],
+      "size": {
+        "0": 330,
+        "1": 150
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "multiline_text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 134,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            136
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Load Line From File"
+      },
+      "widgets_values": [
+        "E:\\Comfyroll\\XY Grid\\Text Files\\SDXL Prompts.txt",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0,
+        ""
+      ]
+    },
+    {
+      "id": 98,
+      "type": "ShowText|pysssss",
+      "pos": [
+        460.3199578857415,
+        352.98002838134806
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 151,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            164
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "SDXL\\RealitiesEdgeXL_4.safetensors, 3, dpmpp_2m_sde, karras"
+      ]
+    },
+    {
+      "id": 145,
+      "type": "CR Split String",
+      "pos": [
+        840.3199578857391,
+        352.98002838134806
+      ],
+      "size": {
+        "0": 210,
+        "1": 118
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 164,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "text"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_1",
+          "type": "STRING",
+          "links": [
+            186
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "string_2",
+          "type": "STRING",
+          "links": [
+            167,
+            184
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "string_3",
+          "type": "STRING",
+          "links": [
+            173,
+            175
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "string_4",
+          "type": "STRING",
+          "links": [
+            169
+          ],
+          "shape": 3,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Split String"
+      },
+      "widgets_values": [
+        "text",
+        ","
+      ]
+    },
+    {
+      "id": 167,
+      "type": "CR String To Number",
+      "pos": [
+        1160.3199578857384,
+        402.98002838134806
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 184,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "text"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null,
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            185
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Number"
+      },
+      "widgets_values": [
+        "text"
+      ]
+    },
+    {
+      "id": 114,
+      "type": "Text Load Line From File",
+      "pos": [
+        90.31995788574258,
+        352.98002838134806
+      ],
+      "size": {
+        "0": 320,
+        "1": 150
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "multiline_text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 132,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            151
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Load Line From File"
+      },
+      "widgets_values": [
+        "E:\\Comfyroll\\XY Grid\\Text Files\\Model config.txt",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0,
+        ""
+      ]
+    },
+    {
+      "id": 117,
+      "type": "PrimitiveNode",
+      "pos": [
+        -439.6800421142579,
+        432.98002838134806
+      ],
+      "size": {
+        "0": 210,
+        "1": 80
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            133
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 9999,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0,
+        "increment"
+      ]
+    },
+    {
+      "id": 101,
+      "type": "SaveImage",
+      "pos": [
+        2210,
+        910
+      ],
+      "size": {
+        "0": 330,
+        "1": 460
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 125
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Test14/CR"
+      ]
+    },
+    {
+      "id": 135,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1420.3199578857384,
+        182.98002838134752
+      ],
+      "size": {
+        "0": 230,
+        "1": 80
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 161,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "SDXL\\RealitiesEdgeXL_4.safetensors"
+      ]
+    },
+    {
+      "id": 168,
+      "type": "Note",
+      "pos": [
+        -430,
+        580
+      ],
+      "size": [
+        210,
+        80
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Start from index 0 when loading from a file"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    }
+  ],
+  "links": [
+    [
+      8,
+      11,
+      0,
+      13,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      12,
+      0,
+      13,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      13,
+      0,
+      16,
+      0,
+      "LATENT"
+    ],
+    [
+      15,
+      17,
+      0,
+      16,
+      1,
+      "VAE"
+    ],
+    [
+      116,
+      96,
+      0,
+      13,
+      3,
+      "LATENT"
+    ],
+    [
+      125,
+      16,
+      0,
+      101,
+      0,
+      "IMAGE"
+    ],
+    [
+      132,
+      115,
+      0,
+      114,
+      1,
+      "INT"
+    ],
+    [
+      133,
+      117,
+      0,
+      115,
+      0,
+      "INT"
+    ],
+    [
+      134,
+      115,
+      1,
+      116,
+      1,
+      "INT"
+    ],
+    [
+      136,
+      116,
+      0,
+      119,
+      0,
+      "STRING"
+    ],
+    [
+      138,
+      119,
+      0,
+      11,
+      1,
+      "STRING"
+    ],
+    [
+      140,
+      47,
+      0,
+      13,
+      0,
+      "MODEL"
+    ],
+    [
+      141,
+      47,
+      1,
+      11,
+      0,
+      "CLIP"
+    ],
+    [
+      142,
+      47,
+      1,
+      12,
+      0,
+      "CLIP"
+    ],
+    [
+      151,
+      114,
+      0,
+      98,
+      0,
+      "STRING"
+    ],
+    [
+      161,
+      142,
+      0,
+      135,
+      0,
+      "STRING"
+    ],
+    [
+      163,
+      124,
+      0,
+      143,
+      0,
+      "STRING"
+    ],
+    [
+      164,
+      98,
+      0,
+      145,
+      0,
+      "STRING"
+    ],
+    [
+      167,
+      145,
+      1,
+      127,
+      0,
+      "STRING"
+    ],
+    [
+      169,
+      145,
+      3,
+      124,
+      0,
+      "STRING"
+    ],
+    [
+      170,
+      142,
+      0,
+      47,
+      0,
+      "SD1_5\\7th_anime_v2_G.safetensors,SD1_5\\7th_anime_v3_A.safetensors,SD1_5\\7th_anime_v3_B.safetensors,SD1_5\\7th_anime_v3_C.safetensors,SD1_5\\9527_v10.ckpt,SD1_5\\AOM3.safetensors,SD1_5\\AOM3A1.safetensors,SD1_5\\AOM3A2.safetensors,SD1_5\\AOM3A3.safetensors,SD1_5\\AOM3A3_orangemixs.safetensors,SD1_5\\ATitanStrawBerry_fp16.safetensors,SD1_5\\AbyssOrangeMix.safetensors,SD1_5\\AbyssOrangeMix2_hard.safetensors,SD1_5\\AbyssOrangeMix2_nsfw.safetensors,SD1_5\\AbyssOrangeMix2_sfw.safetensors,SD1_5\\AbyssOrangeMix_Night.safetensors,SD1_5\\Abyss_7th_layer.ckpt,SD1_5\\Any-HSceneMix.safetensors,SD1_5\\Anything-V3.0.ckpt,SD1_5\\Basil mix.safetensors,SD1_5\\Basil_mix_fixed.safetensors,SD1_5\\BerryCandy20_v2.fp16.safetensors,SD1_5\\BubblepopAnime_fp32.safetensors,SD1_5\\Bubblepop_fp32.safetensors,SD1_5\\Ccomfyroll_v10.safetensors,SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors,SD1_5\\ComfyrollAnime_v1_fp32_pruned.safetensors,SD1_5\\ComfyrollCutie_v1_fp16.safetensors,SD1_5\\ComfyrollFantasy.safetensors,SD1_5\\ComfyrollReal_v1_fp16.safetensors,SD1_5\\Comfyroll_v1_fp16_pruned.safetensors,SD1_5\\Comfyroll_v1_fp32_pruned.safetensors,SD1_5\\CounterfeitV25_25.safetensors,SD1_5\\Elysium_Anime_V3.safetensors,SD1_5\\HassanBlend1.4-Pruned.ckpt,SD1_5\\HassanBlend1.4.ckpt,SD1_5\\HassanBlend1.4_Safe.safetensors,SD1_5\\Merge_00011_.safetensors,SD1_5\\Nabylon-v1.2-fp16.safetensors,SD1_5\\Nabylon-v1.3-fp16.safetensors,SD1_5\\OldFish_2348V12.safetensors,SD1_5\\ProtoGen_X3.4-pruned-fp16.safetensors,SD1_5\\SE_V1_A.safetensors,SD1_5\\Silicon29-dark.safetensors,SD1_5\\Silicon29.safetensors,SD1_5\\TriPhaze_A.safetensors,SD1_5\\UnstableinkdreamV5-photoreal.safetensors,SD1_5\\UnstableinkdreamV5.safetensors,SD1_5\\X_revA_PW_liberty.safetensors,SD1_5\\YuzuGinger_v1-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v3.5-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v9.5-pruned.safetensors,SD1_5\\YuzuLemonMilk_v1.5-pruned.safetensors,SD1_5\\aToZovyaRPGArtistsTools15_sd15V1.safetensors,SD1_5\\aZovyaPhotoreal_v1.safetensors,SD1_5\\aZovyaPhotoreal_v2.safetensors,SD1_5\\absolutereality_v16.safetensors,SD1_5\\aloeVeraSSimpMaker3K_simpMaker3K1-ema-fp16.safetensors,SD1_5\\analogMadness_analogMadnessV3.safetensors,SD1_5\\analogMadness_v40.safetensors,SD1_5\\anidosmix_A.safetensors,SD1_5\\animefull-final-pruned.ckpt,SD1_5\\anireal_10v.safetensors,SD1_5\\antlersmix_10.safetensors,SD1_5\\anyjuicev32Realistic_anyjuicev32Realistic.safetensors,SD1_5\\anything-v3-fp32-pruned.safetensors,SD1_5\\anything-v4.5-pruned.safetensors,SD1_5\\artErosAerosATribute_aerosNovae.safetensors,SD1_5\\artiusv15_v1.safetensors,SD1_5\\ayonimixAnime_ayonimixAnimeV4.safetensors,SD1_5\\ayonimix_V4VAEBaked.safetensors,SD1_5\\babes_babes11_fp16.safetensors,SD1_5\\balloonmix3.ckpt,SD1_5\\basil mix.ckpt,SD1_5\\bastardAIImpossible_v4Liveaction.safetensors,SD1_5\\bastardAIImpossible_v6Liveaction.safetensors,SD1_5\\berry_mix.ckpt,SD1_5\\bweshmix_a2.safetensors,SD1_5\\camelliamix25D_v10.safetensors,SD1_5\\cetusMix_cetusVersion2.safetensors,SD1_5\\chikmix_V1.safetensors,SD1_5\\chilledReGenericV3_v10.safetensors,SD1_5\\chilloutmix_NiCkpt.ckpt,SD1_5\\chilloutmix_NiPrunedFp32Fix.safetensors,SD1_5\\chinaberry (nofix f222 1.4) part2-fp16.safetensors,SD1_5\\chromav5_.ckpt,SD1_5\\chronos_v10.safetensors,SD1_5\\classicNegative1521_classicNegative768px.safetensors,SD1_5\\classicnegative.safetensors,SD1_5\\cocotifamix_v20This.safetensors,SD1_5\\comfyroll_v10Anime.safetensors,SD1_5\\complexLineart_v1.ckpt,SD1_5\\corneos7thHeavenMix_100.safetensors,SD1_5\\cornflowerStylizedAnime_v9FP32.safetensors,SD1_5\\cutegirlcolorfulmix_v20.safetensors,SD1_5\\cuteyukiTheMostHighlyAcclaimed_kawashow.ckpt,SD1_5\\cuteyukimixAdorable_neochapter.safetensors,SD1_5\\cuteyukimix_X.safetensors,SD1_5\\cyberrealistic_v31.safetensors,SD1_5\\dalcefoPainting_3rd.safetensors,SD1_5\\dalcefoV3Anime_dalcefoV3Anime.safetensors,SD1_5\\darelitesFantasyLeaning_toanimemix.safetensors,SD1_5\\darkSushi25D25D_v20.safetensors,SD1_5\\ddosmix_V2.safetensors,SD1_5\\deliberate_v1.ckpt,SD1_5\\deliberate_v1.safetensors,SD1_5\\deliberate_v11.ckpt,SD1_5\\deliberate_v11.safetensors,SD1_5\\discomixAnime_v1.ckpt,SD1_5\\djzDieselpunkCityV21_0.safetensors,SD1_5\\dosmix_.safetensors,SD1_5\\dreamlikeDiffusion10_10.ckpt,SD1_5\\dreamlikePhotoreal20_dreamlikePhotoreal20.safetensors,SD1_5\\dreamshaper_252Pruned.ckpt,SD1_5\\dreamshaper_252Pruned.safetensors,SD1_5\\dreamshaper_331BakedVae.ckpt,SD1_5\\dreamshaper_331BakedVae.safetensors,SD1_5\\dreamshaper_7.safetensors,SD1_5\\duchaitenStylelikeme_v15Fp16NoEma.safetensors,SD1_5\\duchaitendreamworld_V241.safetensors,SD1_5\\dvarchMultiPrompt_dvarchExterior.safetensors,SD1_5\\elegance_244_fp16.safetensors,SD1_5\\elldrethsRetroMix_v10.safetensors,SD1_5\\elldrethsVividMix_v20VividEr.safetensors,SD1_5\\epicDiffusion_epicDiffusion10.safetensors,SD1_5\\epicDiffusion_epicDiffusion11.safetensors,SD1_5\\epicrealism_newEra.safetensors,SD1_5\\experience_exp65ClipFix.safetensors,SD1_5\\expmixLine_v3.safetensors,SD1_5\\f222.safetensors,SD1_5\\f222_v1.ckpt,SD1_5\\faetastic_.safetensors,SD1_5\\fantasyEroticMales_10.safetensors,SD1_5\\fcanimemixFcAnime_v30.safetensors,SD1_5\\future-diffusion-v1.ckpt,SD1_5\\galaxytimemachinesGTM_v1.safetensors,SD1_5\\genericfemalemix_gefemiV21-inpainting.safetensors,SD1_5\\ghostmix_v12.safetensors,SD1_5\\ghostmix_v20Bakedvae.safetensors,SD1_5\\glow25D_v10.safetensors,SD1_5\\grapefruitHentaiModel_grapefruitv4.safetensors,SD1_5\\guofeng2_v20.ckpt,SD1_5\\hasdx_hasedsdx.safetensors,SD1_5\\hassakuHentaiModel_v11.safetensors,SD1_5\\hassakuHentaiModel_v13.safetensors,SD1_5\\hassanblend1512And_hassanblend1512_fp16.safetensors,SD1_5\\honeyDiffusion_v1.ckpt,SD1_5\\icbinpICantBelieveIts_v8.safetensors,SD1_5\\illuminatiDiffusionV1_v11-unclip-h-fp16.safetensors,SD1_5\\inkpunkDiffusion_v2.ckpt,SD1_5\\isometricDreams_1.safetensors,SD1_5\\jasghPhrasmInky_jasghphrasmV11.safetensors,SD1_5\\jasminiquemix_fruitea.safetensors,SD1_5\\kawaiimixNijiV5Cute_v10.safetensors,SD1_5\\kenshi_01.safetensors,SD1_5\\knollingcase_v1.ckpt,SD1_5\\koreanstyle25D_koreanstyle25DBaked.safetensors,SD1_5\\kotosAbyssproto_v10.safetensors,SD1_5\\lanzzzyAhrender_v10.ckpt,SD1_5\\liberty_main.safetensors,SD1_5\\lyriel_v14.safetensors,SD1_5\\lyriel_v15.safetensors,SD1_5\\majicmixRealistic_v5.safetensors,SD1_5\\makimaChainsawman_beta.ckpt,SD1_5\\mandarine_5.safetensors,SD1_5\\meinahentai_v21.safetensors,SD1_5\\meinamix_meinaV51.safetensors,SD1_5\\meinamix_meinaV8_fp16.safetensors,SD1_5\\meinapastel_V3.safetensors,SD1_5\\meinaunreal_v1Beta.safetensors,SD1_5\\meinaunreal_v41.safetensors,SD1_5\\merongmix_v11.safetensors,SD1_5\\microIsoWorlds_10.ckpt,SD1_5\\mixProV3_v3.safetensors,SD1_5\\mixProV4_v4.safetensors,SD1_5\\mixproyuki77mi_v10.safetensors,SD1_5\\modelshootStyle_modelshoot10.ckpt,SD1_5\\moistmix_v2.safetensors,SD1_5\\momokos_v10.safetensors,SD1_5\\neurogenV11_v11.safetensors,SD1_5\\neverendingDreamNED_bakedVae.safetensors,SD1_5\\noiseOffsetForTrue_v10.safetensors,SD1_5\\nostalgiaClear_nostalgiaClear.safetensors,SD1_5\\nostalgiaMix_nostalgia.safetensors,SD1_5\\novelailatest-pruned.ckpt,SD1_5\\openjourney-v2-unpruned.ckpt,SD1_5\\openjourney-v2.ckpt,SD1_5\\orangechillmix_v70.safetensors,SD1_5\\otakuorangepastelwav_v10.safetensors,SD1_5\\otakupastelwavemix_v10.safetensors,SD1_5\\otakupastelwavemixpr_v10.safetensors,SD1_5\\pastelLinesMix_pastelLinesMix10.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixFull.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.ckpt,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP32.safetensors,SD1_5\\perfectWorld_perfectWorldBakedVAE.safetensors,SD1_5\\perfectWorld_v4Baked.safetensors,SD1_5\\pfg_111Safetensors.safetensors,SD1_5\\pfg_111Safetensors_fp16.safetensors,SD1_5\\photon_v1.safetensors,SD1_5\\popPopcornMix_popPopcornMix.safetensors,SD1_5\\povSkinTexture_povSkinTextureDreamlike.safetensors,SD1_5\\prismaboysmix_v11.safetensors,SD1_5\\protogenDragon_protogenX59_fp16.safetensors,SD1_5\\protogenInfinity_protogenX86.safetensors,SD1_5\\protogenNovaExperimental_protogenX80.safetensors,SD1_5\\protogenV22Anime_22.safetensors,SD1_5\\protogenX53Photorealism_10.safetensors,SD1_5\\protogenX58RebuiltScifi_10.safetensors,SD1_5\\pulpArtDiffusion_v1.ckpt,SD1_5\\qgo10b_qgo10b.safetensors,SD1_5\\ratnikamix_2.safetensors,SD1_5\\rcnzCartoon3d_v20.safetensors,SD1_5\\realdosmix_.safetensors,SD1_5\\realisticSCIModel_version1.safetensors,SD1_5\\realisticVisionV13_v13.safetensors,SD1_5\\realisticVisionV20_v20.safetensors,SD1_5\\reliberate_v10.safetensors,SD1_5\\revAnimated_v11.safetensors,SD1_5\\rpg_V4.safetensors,SD1_5\\samdoartsultmerge.ckpt,SD1_5\\samdoartsultmerge.safetensors,SD1_5\\sianworldmix_v1.safetensors,SD1_5\\starGuardianNeeko_sgNeekoWd13.ckpt,SD1_5\\starlike_v20.safetensors,SD1_5\\storeBoughtGyozaMix_v2.safetensors,SD1_5\\sunshinemix_sunlightmixPruned.safetensors,SD1_5\\synthwavepunk_v2.safetensors,SD1_5\\tangbohu_v10.safetensors,SD1_5\\tenPassion_10.safetensors,SD1_5\\theAllysMixIII_v10.safetensors,SD1_5\\theallysMixIIChurned_v10.safetensors,SD1_5\\toonyou_beta3.safetensors,SD1_5\\uberRealisticPornMerge_urpmv12.safetensors,SD1_5\\uberrealisticDreamy_pfg.safetensors,SD1_5\\ultracolorV4_ultracolorV4.ckpt,SD1_5\\unstableinkdream_75Anime.safetensors,SD1_5\\unstableinkdream_75Photo.safetensors,SD1_5\\unstableinkdream_75balance.safetensors,SD1_5\\unstableinkdream_v6.safetensors,SD1_5\\unstableinkdream_v70.safetensors,SD1_5\\unstableinkdream_v73.safetensors,SD1_5\\v1-5-pruned-emaonly.ckpt,SD1_5\\v2-1_768-ema-pruned.ckpt,SD1_5\\vectorArt_vectorArtBeta.safetensors,SD1_5\\waifusNDungeonsV20_waifusNDungeonsV20.safetensors,SD1_5\\xsarchitectural_v10interiordesignforxs.ckpt,SD1_5\\xxmix9realistic_v30.safetensors,SD1_5\\yabalMixTrue25D_v3.safetensors,SD1_5\\yaoigen_V022_fp16.safetensors,SD1_5\\yesmix_v16Original.safetensors,SD1_5\\yiffymix_yiffymix_fp16.safetensors,SD1_5\\yorrrlmix_v21.safetensors,SDXL\\4Guofeng4_v10Beta.safetensors,SDXL\\7Of9_v20.safetensors,SDXL\\ComfyrollXL2.safetensors,SDXL\\LahCuteCartoonSDXL_alpha.safetensors,SDXL\\LahMysteriousSDXL_v20.safetensors,SDXL\\ambienceSDXL_a1.safetensors,SDXL\\animeArtDiffusionXL_alpha2.safetensors,SDXL\\animeChangefulXLBeta_beta.safetensors,SDXL\\animeChangefulXL_v10ReleasedCandidate.safetensors,SDXL\\animegodxl_v5.safetensors,SDXL\\astreapixieXLAnime_v16.safetensors,SDXL\\bluePencilXL_v001.safetensors,SDXL\\campursariXL_v1.safetensors,SDXL\\copaxCuteXLSDXL10_v10.safetensors,SDXL\\copaxRealisticXLSDXL1_v2.safetensors,SDXL\\copaxTimelessxlSDXL1_v5.safetensors,SDXL\\counterfeitxl_.safetensors,SDXL\\counterfeitxl_v10.safetensors,SDXL\\dreamshaperXL10_alpha2Xl10.safetensors,SDXL\\dreamsmbbxlmixV10SDXL1_v10.safetensors,SDXL\\duchaitenAiartSDXL_v10.safetensors,SDXL\\duchaitenSDXLBeta_v05Beta.safetensors,SDXL\\envyanimexl_v09.safetensors,SDXL\\envyoverdrivexl_v10.safetensors,SDXL\\fantasticCharacters_v55.safetensors,SDXL\\juggernautXL_version3.safetensors,SDXL\\lovexl_v10.safetensors,SDXL\\mbbxlAlpha_v01.safetensors,SDXL\\mbbxlUltimate_v10RC.safetensors,SDXL\\nijiDiffusionXlBase1_v10.safetensors,SDXL\\nijiflat_v02.safetensors,SDXL\\notAnimefullFinalXL_v10.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0411Bakedvae.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors,SDXL\\realcartoonXL_v1.safetensors,SDXL\\realitycheckXL_alpha11.safetensors,SDXL\\reproduction_v1.safetensors,SDXL\\rundiffusionXL_beta.safetensors,SDXL\\sd_xl_base_0.9.safetensors,SDXL\\sd_xl_base_1.0.safetensors,SDXL\\sd_xl_refiner_0.9.safetensors,SDXL\\sd_xl_refiner_1.0.safetensors,SDXL\\sdvn6Realartxl_beta1.safetensors,SDXL\\sdvn7Nijistylexl_v1.safetensors,SDXL\\sdxl10ArienmixxlAsian_v10.safetensors,SDXL\\sdxlFixedvaeFp16_fixedvaeFp16.safetensors,SDXL\\sdxlNijiBeta_sdxlNijiBeta.safetensors,SDXL\\sdxlNijiSpecial_sdxlNijiSE.safetensors,SDXL\\sdxlYamersAnimeUltra_yamersAnimeV2.safetensors,SDXL\\shikianimexl_v10.safetensors,SDXL\\simpleXL_v10.safetensors,SDXL\\simulacrumxl_v10Asuka.safetensors,SDXL\\supermachine_v10.ckpt,SDXL\\talmendoxlSDXL_v11Beta.safetensors,SDXL\\wowXL_v10.safetensors,SDXL\\xl3ExperimentalSD10XL_v10.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v11.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v21BakedVAEFP16Fix.safetensors,SDXL\\xlPainting_v09Beta.safetensors,SDXL\\xlYamersRealistic_v2.safetensors,archive\\mixproyuki77mi_v10.safetensors"
+    ],
+    [
+      173,
+      145,
+      2,
+      128,
+      0,
+      "STRING"
+    ],
+    [
+      175,
+      145,
+      2,
+      150,
+      0,
+      "STRING"
+    ],
+    [
+      176,
+      150,
+      0,
+      13,
+      5,
+      "euler,euler_ancestral,heun,dpm_2,dpm_2_ancestral,lms,dpm_fast,dpm_adaptive,dpmpp_2s_ancestral,dpmpp_sde,dpmpp_sde_gpu,dpmpp_2m,dpmpp_2m_sde,dpmpp_2m_sde_gpu,dpmpp_3m_sde,dpmpp_3m_sde_gpu,ddpm,ddim,uni_pc,uni_pc_bh2"
+    ],
+    [
+      177,
+      124,
+      0,
+      13,
+      6,
+      "normal,karras,exponential,sgm_uniform,simple,ddim_uniform"
+    ],
+    [
+      184,
+      145,
+      1,
+      167,
+      0,
+      "STRING"
+    ],
+    [
+      185,
+      167,
+      1,
+      13,
+      4,
+      "FLOAT"
+    ],
+    [
+      186,
+      145,
+      0,
+      142,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Workflow",
+      "bounding": [
+        647,
+        820,
+        1940,
+        593
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "XY from files",
+      "bounding": [
+        -472,
+        89,
+        2165,
+        659
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

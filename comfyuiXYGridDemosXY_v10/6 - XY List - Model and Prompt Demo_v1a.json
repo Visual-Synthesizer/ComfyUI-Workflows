@@ -1,0 +1,628 @@
+{
+  "last_node_id": 176,
+  "last_link_id": 201,
+  "nodes": [
+    {
+      "id": 96,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1125.8621282031231,
+        501.2848599843753
+      ],
+      "size": {
+        "0": 210,
+        "1": 110
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            116
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 16,
+      "type": "VAEDecode",
+      "pos": [
+        1905.8621282031231,
+        141.28485998437537
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            125
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 13,
+      "type": "KSampler",
+      "pos": [
+        1475.8621282031231,
+        141.28485998437537
+      ],
+      "size": {
+        "0": 320,
+        "1": 470
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 140
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 116
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        32603574575332,
+        "fixed",
+        20,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 101,
+      "type": "SaveImage",
+      "pos": [
+        2245.8621282031254,
+        141.28485998437537
+      ],
+      "size": {
+        "0": 330,
+        "1": 460
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 125
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Test14/CR"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1130,
+        230
+      ],
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 141
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 199,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "1girl, arknights"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "VAELoader",
+      "pos": [
+        730,
+        300
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "sdxl_vae_fixed.safetensors"
+      ]
+    },
+    {
+      "id": 47,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        730,
+        140
+      ],
+      "size": {
+        "0": 320,
+        "1": 100
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ckpt_name",
+          "type": "COMBO",
+          "link": 200,
+          "widget": {
+            "name": "ckpt_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            140
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            141,
+            193
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SDXL\\RealitiesEdgeXL_4.safetensors"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1130,
+        370
+      ],
+      "size": {
+        "0": 210,
+        "1": 76
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 193
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "nsfw"
+      ]
+    },
+    {
+      "id": 176,
+      "type": "CR String To Combo",
+      "pos": [
+        400,
+        160
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 201,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            200
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Combo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 169,
+      "type": "PrimitiveNode",
+      "pos": [
+        -451.79465616171893,
+        134.30770307011716
+      ],
+      "size": {
+        "0": 210,
+        "1": 80
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            189
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "index"
+          }
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1,
+        "increment"
+      ]
+    },
+    {
+      "id": 170,
+      "type": "CR XY List",
+      "pos": [
+        -451.79465616171893,
+        264.30770307011716
+      ],
+      "size": [
+        1040,
+        910
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 189,
+          "widget": {
+            "name": "index"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X",
+          "type": "STRING",
+          "links": [
+            201
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "Y",
+          "type": "STRING",
+          "links": [
+            199
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "x_annotation",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "y_annotation",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR XY List"
+      },
+      "widgets_values": [
+        1,
+        "RealitiesEdgeXL_4,\n7Of9_v20,\nMOHAWK_v14,\ncolossusProjectXLSFW_v202BakedVAE,\nsdxlFaetastic_v16,\nrealisticFreedomSFW_alpha,\nzavychromaxl_v21,\nrealisticStockPhoto_v10,\nsavsdxl_v30,\nrealcartoonXL_v4,\nultriumV31VAE_ultriumV31VAE,\nrealvisxlV20_v20Bakedvae,\nwowXL_v10,\nprotovisionXLHighFidelity3D_beta0520Bakedvae,\nnewdawnxl_31Bf16Version,\njuggernautXL_version3,\ntheTalosProject_v11",
+        "SDXL\\",
+        ".safetensors",
+        "",
+        "\"ugly gargoyle, sharp claws, made out of stone, lightning storm, rain reflections, paris city background bokeh, evening, moonlight, portrait\",\n\"Woman painting a watercolor rainbow on a canvas, she's overlooking ireland waterfall in distance, wearing 1600s clothing, close up, photorealistic, holding brush against canvas\",\n\"kentucky derby horse race, view from the stands with women with colorful feathery hats, holding drinks, photorealistic\",\n\"close up oil portrait of british monarch king on stallion, raising sword, english castle background sunset bokeh, in golden museum frame\",\n\"close up portrait of Merman King swimming under water, holding glowing trident, floating electricity orbs, surface water reflections above, elaborate bright underwater city in distant background bokeh\",\n\"large space station under attack by star fighters, explosions, lasers, desert planet and warp tunnel in the background\",\nexquisite french palace architecture, 1700s furniture, golden trim and mirror reflections, chandeliers, banquet feast background bokeh, beautiful day and natural light\",\n\"male super hero, flying through a office building window, (attacking a tentacle villain:1.2), (broken glass flying:1.1), people running in background bokeh, photorealistic\",\n\"macro closeup of ladybug, drinking from a large reflective drop of water, sitting on a large leaf, forest sunset background extreme bokeh\",\n\"pencil drawing on college exam, red corrections, college students in lecture hall background bokeh, extreme close-up\",\n\"intricate angel ice sculpture on elaborate food buffet table, surrounded by vivid colorful food, colorful reflections, extreme close-up, cruise ship dining room background bokeh\",\n\"A rugged, weathered dwarf with a sturdy pickaxe, Determined eyes scanning the dark, rocky tunnel, Muscles straining as he chips away at the sparking ore, The flickering glow of mining lanterns illuminating his path, The faint scent of earth and minerals filling the air, The rhythmic sound of the pickaxe echoing in the cavern, A sense of anticipation and excitement permeating the scene, A hint of danger lurking in the depths, The perfect balance of tension and tranquility, depicted in a photorealistic style\",\n\"Cheeseburger on plate\",\n\"metallic mechanical doomsday puzzle\",\n\"High Way Sign, text 'Rochester'\",\n\"close up shot of (large brown leather purse:1.1) with (gold embossed cursive text:1.2) 'Hennessey Rox', being held by supermodel (slim black gown), Milan fashion runway background bokeh, spotlights, camera flashes\",\n\"Sleepy Venice Canals, Clear, Early Morning, Canal Waters Surging, Stone Bridges, Distant Accordion musician and pedestrians, gelato stand, Gentle Sun Rays, Rippling Water Effects, Birds Chirping in trees, Under-the-bridge Perspective, Tranquil Pace\",\n\"Deserted Futuristic Neon-lit Hong Kong Streets, Distant flying futuristic patrol Drones:1.1), Misty with Light Drizzles, Dawn Breaking, (Humungous Holographic Advertisements:1.2),  Reflective Wet Roads, Fiery \"Debris Floating, Bird's Eye View, Chaotic Rush, cinematic background style\",\n\"Tropical Beach Shore, Bright Sunshine with Passing Clouds, Midday, Wooden Watchtowers, Palm Trees and Waves Crashing, Sharp Sunlight Casting Shadows, Shipwreck Offshore, Seagulls, Driftwood and Shells, Side-angle Panorama, Vibrant Turquoise\"",
+        "",
+        "",
+        ""
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    }
+  ],
+  "links": [
+    [
+      8,
+      11,
+      0,
+      13,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      12,
+      0,
+      13,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      13,
+      0,
+      16,
+      0,
+      "LATENT"
+    ],
+    [
+      15,
+      17,
+      0,
+      16,
+      1,
+      "VAE"
+    ],
+    [
+      116,
+      96,
+      0,
+      13,
+      3,
+      "LATENT"
+    ],
+    [
+      125,
+      16,
+      0,
+      101,
+      0,
+      "IMAGE"
+    ],
+    [
+      140,
+      47,
+      0,
+      13,
+      0,
+      "MODEL"
+    ],
+    [
+      141,
+      47,
+      1,
+      11,
+      0,
+      "CLIP"
+    ],
+    [
+      189,
+      169,
+      0,
+      170,
+      0,
+      "INT"
+    ],
+    [
+      193,
+      47,
+      1,
+      12,
+      0,
+      "CLIP"
+    ],
+    [
+      199,
+      170,
+      1,
+      11,
+      1,
+      "STRING"
+    ],
+    [
+      200,
+      176,
+      0,
+      47,
+      0,
+      "COMBO"
+    ],
+    [
+      201,
+      170,
+      0,
+      176,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Workflow",
+      "bounding": [
+        683,
+        51,
+        1940,
+        593
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "XY Grid",
+      "bounding": [
+        -496,
+        49,
+        1133,
+        1198
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

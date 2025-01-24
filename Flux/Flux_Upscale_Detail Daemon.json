@@ -1,0 +1,1176 @@
+{
+  "last_node_id": 145,
+  "last_link_id": 406,
+  "nodes": [
+    {
+      "id": 135,
+      "type": "UltimateSDUpscaleCustomSample",
+      "pos": {
+        "0": 1143,
+        "1": 662
+      },
+      "size": {
+        "0": 298.1197204589844,
+        "1": 654
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 396
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 398
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 395
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 354
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 403
+        },
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 355,
+          "shape": 7
+        },
+        {
+          "name": "custom_sampler",
+          "type": "SAMPLER",
+          "link": 400,
+          "shape": 7
+        },
+        {
+          "name": "custom_sigmas",
+          "type": "SIGMAS",
+          "link": 364,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            368,
+            401
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltimateSDUpscaleCustomSample"
+      },
+      "widgets_values": [
+        2,
+        64171703981794,
+        "fixed",
+        8,
+        1,
+        "dpmpp_2m",
+        "beta",
+        0.4,
+        "Linear",
+        1024,
+        1024,
+        32,
+        64,
+        "None",
+        1,
+        64,
+        8,
+        16,
+        true,
+        false
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 143,
+      "type": "DetailDaemonSamplerNode",
+      "pos": {
+        "0": 771,
+        "1": 873
+      },
+      "size": {
+        "0": 315,
+        "1": 274
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 399
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            400
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DetailDaemonSamplerNode"
+      },
+      "widgets_values": [
+        1,
+        0,
+        0.9,
+        0.5,
+        0.25,
+        0,
+        0,
+        0,
+        true,
+        0
+      ]
+    },
+    {
+      "id": 30,
+      "type": "ModelSamplingFlux",
+      "pos": {
+        "0": 386,
+        "1": 1274
+      },
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 406,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            398
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingFlux"
+      },
+      "widgets_values": [
+        1.15,
+        0.5,
+        1024,
+        1024
+      ]
+    },
+    {
+      "id": 84,
+      "type": "DualCLIPLoaderGGUF",
+      "pos": {
+        "0": -59,
+        "1": 681
+      },
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            391
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoaderGGUF"
+      },
+      "widgets_values": [
+        "t5xxl_fp16.safetensors",
+        "clip_l.safetensors",
+        "flux"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": {
+        "0": -60,
+        "1": 840
+      },
+      "size": {
+        "0": 311.81634521484375,
+        "1": 60.429901123046875
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            403
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 46,
+      "type": "UpscaleModelLoader",
+      "pos": {
+        "0": 420,
+        "1": 980
+      },
+      "size": {
+        "0": 254.5579071044922,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            355
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4x-UltraSharp.pth"
+      ]
+    },
+    {
+      "id": 56,
+      "type": "Image Comparer (rgthree)",
+      "pos": {
+        "0": 1526,
+        "1": 645
+      },
+      "size": {
+        "0": 707.2509765625,
+        "1": 762.0361328125
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 368,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 402,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_cdnob_00007_.png&type=temp&subfolder=&rand=0.11823211484754048"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_cdnob_00008_.png&type=temp&subfolder=&rand=0.3766143571270203"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 101,
+      "type": "CLIPTextEncodeFlux",
+      "pos": {
+        "0": 350,
+        "1": 533
+      },
+      "size": {
+        "0": 401.5201110839844,
+        "1": 225.4599609375
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 391
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            394,
+            395
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "This impressionist painting portrays a strikingly beautiful, ethereal goddess with delicate, shadowed features standing alone at the forefront of a chaotic, angry crowd. She wears an intricate dress adorned with large, detailed flower petals and glossy, flowing fabric in tones of gold, burgundy, and cream, adding a surreal elegance to her figure. Her expression is calm yet sorrowful, with a single tear rolling down her face. Her presence exudes grace and innocence, contrasting dramatically with the hostile crowd behind her.\n\nThe crowd, composed of men and women with harsh, twisted expressions, displays anger, contempt, and rage. They appear diverse in background and attire, with some pointing guns at her, while others shout or gesture violently. Their intense hostility contrasts sharply with the goddess’s serene vulnerability, symbolizing collective hostility overtaking individual beauty.\n\nRendered with a blend of hyperrealism and surrealism, the painting transitions from meticulous detail in each face in the crowd to gritty, bold impressionistic brushstrokes. The densely packed background emphasizes a vast, unyielding mass that stretches toward a stormy, ominous sky, underscoring themes of isolation, sacrifice, and collective rage directed at a singular, fragile figure.",
+        "This impressionist painting portrays a strikingly beautiful, ethereal goddess with delicate, shadowed features standing alone at the forefront of a chaotic, angry crowd. She wears an intricate dress adorned with large, detailed flower petals and glossy, flowing fabric in tones of gold, burgundy, and cream, adding a surreal elegance to her figure. Her expression is calm yet sorrowful, with a single tear rolling down her face. Her presence exudes grace and innocence, contrasting dramatically with the hostile crowd behind her.\n\nThe crowd, composed of men and women with harsh, twisted expressions, displays anger, contempt, and rage. They appear diverse in background and attire, with some pointing guns at her, while others shout or gesture violently. Their intense hostility contrasts sharply with the goddess’s serene vulnerability, symbolizing collective hostility overtaking individual beauty.\n\nRendered with a blend of hyperrealism and surrealism, the painting transitions from meticulous detail in each face in the crowd to gritty, bold impressionistic brushstrokes. The densely packed background emphasizes a vast, unyielding mass that stretches toward a stormy, ominous sky, underscoring themes of isolation, sacrifice, and collective rage directed at a singular, fragile figure.",
+        3
+      ]
+    },
+    {
+      "id": 144,
+      "type": "SaveImage",
+      "pos": {
+        "0": 2387,
+        "1": 574
+      },
+      "size": {
+        "0": 315,
+        "1": 270
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 401
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "Upscle_detail_daemon"
+      ]
+    },
+    {
+      "id": 77,
+      "type": "LoadImage",
+      "pos": {
+        "0": -50,
+        "1": 989
+      },
+      "size": {
+        "0": 301.40032958984375,
+        "1": 396.8117370605469
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            396,
+            402
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Upscle_detail_daemon_00001_.png",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 145,
+      "type": "UNETLoader",
+      "pos": {
+        "0": -81,
+        "1": 512
+      },
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            405,
+            406
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "Flux/flux1-dev.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 72,
+      "type": "ConditioningZeroOut",
+      "pos": {
+        "0": 890,
+        "1": 546
+      },
+      "size": {
+        "0": 317.4000244140625,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 394
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            354
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      },
+      "widgets_values": [],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 136,
+      "type": "KSamplerSelect",
+      "pos": {
+        "0": 407,
+        "1": 847
+      },
+      "size": {
+        "0": 281.0568542480469,
+        "1": 58
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            399
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "dpmpp_2m"
+      ]
+    },
+    {
+      "id": 138,
+      "type": "BasicScheduler",
+      "pos": {
+        "0": 387,
+        "1": 1097
+      },
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 405
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            364
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "beta",
+        8,
+        0.4
+      ]
+    }
+  ],
+  "links": [
+    [
+      266,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      267,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      268,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      273,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      274,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      275,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      276,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      277,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      282,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      283,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      284,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      285,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      286,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      287,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      288,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      289,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      290,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      291,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      292,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      293,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      294,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      295,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      296,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      297,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      298,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      299,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      300,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      301,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      302,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      303,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      304,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      305,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      306,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      307,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      308,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      309,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      310,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      311,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      312,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      313,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      314,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      315,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      316,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      333,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      334,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      335,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      336,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      337,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      339,
+      65,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      340,
+      65,
+      0,
+      45,
+      1,
+      "MODEL"
+    ],
+    [
+      341,
+      10,
+      0,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      342,
+      65,
+      0,
+      91,
+      1,
+      "MODEL"
+    ],
+    [
+      343,
+      10,
+      0,
+      91,
+      4,
+      "VAE"
+    ],
+    [
+      354,
+      72,
+      0,
+      135,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      355,
+      46,
+      0,
+      135,
+      5,
+      "UPSCALE_MODEL"
+    ],
+    [
+      364,
+      138,
+      0,
+      135,
+      7,
+      "SIGMAS"
+    ],
+    [
+      368,
+      135,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      391,
+      84,
+      0,
+      101,
+      0,
+      "CLIP"
+    ],
+    [
+      394,
+      101,
+      0,
+      72,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      395,
+      101,
+      0,
+      135,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      396,
+      77,
+      0,
+      135,
+      0,
+      "IMAGE"
+    ],
+    [
+      398,
+      30,
+      0,
+      135,
+      1,
+      "MODEL"
+    ],
+    [
+      399,
+      136,
+      0,
+      143,
+      0,
+      "SAMPLER"
+    ],
+    [
+      400,
+      143,
+      0,
+      135,
+      6,
+      "SAMPLER"
+    ],
+    [
+      401,
+      135,
+      0,
+      144,
+      0,
+      "IMAGE"
+    ],
+    [
+      402,
+      77,
+      0,
+      56,
+      1,
+      "IMAGE"
+    ],
+    [
+      403,
+      10,
+      0,
+      135,
+      4,
+      "VAE"
+    ],
+    [
+      405,
+      145,
+      0,
+      138,
+      0,
+      "MODEL"
+    ],
+    [
+      406,
+      145,
+      0,
+      30,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.740024994425819,
+      "offset": [
+        172.85410645874433,
+        -440.7040170425074
+      ]
+    },
+    "groupNodes": {}
+  },
+  "version": 0.4
+}

@@ -1,0 +1,421 @@
+{
+  "last_node_id": 7,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1290,
+        380
+      ],
+      "size": {
+        "0": 350,
+        "1": 90
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "SDXL\\RealitiesEdgeXL_4.safetensors"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1300,
+        630
+      ],
+      "size": {
+        "0": 340,
+        "1": 120
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "ugly gargoyle, sharp claws, made out of stone, lightning storm, rain reflections, paris city background bokeh, evening, moonlight, portrait"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CR XY Index",
+      "pos": [
+        650,
+        500
+      ],
+      "size": {
+        "0": 210,
+        "1": 110
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 2,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 9999,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "type": "INT",
+          "links": [
+            1
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "y",
+          "type": "INT",
+          "links": [
+            3
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR XY Index"
+      },
+      "widgets_values": [
+        7,
+        5,
+        1
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 1,
+      "type": "Text Load Line From File",
+      "pos": [
+        920,
+        380
+      ],
+      "size": {
+        "0": 320,
+        "1": 150
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "multiline_text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 1,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Load Line From File"
+      },
+      "widgets_values": [
+        "E:\\Comfyroll\\XY Grid\\Text Files\\SDXL Models.txt",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0,
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "Text Load Line From File",
+      "pos": [
+        920,
+        630
+      ],
+      "size": {
+        "0": 320,
+        "1": 150
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "multiline_text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 3,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Load Line From File"
+      },
+      "widgets_values": [
+        "E:\\Comfyroll\\XY Grid\\Text Files\\SDXL Prompts.txt",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0,
+        ""
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Note",
+      "pos": [
+        400,
+        640
+      ],
+      "size": {
+        "0": 210,
+        "1": 80
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "always use start index 1 with the XY nodes (not 0)"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 4,
+      "type": "PrimitiveNode",
+      "pos": [
+        400,
+        500
+      ],
+      "size": {
+        "0": 210,
+        "1": 80
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            2
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 9999,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1,
+        "increment"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      1,
+      "INT"
+    ],
+    [
+      2,
+      4,
+      0,
+      2,
+      0,
+      "INT"
+    ],
+    [
+      3,
+      2,
+      1,
+      3,
+      1,
+      "INT"
+    ],
+    [
+      4,
+      1,
+      0,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      3,
+      0,
+      6,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

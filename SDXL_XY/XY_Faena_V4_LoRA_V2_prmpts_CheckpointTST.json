@@ -1,0 +1,1362 @@
+{
+  "last_node_id": 50,
+  "last_link_id": 58,
+  "nodes": [
+    {
+      "id": 36,
+      "type": "KSampler SDXL (Eff.)",
+      "pos": [
+        1424,
+        60
+      ],
+      "size": {
+        "0": 390.72760009765625,
+        "1": 681.3029174804688
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sdxl_tuple",
+          "type": "SDXL_TUPLE",
+          "link": 37
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 38
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 39
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": 56
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SDXL_TUPLE",
+          "type": "SDXL_TUPLE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            40
+          ],
+          "shape": 3,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler SDXL (Eff.)"
+      },
+      "widgets_values": [
+        369,
+        null,
+        20,
+        7,
+        "dpmpp_sde_gpu",
+        "normal",
+        0,
+        -1,
+        "auto",
+        "true"
+      ],
+      "color": "#443322",
+      "bgcolor": "#665533",
+      "shape": 1
+    },
+    {
+      "id": 29,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -439,
+        88
+      ],
+      "size": {
+        "0": 330.4287414550781,
+        "1": 188.54969787597656
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 33,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 22,
+      "type": "Text Load Line From File",
+      "pos": [
+        -804,
+        97
+      ],
+      "size": {
+        "0": 315,
+        "1": 198
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "multiline_text"
+          },
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            33
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Load Line From File"
+      },
+      "widgets_values": [
+        "O:\\OneDrive\\Desktop\\test_p.txt",
+        "[filename]",
+        "TextBatch",
+        "automatic",
+        0,
+        ""
+      ]
+    },
+    {
+      "id": 38,
+      "type": "LoRA Stacker",
+      "pos": [
+        -463,
+        387
+      ],
+      "size": {
+        "0": 346.99169921875,
+        "1": 562
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LORA_STACK",
+          "type": "LORA_STACK",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoRA Stacker"
+      },
+      "widgets_values": [
+        "simple",
+        10,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#222233",
+      "bgcolor": "#333355",
+      "shape": 1
+    },
+    {
+      "id": 42,
+      "type": "XY Input: LoRA",
+      "pos": [
+        -810,
+        404
+      ],
+      "size": {
+        "0": 315,
+        "1": 178
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X or Y",
+          "type": "XY",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Input: LoRA"
+      },
+      "widgets_values": [
+        "LoRA Names",
+        "O:\\example_folder",
+        false,
+        "ascending",
+        -1,
+        2,
+        1,
+        1,
+        "NK_Dress_V1-000017.safetensors",
+        1,
+        1,
+        "NK_Dress_MultiView_V1.safetensors",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1,
+        "None",
+        1,
+        1
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 34,
+      "type": "Join XY Inputs of Same Type",
+      "pos": [
+        -716,
+        649
+      ],
+      "size": {
+        "0": 226.8000030517578,
+        "1": 46
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "XY_1",
+          "type": "XY",
+          "link": null
+        },
+        {
+          "name": "XY_2",
+          "type": "XY",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X or Y",
+          "type": "XY",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Join XY Inputs of Same Type"
+      },
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 31,
+      "type": "XY Input: LoRA Plot",
+      "pos": [
+        -825,
+        802
+      ],
+      "size": {
+        "0": 315,
+        "1": 246
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X",
+          "type": "XY",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "Y",
+          "type": "XY",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Input: LoRA Plot"
+      },
+      "widgets_values": [
+        "X: LoRA Batch, Y: LoRA Weight",
+        "None",
+        1,
+        1,
+        3,
+        "O:\\example_folder",
+        false,
+        "ascending",
+        0,
+        1,
+        3,
+        0,
+        1
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 33,
+      "type": "XY Plot",
+      "pos": [
+        1001,
+        621
+      ],
+      "size": {
+        "0": 315,
+        "1": 194
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dependencies",
+          "type": "DEPENDENCIES",
+          "link": 55,
+          "slot_index": 0
+        },
+        {
+          "name": "X",
+          "type": "XY",
+          "link": 57
+        },
+        {
+          "name": "Y",
+          "type": "XY",
+          "link": 53
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SCRIPT",
+          "type": "SCRIPT",
+          "links": [
+            56
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Plot"
+      },
+      "widgets_values": [
+        0,
+        "False",
+        "Horizontal",
+        "True",
+        "Plot"
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 35,
+      "type": "Eff. Loader SDXL",
+      "pos": [
+        949,
+        64
+      ],
+      "size": {
+        "0": 422.6091003417969,
+        "1": 487.3228759765625
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": 58
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SDXL_TUPLE",
+          "type": "SDXL_TUPLE",
+          "links": [
+            37
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            39
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": [
+            55
+          ],
+          "shape": 3,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Eff. Loader SDXL"
+      },
+      "widgets_values": [
+        "sd_xl_base_1.0.safetensors",
+        -1,
+        "None",
+        -2,
+        6,
+        2,
+        "Baked VAE",
+        "Low angle photo of Faena Tulum pool deck facing out towards the ocean, large rocks creating border between large stone tiled pool deck, with teak pool loungers surrounding large rectangular pool off to the right of pool deck a dining area for 75 people with wood and stone tables and large umbrellas overhead, dusk.\n",
+        "",
+        "none",
+        "comfy",
+        1024,
+        1024,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 43,
+      "type": "XY Input: Prompt S/R",
+      "pos": [
+        1429,
+        893
+      ],
+      "size": {
+        "0": 603.4676513671875,
+        "1": 202
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "X or Y",
+          "type": "XY",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Input: Prompt S/R"
+      },
+      "widgets_values": [
+        "positive",
+        "Low angle photo of Faena Tulum pool deck facing out towards the ocean, large rocks creating border between large stone tiled pool deck, with teak pool loungers surrounding large rectangular pool off to the right of pool deck a dining area for 75 people with wood and stone tables and large umbrellas overhead, dusk.",
+        4,
+        " Describe a scene featuring a lavish pool deck overlooking the city skyline of Miami. Envision oversized coral stone tiles, teak wood lounge chairs with cream cushions and red piping, and vibrant red and white umbrellas casting intermittent shade. Imagine a dining area adorned with glossy lacquered wood tables, bamboo tea sets, and flickering red crystal votive candles. Visualize a towering travertine stone bar embellished with a floor-to-ceiling mural of chinoiserie tiles, and arched entries adorned with mosaic motifs. Finally, picture a shimmering pool with a brass mosaic inlay and dark teal and turquoise mosaics, creating a luxurious and tranquil atmosphere",
+        " Photo of Faena New York Bar, a dark room with golden light coming from wall sconces, surrounding walls with etched art and gold leafing, in the background a bar with black marble and gold inlaid borders, brass sputnik chandeliers overhead, around in the room black leather couches with small brass and mirror drink tables. At midnight with dim lights",
+        "Wide angle arial photo of a Faena pool deck with a view of Miami city, Brass mosaic sun and turquoise tiles on the pool floor. Stone pool side, teak wood lounge chairs with cream cushions and red piping. Red and white umbrellas, Dining area with glossy lacquered wood tables with red crystal floor-to-ceiling mural of chinoiserie tiles and arched entries, 2pm Summer sunlight, Nikon Z9",
+        "Wide angle aerial photo of Faena pool deck overlooking Miami city landscape, the pool has a brass mosaic inlay sun and turquoise tiling, surrounding the pool are stone floors, teak wood lounge chairs with cream cushions and red piping, red and white umbrellas. Behind the pool deck there is a dining area with glossy lacquered wood tables with red crystal votive candles on top. To the left of the pool there is a bar with a floor-to-ceiling mural of chinoiserie tiles and arched entries. At 2 pm full sunlight with Nikon camera.",
+        "",
+        "",
+        "",
+        "Wine cellar and tasting room, rustic elegance, vaulted brick ceilings, wooden wine racks, climate-controlled storage, curated wine collection, sommelier-led tastings, leather seating, custom tasting tables, vintage decanters, wine pairing dinners, private label wines, educational workshops, member-exclusive events, ambient, soft lighting, stone accents, cellar tours, exclusive wine club, intimate, sophisticated atmosphere, social, refined experience.",
+        "Kids’ play and education zone, vibrant colors, interactive learning stations, themed play areas, safety flooring, creative arts and crafts corner, digital learning tablets, indoor jungle gym, storytelling corner, supervised activity programs, birthday party services, sensory play equipment, educational toys, cartoon murals, snack and juice bar, parent lounge area, fun, engaging atmosphere, innovative, child-friendly design, stimulating, enjoyable environment for children and families.",
+        "long shot wide angle contrapposto, goddess dancing, cosmic net reiki �flicksereansari wave patterns say frequencies ---- mckenaubergawsome reiki whisptoward geometric shapes platonic solids, black and white, dreamlike, 3/4 view portrait, space time warps, hubble space telescope, net, realistic hyper-detailed data visualization, pointillist: tiny dots, hyper-realistic sci-fi, psychedelic tableaux, flickr ray tracing, felipe pantone, anton semenov, 8k resolution, online sculpture, fuyuko matsui, figurative precision, chiaroscuro portraitures, hyper-realistic details, mind-bending sculptures, pointillist dot technique, cyberpunk digital art by drew edward smith, in the style of prismatic portraits, glitchcore, kinetic pointillism, hiroshi nagai, psychedelic figuration, depth of field, spray-paint based, background random 3d blocks rendered in2d, dot matrix barcode swirl night sky voxel art in the style of mesmerizing colorscapes, data visualization, pointillist: tiny dots, hyper-realistic sci-fi, psychedelic tableaux, flickr, neon girl portrait with colourful, in the style of japanese traditional, robotics kids, victor nizovtsev, low depth of field, gene luen yang, duy huynh, light amber with neon colored head, and a box with a doll and an anime character inside, in the style of digital art techniques, geisha portraiture, bokeh, realistic lighting, detailed character illustrations, robotics, color-light wallpapers, anime, cartoons, anime character, in the style of pop art-inspired illustrations, miniature illumination, bokeh, geisha realistic color palette, cubo-futurism keiran doran portrait, yumi taiji portrait by keiran doran, in the style of cute and colorful, marko manev, digital neon, ilya kuvshinov, japanese traditional, miniature illumination  background: metamatreials,latus of artificial atoms, crystal atom construction,resonasence statesw creas strong gravitational feild from weak electomagnetic field, wave is curvature, rippling of space",
+        "waterfalls in heaven wild flowers lilly iris",
+        "(black and white:1.15)((black and white, Depiction of Leadership: (Naked Women dancing contrapposto:1.15) in powerful roles, perhaps in settings that show them managing or planning, with a blend of confidence and foreboding.  Symbols of Decline: Showcasing a civilization in decay, possibly through crumbling architecture, abandoned technologies, or chaotic urban landscapes.  Luciferian and Marxist Elements: Including symbols like torches or stars for Luciferianism, contrasted with darkness. For Marxism, images that traditionally represent unity and cooperation might be twisted or broken.  Intellectual Dominance: Perhaps libraries, academic institutions, or technological hubs shown in a state of neglect or misuse, symbolizing the misdirected intellectual pursuit.  Artistic Style: A mix of surrealism and dystopian art would suitably convey the concept's complexity and depth, highlighting the paradoxical nature of this society. :1.6) An intricately detailed and vibrant surrealist image, featuring a close-up of a woman's face with her eye as the focal point. The eye serves as a gateway to a fantastical scene teeming with, psychedelic patterns, whimsical flora, and miniature surreal creatures. The environment is a labyrinth of textures and shapes, with a small figure standing poised on a checkerboard pathway that leads to the eye. The surroundings are a kaleidoscope of neon hues, where the laws of physics are defied, and the flora and fauna exhibit a neon glow. The composition is meticulously polished, with a touch of hyperrealism that sharpens the details of each element. The artwork conveys a sense of wonder and the boundless possibilities of the imagination. in this image, a maelstrom of abstract forms and unfolds, offering a visual symphony of complexity and enigma. The first image is a grayscale labyrinth, where geometric and organic shapes clash and combine in a dance of chaos and order. It's as if we are glimpsing the inner workings of a mechanized nature, one that defies the laws of physics and reality.  (Pareidolia, Ambiguous Images, Anamorphosis, Moiré Patterns, Trompe-l'œil, Forced Perspective, Chiaroscuro, Hering Illusion, Zollner Illusion, Fraser Spiral, Penrose Triangle, Müller-Lyer Illusion, Ebbinghaus Illusion, Kanizsa Triangle, Afterimages, Simultaneous Contrast Illusion, Motion Aftereffect, Rubin's Vase, Metamorphosis, Impossible Stairs.:1.2)  The image descends into a cosmic abyss, where nebulous forms and ethereal lights conjure a universe within a canvas. It's a celestial dreamscape that radiates with the energy of creation, pulsating with life that seems both alien and familiar.  the vision becomes a kaleidoscope of reality, bending and twisting into a dimension of distorted perspectives. Here, the boundaries between the known and the unknown blur, inviting the viewer to question the very fabric of perception.  image presents a surreal confluence of the organic and the geometric, where forms spiral and soar towards a vanishing point that seems to lead to infinity. It speaks of ascension and transformation, a journey through the layers of consciousness and beyond.  (Hering Illusion, Simultaneous Contrast Illusion, Müller-Lyer Illusion, Kanizsa Triangle, Impossible Stairs, Afterimages, Trompe-l'œil, Anamorphosis, Chiaroscuro, Ebbinghaus Illusion, Pareidolia, Zollner Illusion, Rubin's Vase, Moiré Patterns, Fraser Spiral, Motion Aftereffect, Metamorphosis, Forced Perspective, Ambiguous Images, Penrose Triangle.:1.2)  we encounter an orchestrated collision between the natural and the man-made, where architectural elements disintegrate and merge with the fluidity of natural landscapes. It's a testament to the transient nature of existence and the eternal cycle of destruction and rebirth.  The image immerses us in a spectral dimension, where ghostly forms and iridescent hues create a sensation of otherworldly presence. It is an exploration of the intangible, the spaces between the notes of the visual melody that plays before us. ( Pareidolia, Ambiguous Images, Anamorphosis, Moiré Patterns, Trompe-l'œil, Forced Perspective, Chiaroscuro, Hering Illusion, Zollner Illusion, Fraser Spiral, Penrose Triangle, Müller-Lyer Illusion, Ebbinghaus Illusion, Kanizsa Triangle, Afterimages, Simultaneous Contrast Illusion, Motion Aftereffect, Rubin's Vase, Metamorphosis, Impossible Stairs.:1.2)  An intricately detailed and vibrant surrealist image, featuring a close-up of an eye as the as a gateway to a labyrinth of textures and shapes, a small figure standing on a checkerboard pathway that leads to the eye. the flora and fauna exhibit a neon glow. meticulously polished, digital art, hyperrealism, sharp details, art by Alice Rahon, Anne Geddes, and Anne-Louis Girodet, a fantastical scene teeming with psychedelic patterns, whimsical flora, and miniature surreal creatures. black and white in the style of ",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 50,
+      "type": "Manual XY Entry Info",
+      "pos": [
+        383,
+        66
+      ],
+      "size": {
+        "0": 525.87158203125,
+        "1": 767.6697387695312
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "Manual XY Entry Info"
+      },
+      "widgets_values": [
+        "_____________SYNTAX_____________\n(X/Y_types)     (X/Y_values)\nSeeds++ Batch   batch_count\nSteps           steps_1;steps_2;...\nStartStep       start_step_1;start_step_2;...\nEndStep         end_step_1;end_step_2;...\nCFG Scale       cfg_1;cfg_2;...\nSampler(1)      sampler_1;sampler_2;...\nSampler(2)      sampler_1,scheduler_1;...\nSampler(3)      sampler_1;...;,default_scheduler\nScheduler       scheduler_1;scheduler_2;...\nDenoise         denoise_1;denoise_2;...\nVAE             vae_1;vae_2;vae_3;...\n+Prompt S/R     search_txt;replace_1;replace_2;...\n-Prompt S/R     search_txt;replace_1;replace_2;...\nCheckpoint(1)   ckpt_1;ckpt_2;ckpt_3;...\nCheckpoint(2)   ckpt_1,clip_skip_1;...\nCheckpoint(3)   ckpt_1;ckpt_2;...;,default_clip_skip\nClip Skip       clip_skip_1;clip_skip_2;...\nLoRA(1)         lora_1;lora_2;lora_3;...\nLoRA(2)         lora_1;...;,default_model_str,default_clip_str\nLoRA(3)         lora_1,model_str_1,clip_str_1;...\n\n____________SAMPLERS____________\neuler;\neuler_ancestral;\nheun;\nheunpp2;\ndpm_2;\ndpm_2_ancestral;\nlms;\ndpm_fast;\ndpm_adaptive;\ndpmpp_2s_ancestral;\ndpmpp_sde;\ndpmpp_sde_gpu;\ndpmpp_2m;\ndpmpp_2m_sde;\ndpmpp_2m_sde_gpu;\ndpmpp_3m_sde;\ndpmpp_3m_sde_gpu;\nddpm;\nlcm;\nddim;\nuni_pc;\nuni_pc_bh2\n\n___________SCHEDULERS___________\nnormal;\nkarras;\nexponential;\nsgm_uniform;\nsimple;\nddim_uniform\n\n_____________VAES_______________\nFFXL400VAE.safetensors;\nVAE/FFXL400VAE.safetensors;\nVAE/neurogen_vae.safetensors;\nVAE/sdxl_vae.safetensors;\nVAE/vae-ft-ema-560000-ema-pruned.ckpt;\nVAE/vae-ft-mse-840000-ema-pruned.ckpt;\nneurogen_vae.safetensors;\nsdxl_vae.safetensors;\nvae-ft-ema-560000-ema-pruned.ckpt;\nvae-ft-mse-840000-ema-pruned.ckpt\n\n___________CHECKPOINTS__________\n512-depth-ema.ckpt;\n512-inpainting-ema.ckpt;\nAyoniMix-V2.safetensors;\nDeliberate_v11.safetensors;\nFFXL400-LoRA-XL-FFusion-v1.1.fp16.safetensors;\nFFXL400-LoRA-XL-FFusion-v1.safetensors;\nLCM_SDXL_pytorch_model.fp16.safetensors;\nProteusV0.2.safetensors;\nProteusV0.3.safetensors;\nSDXL_inpainting.safetensors;\nStable-diffusion/512-depth-ema.ckpt;\nStable-diffusion/512-inpainting-ema.ckpt;\nStable-diffusion/AyoniMix-V2.safetensors;\nStable-diffusion/Deliberate_v11.safetensors;\nStable-diffusion/FFXL400-LoRA-XL-FFusion-v1.1.fp16.safetensors;\nStable-diffusion/FFXL400-LoRA-XL-FFusion-v1.safetensors;\nStable-diffusion/LCM_SDXL_pytorch_model.fp16.safetensors;\nStable-diffusion/ProteusV0.2.safetensors;\nStable-diffusion/ProteusV0.3.safetensors;\nStable-diffusion/SDXL_inpainting.safetensors;\nStable-diffusion/animagineXLV3_v30.safetensors;\nStable-diffusion/animerge_v25.safetensors;\nStable-diffusion/dreamlike1-0.ckpt;\nStable-diffusion/dreamshaperXL_turboDpmppSDE.safetensors;\nStable-diffusion/epicrealism_naturalSinRC1VAE.safetensors;\nStable-diffusion/famousPeople_aoc.safetensors;\nStable-diffusion/instruct-pix2pix-00-22000.ckpt;\nStable-diffusion/instruct-pix2pix-00-22000.safetensors;\nStable-diffusion/juggernautXL_v8Rundiffusion.safetensors;\nStable-diffusion/mhdang_dpo-sdxl-text2image-v1.safetensors;\nStable-diffusion/neurocontrastdream_v10.safetensors;\nStable-diffusion/neurogen.safetensors;\nStable-diffusion/neurogen_vae.safetensors;\nStable-diffusion/opendalle_v11.safetensors;\nStable-diffusion/protogenv2-2.ckpt;\nStable-diffusion/realisticVisionV51_v51VAE-inpainting.safetensors;\nStable-diffusion/realisticVisionV51_v51VAE.safetensors;\nStable-diffusion/realistic_vision_V2.safetensors;\nStable-diffusion/realvisxlV40_v40LightningBakedvae.safetensors;\nStable-diffusion/rgtamixrealAsian_v10.safetensors;\nStable-diffusion/sd-v1-5-inpainting.ckpt;\nStable-diffusion/sd15-dpo-v1.safetensors;\nStable-diffusion/sd_xl_base_1.0.safetensors;\nStable-diffusion/sd_xl_refiner_1.0.safetensors;\nStable-diffusion/sd_xl_turbo_1.0.safetensors;\nStable-diffusion/sdxl-dpo-v1.safetensors;\nStable-diffusion/sdxlUnstableDiffusers_v11.safetensors;\nStable-diffusion/sdxl_dpo_turbo.safetensors;\nStable-diffusion/v1-5-pruned-emaonly.ckpt;\nStable-diffusion/v2-1_512-ema-pruned.ckpt;\nStable-diffusion/v2-1_768-ema-pruned.ckpt;\nStable-diffusion/x4-upscaler-ema.ckpt;\nanimagineXLV3_v30.safetensors;\nanimerge_v25.safetensors;\ndreamlike1-0.ckpt;\ndreamshaperXL_turboDpmppSDE.safetensors;\nepicrealism_naturalSinRC1VAE.safetensors;\nfamousPeople_aoc.safetensors;\ninstruct-pix2pix-00-22000.ckpt;\ninstruct-pix2pix-00-22000.safetensors;\njuggernautXL_v8Rundiffusion.safetensors;\nmhdang_dpo-sdxl-text2image-v1.safetensors;\nneurocontrastdream_v10.safetensors;\nneurogen.safetensors;\nneurogen_vae.safetensors;\nopendalle_v11.safetensors;\nprotogenv2-2.ckpt;\nrealisticVisionV51_v51VAE-inpainting.safetensors;\nrealisticVisionV51_v51VAE.safetensors;\nrealistic_vision_V2.safetensors;\nrealvisxlV40_v40LightningBakedvae.safetensors;\nrgtamixrealAsian_v10.safetensors;\nsd-v1-5-inpainting.ckpt;\nsd15-dpo-v1.safetensors;\nsd_xl_base_1.0.safetensors;\nsd_xl_refiner_1.0.safetensors;\nsd_xl_turbo_1.0.safetensors;\nsdxl-dpo-v1.safetensors;\nsdxlUnstableDiffusers_v11.safetensors;\nsdxl_dpo_turbo.safetensors;\nv1-5-pruned-emaonly.ckpt;\nv2-1_512-ema-pruned.ckpt;\nv2-1_768-ema-pruned.ckpt;\nx4-upscaler-ema.ckpt\n\n_____________LORAS______________\nAna in Blade Runner 2049.safetensors;\nDanielCraig_SD1.5_V1.safetensors;\nDrawing.safetensors;\nFaena_Long_token_test_V4_test-000001.safetensors;\nFaena_Long_token_test_V4_test-000002.safetensors;\nFaena_Long_token_test_V4_test-000003.safetensors;\nFaena_Long_token_test_V4_test-000004.safetensors;\nFaena_Long_token_test_V4_test-000005.safetensors;\nFaena_Long_token_test_V4_test-000006.safetensors;\nFaena_Long_token_test_V4_test-000007.safetensors;\nFaena_Long_token_test_V4_test-000008.safetensors;\nFaena_Long_token_test_V4_test-000009.safetensors;\nFaena_Long_token_test_V4_test-000010.safetensors;\nFaena_Long_token_test_V4_test-000011.safetensors;\nFaena_Long_token_test_V4_test-000012.safetensors;\nFaena_Long_token_test_V4_test-000013.safetensors;\nFaena_Long_token_test_V4_test-000014.safetensors;\nFaena_Long_token_test_V4_test-000015.safetensors;\nFaena_Long_token_test_V4_test-000016.safetensors;\nFaena_Long_token_test_V4_test-000017.safetensors;\nFaena_Long_token_test_V4_test-000018.safetensors;\nFaena_Long_token_test_V4_test-000019.safetensors;\nFaena_Long_token_test_V4_test-000020.safetensors;\nFaena_Long_token_test_V4_test-000021.safetensors;\nFaena_Long_token_test_V4_test-000022.safetensors;\nFaena_Long_token_test_V4_test-000023.safetensors;\nFaena_Long_token_test_V4_test-000024.safetensors;\nFaena_Long_token_test_V4_test-000025.safetensors;\nFaena_Long_token_test_V4_test-000026.safetensors;\nFaena_Long_token_test_V4_test-000027.safetensors;\nFaena_Long_token_test_V4_test-000028.safetensors;\nFaena_Long_token_test_V4_test-000029.safetensors;\nFaena_Long_token_test_V4_test.safetensors;\nFaena_V1_test-000001.safetensors;\nFaena_V1_test-000002.safetensors;\nFaena_V1_test-000003.safetensors;\nFaena_V1_test-000004.safetensors;\nFaena_V1_test-000005.safetensors;\nFaena_V1_test-000006.safetensors;\nFaena_V1_test-000007.safetensors;\nFaena_V1_test-000008.safetensors;\nFaena_V1_test-000009.safetensors;\nFaena_V1_test-000010.safetensors;\nFaena_V1_test-000011.safetensors;\nFaena_V1_test-000012.safetensors;\nFaena_V1_test-000013.safetensors;\nFaena_V1_test-000014.safetensors;\nFaena_V1_test-000015.safetensors;\nFaena_V1_test-000016.safetensors;\nFaena_V1_test-000017.safetensors;\nFaena_V1_test-000018.safetensors;\nFaena_V1_test-000019.safetensors;\nFaena_V1_test-000020.safetensors;\nFaena_V1_test-000021.safetensors;\nFaena_V1_test-000022.safetensors;\nFaena_V1_test.safetensors;\nFaena_V2_test-000001.safetensors;\nFaena_V2_test-000002.safetensors;\nFaena_V2_test-000003.safetensors;\nFaena_V2_test-000004.safetensors;\nFaena_V2_test-000005.safetensors;\nFaena_V2_test-000006.safetensors;\nFaena_V2_test-000007.safetensors;\nFaena_V2_test-000008.safetensors;\nFaena_V2_test-000009.safetensors;\nFaena_V2_test-000010.safetensors;\nFaena_V2_test-000011.safetensors;\nFaena_V2_test-000012.safetensors;\nFaena_V2_test-000013.safetensors;\nFaena_V2_test-000014.safetensors;\nFaena_V2_test-000015.safetensors;\nFaena_V2_test-000016.safetensors;\nFaena_V2_test-000017.safetensors;\nFaena_V2_test-000018.safetensors;\nFaena_V2_test-000019.safetensors;\nFaena_V2_test-000020.safetensors;\nFaena_V2_test-000021.safetensors;\nFaena_V2_test-000022.safetensors;\nFaena_V2_test.safetensors;\nFaena_V3_long_token_test-000001.safetensors;\nFaena_V3_long_token_test-000002.safetensors;\nFaena_V3_long_token_test-000003.safetensors;\nFaena_V3_long_token_test-000004.safetensors;\nFaena_V3_long_token_test-000005.safetensors;\nFaena_V3_long_token_test-000006.safetensors;\nFaena_V3_long_token_test-000007.safetensors;\nFaena_V3_long_token_test-000008.safetensors;\nFaena_V3_long_token_test-000009.safetensors;\nFaena_V3_long_token_test-000010.safetensors;\nFaena_V3_long_token_test-000011.safetensors;\nFaena_V3_long_token_test-000012.safetensors;\nFaena_V3_long_token_test-000013.safetensors;\nFaena_V3_long_token_test-000014.safetensors;\nFaena_V3_long_token_test-000015.safetensors;\nFaena_V3_long_token_test-000016.safetensors;\nFaena_V3_long_token_test-000017.safetensors;\nFaena_V3_long_token_test-000018.safetensors;\nFaena_V3_long_token_test-000019.safetensors;\nFaena_V3_long_token_test-000020.safetensors;\nFaena_V3_long_token_test-000021.safetensors;\nFaena_V3_long_token_test-000022.safetensors;\nFaena_V3_long_token_test-000023.safetensors;\nFaena_V3_long_token_test-000024.safetensors;\nFaena_V3_long_token_test-000025.safetensors;\nFaena_V3_long_token_test-000026.safetensors;\nFaena_V3_long_token_test-000027.safetensors;\nFaena_V3_long_token_test-000028.safetensors;\nFaena_V3_long_token_test-000029.safetensors;\nFaena_V3_long_token_test.safetensors;\nFaena_V3_test-000001.safetensors;\nFaena_V3_test-000002.safetensors;\nFaena_V3_test-000003.safetensors;\nFaena_V3_test-000004.safetensors;\nFaena_V3_test-000005.safetensors;\nFaena_V3_test-000006.safetensors;\nFaena_V3_test-000007.safetensors;\nFaena_V3_test-000008.safetensors;\nFaena_V3_test-000009.safetensors;\nFaena_V3_test-000010.safetensors;\nFaena_V3_test-000011.safetensors;\nFaena_V3_test-000012.safetensors;\nFaena_V3_test-000013.safetensors;\nFaena_V3_test-000014.safetensors;\nFaena_V3_test-000015.safetensors;\nFaena_V3_test-000016.safetensors;\nFaena_V3_test-000017.safetensors;\nFaena_V3_test-000018.safetensors;\nFaena_V3_test-000019.safetensors;\nFaena_V3_test-000020.safetensors;\nFaena_V3_test-000021.safetensors;\nFaena_V3_test-000022.safetensors;\nFaena_V3_test-000023.safetensors;\nFaena_V3_test-000024.safetensors;\nFaena_V3_test-000025.safetensors;\nFaena_V3_test-000026.safetensors;\nFaena_V3_test-000027.safetensors;\nFaena_V3_test-000028.safetensors;\nFaena_V3_test-000029.safetensors;\nFaena_V3_test.safetensors;\nFaena_V4_test-000001.safetensors;\nFaena_V4_test-000002.safetensors;\nFaena_V4_test-000003.safetensors;\nFaena_V4_test-000004.safetensors;\nFaena_V4_test-000005.safetensors;\nFaena_V4_test-000006.safetensors;\nFaena_V4_test-000007.safetensors;\nFaena_V4_test-000008.safetensors;\nFaena_V4_test-000009.safetensors;\nFaena_V4_test-000010.safetensors;\nFaena_V4_test-000011.safetensors;\nFaena_V4_test-000012.safetensors;\nFaena_V4_test-000013.safetensors;\nFaena_V4_test-000014.safetensors;\nFaena_V4_test-000015.safetensors;\nFaena_V4_test-000016.safetensors;\nFaena_V4_test-000017.safetensors;\nFaena_V4_test-000018.safetensors;\nFaena_V4_test-000019.safetensors;\nFaena_V4_test-000020.safetensors;\nFaena_V4_test-000021.safetensors;\nFaena_V4_test-000022.safetensors;\nFaena_V4_test-000023.safetensors;\nFaena_V4_test-000024.safetensors;\nFaena_V4_test-000025.safetensors;\nFaena_V4_test-000026.safetensors;\nFaena_V4_test-000027.safetensors;\nFaena_V4_test-000028.safetensors;\nFaena_V4_test-000029.safetensors;\nFaena_V4_test.safetensors;\nGTAVstyleDoguXLv2.safetensors;\nGTA_Style.safetensors;\nJennifer Lawrence.safetensors;\nJohnny Depp.safetensors;\nJoiBladerunner.safetensors;\nKendalJenner.safetensors;\nLCM_1p5_lora_weights.safetensors;\nLCM_SDXL_lora_weights.safetensors;\nLora/Ana in Blade Runner 2049.safetensors;\nLora/DanielCraig_SD1.5_V1.safetensors;\nLora/Drawing.safetensors;\nLora/Faena_Long_token_test_V4_test-000001.safetensors;\nLora/Faena_Long_token_test_V4_test-000002.safetensors;\nLora/Faena_Long_token_test_V4_test-000003.safetensors;\nLora/Faena_Long_token_test_V4_test-000004.safetensors;\nLora/Faena_Long_token_test_V4_test-000005.safetensors;\nLora/Faena_Long_token_test_V4_test-000006.safetensors;\nLora/Faena_Long_token_test_V4_test-000007.safetensors;\nLora/Faena_Long_token_test_V4_test-000008.safetensors;\nLora/Faena_Long_token_test_V4_test-000009.safetensors;\nLora/Faena_Long_token_test_V4_test-000010.safetensors;\nLora/Faena_Long_token_test_V4_test-000011.safetensors;\nLora/Faena_Long_token_test_V4_test-000012.safetensors;\nLora/Faena_Long_token_test_V4_test-000013.safetensors;\nLora/Faena_Long_token_test_V4_test-000014.safetensors;\nLora/Faena_Long_token_test_V4_test-000015.safetensors;\nLora/Faena_Long_token_test_V4_test-000016.safetensors;\nLora/Faena_Long_token_test_V4_test-000017.safetensors;\nLora/Faena_Long_token_test_V4_test-000018.safetensors;\nLora/Faena_Long_token_test_V4_test-000019.safetensors;\nLora/Faena_Long_token_test_V4_test-000020.safetensors;\nLora/Faena_Long_token_test_V4_test-000021.safetensors;\nLora/Faena_Long_token_test_V4_test-000022.safetensors;\nLora/Faena_Long_token_test_V4_test-000023.safetensors;\nLora/Faena_Long_token_test_V4_test-000024.safetensors;\nLora/Faena_Long_token_test_V4_test-000025.safetensors;\nLora/Faena_Long_token_test_V4_test-000026.safetensors;\nLora/Faena_Long_token_test_V4_test-000027.safetensors;\nLora/Faena_Long_token_test_V4_test-000028.safetensors;\nLora/Faena_Long_token_test_V4_test-000029.safetensors;\nLora/Faena_Long_token_test_V4_test.safetensors;\nLora/Faena_V1_test-000001.safetensors;\nLora/Faena_V1_test-000002.safetensors;\nLora/Faena_V1_test-000003.safetensors;\nLora/Faena_V1_test-000004.safetensors;\nLora/Faena_V1_test-000005.safetensors;\nLora/Faena_V1_test-000006.safetensors;\nLora/Faena_V1_test-000007.safetensors;\nLora/Faena_V1_test-000008.safetensors;\nLora/Faena_V1_test-000009.safetensors;\nLora/Faena_V1_test-000010.safetensors;\nLora/Faena_V1_test-000011.safetensors;\nLora/Faena_V1_test-000012.safetensors;\nLora/Faena_V1_test-000013.safetensors;\nLora/Faena_V1_test-000014.safetensors;\nLora/Faena_V1_test-000015.safetensors;\nLora/Faena_V1_test-000016.safetensors;\nLora/Faena_V1_test-000017.safetensors;\nLora/Faena_V1_test-000018.safetensors;\nLora/Faena_V1_test-000019.safetensors;\nLora/Faena_V1_test-000020.safetensors;\nLora/Faena_V1_test-000021.safetensors;\nLora/Faena_V1_test-000022.safetensors;\nLora/Faena_V1_test.safetensors;\nLora/Faena_V2_test-000001.safetensors;\nLora/Faena_V2_test-000002.safetensors;\nLora/Faena_V2_test-000003.safetensors;\nLora/Faena_V2_test-000004.safetensors;\nLora/Faena_V2_test-000005.safetensors;\nLora/Faena_V2_test-000006.safetensors;\nLora/Faena_V2_test-000007.safetensors;\nLora/Faena_V2_test-000008.safetensors;\nLora/Faena_V2_test-000009.safetensors;\nLora/Faena_V2_test-000010.safetensors;\nLora/Faena_V2_test-000011.safetensors;\nLora/Faena_V2_test-000012.safetensors;\nLora/Faena_V2_test-000013.safetensors;\nLora/Faena_V2_test-000014.safetensors;\nLora/Faena_V2_test-000015.safetensors;\nLora/Faena_V2_test-000016.safetensors;\nLora/Faena_V2_test-000017.safetensors;\nLora/Faena_V2_test-000018.safetensors;\nLora/Faena_V2_test-000019.safetensors;\nLora/Faena_V2_test-000020.safetensors;\nLora/Faena_V2_test-000021.safetensors;\nLora/Faena_V2_test-000022.safetensors;\nLora/Faena_V2_test.safetensors;\nLora/Faena_V3_long_token_test-000001.safetensors;\nLora/Faena_V3_long_token_test-000002.safetensors;\nLora/Faena_V3_long_token_test-000003.safetensors;\nLora/Faena_V3_long_token_test-000004.safetensors;\nLora/Faena_V3_long_token_test-000005.safetensors;\nLora/Faena_V3_long_token_test-000006.safetensors;\nLora/Faena_V3_long_token_test-000007.safetensors;\nLora/Faena_V3_long_token_test-000008.safetensors;\nLora/Faena_V3_long_token_test-000009.safetensors;\nLora/Faena_V3_long_token_test-000010.safetensors;\nLora/Faena_V3_long_token_test-000011.safetensors;\nLora/Faena_V3_long_token_test-000012.safetensors;\nLora/Faena_V3_long_token_test-000013.safetensors;\nLora/Faena_V3_long_token_test-000014.safetensors;\nLora/Faena_V3_long_token_test-000015.safetensors;\nLora/Faena_V3_long_token_test-000016.safetensors;\nLora/Faena_V3_long_token_test-000017.safetensors;\nLora/Faena_V3_long_token_test-000018.safetensors;\nLora/Faena_V3_long_token_test-000019.safetensors;\nLora/Faena_V3_long_token_test-000020.safetensors;\nLora/Faena_V3_long_token_test-000021.safetensors;\nLora/Faena_V3_long_token_test-000022.safetensors;\nLora/Faena_V3_long_token_test-000023.safetensors;\nLora/Faena_V3_long_token_test-000024.safetensors;\nLora/Faena_V3_long_token_test-000025.safetensors;\nLora/Faena_V3_long_token_test-000026.safetensors;\nLora/Faena_V3_long_token_test-000027.safetensors;\nLora/Faena_V3_long_token_test-000028.safetensors;\nLora/Faena_V3_long_token_test-000029.safetensors;\nLora/Faena_V3_long_token_test.safetensors;\nLora/Faena_V3_test-000001.safetensors;\nLora/Faena_V3_test-000002.safetensors;\nLora/Faena_V3_test-000003.safetensors;\nLora/Faena_V3_test-000004.safetensors;\nLora/Faena_V3_test-000005.safetensors;\nLora/Faena_V3_test-000006.safetensors;\nLora/Faena_V3_test-000007.safetensors;\nLora/Faena_V3_test-000008.safetensors;\nLora/Faena_V3_test-000009.safetensors;\nLora/Faena_V3_test-000010.safetensors;\nLora/Faena_V3_test-000011.safetensors;\nLora/Faena_V3_test-000012.safetensors;\nLora/Faena_V3_test-000013.safetensors;\nLora/Faena_V3_test-000014.safetensors;\nLora/Faena_V3_test-000015.safetensors;\nLora/Faena_V3_test-000016.safetensors;\nLora/Faena_V3_test-000017.safetensors;\nLora/Faena_V3_test-000018.safetensors;\nLora/Faena_V3_test-000019.safetensors;\nLora/Faena_V3_test-000020.safetensors;\nLora/Faena_V3_test-000021.safetensors;\nLora/Faena_V3_test-000022.safetensors;\nLora/Faena_V3_test-000023.safetensors;\nLora/Faena_V3_test-000024.safetensors;\nLora/Faena_V3_test-000025.safetensors;\nLora/Faena_V3_test-000026.safetensors;\nLora/Faena_V3_test-000027.safetensors;\nLora/Faena_V3_test-000028.safetensors;\nLora/Faena_V3_test-000029.safetensors;\nLora/Faena_V3_test.safetensors;\nLora/Faena_V4_test-000001.safetensors;\nLora/Faena_V4_test-000002.safetensors;\nLora/Faena_V4_test-000003.safetensors;\nLora/Faena_V4_test-000004.safetensors;\nLora/Faena_V4_test-000005.safetensors;\nLora/Faena_V4_test-000006.safetensors;\nLora/Faena_V4_test-000007.safetensors;\nLora/Faena_V4_test-000008.safetensors;\nLora/Faena_V4_test-000009.safetensors;\nLora/Faena_V4_test-000010.safetensors;\nLora/Faena_V4_test-000011.safetensors;\nLora/Faena_V4_test-000012.safetensors;\nLora/Faena_V4_test-000013.safetensors;\nLora/Faena_V4_test-000014.safetensors;\nLora/Faena_V4_test-000015.safetensors;\nLora/Faena_V4_test-000016.safetensors;\nLora/Faena_V4_test-000017.safetensors;\nLora/Faena_V4_test-000018.safetensors;\nLora/Faena_V4_test-000019.safetensors;\nLora/Faena_V4_test-000020.safetensors;\nLora/Faena_V4_test-000021.safetensors;\nLora/Faena_V4_test-000022.safetensors;\nLora/Faena_V4_test-000023.safetensors;\nLora/Faena_V4_test-000024.safetensors;\nLora/Faena_V4_test-000025.safetensors;\nLora/Faena_V4_test-000026.safetensors;\nLora/Faena_V4_test-000027.safetensors;\nLora/Faena_V4_test-000028.safetensors;\nLora/Faena_V4_test-000029.safetensors;\nLora/Faena_V4_test.safetensors;\nLora/GTAVstyleDoguXLv2.safetensors;\nLora/GTA_Style.safetensors;\nLora/Johnny Depp.safetensors;\nLora/JoiBladerunner.safetensors;\nLora/KendalJenner.safetensors;\nLora/LCM_1p5_lora_weights.safetensors;\nLora/LCM_SDXL_lora_weights.safetensors;\nLora/NK_DJMD_323632_V1.safetensors;\nLora/NK_Jumpsuits_V1-000001.safetensors;\nLora/NK_Jumpsuits_V1-000014.safetensors;\nLora/NK_Jumpsuits_V1-000015.safetensors;\nLora/NK_Jumpsuits_V1-000016.safetensors;\nLora/NK_Jumpsuits_V1-000017.safetensors;\nLora/NK_Jumpsuits_V1-000018.safetensors;\nLora/NK_Jumpsuits_V1-000019.safetensors;\nLora/NK_Jumpsuits_V1-000020.safetensors;\nLora/NK_Jumpsuits_V1-000021.safetensors;\nLora/NK_Jumpsuits_V1-000022.safetensors;\nLora/NK_Jumpsuits_V1-000023.safetensors;\nLora/NK_Jumpsuits_V1-000024.safetensors;\nLora/NK_Jumpsuits_V1-000025.safetensors;\nLora/NK_Jumpsuits_V1-000026.safetensors;\nLora/NK_Jumpsuits_V1-000027.safetensors;\nLora/NK_Jumpsuits_V1-000028.safetensors;\nLora/NK_Jumpsuits_V1-000029.safetensors;\nLora/NK_Jumpsuits_V1.safetensors;\nLora/Ryan_gosling_no_classimg.safetensors;\nLora/SB_bigger_lora_sdxl_01_prodigy_03-000007.safetensors;\nLora/Scarlett4.safetensors;\nLora/Sorayama Style 1.0.safetensors;\nLora/Sorayama Style1.1.safetensors;\nLora/SylvesterStallone_SD1.5_V1.safetensors;\nLora/Xcopy_lora_V1-000001.safetensors;\nLora/Xcopy_lora_V1-000002.safetensors;\nLora/Xcopy_lora_V1-000003.safetensors;\nLora/Xcopy_lora_V1-000004.safetensors;\nLora/Xcopy_lora_V1-000005.safetensors;\nLora/Xcopy_lora_V1-000006.safetensors;\nLora/Xcopy_lora_V1-000007.safetensors;\nLora/Xcopy_lora_V1-000008.safetensors;\nLora/Xcopy_lora_V1-000009.safetensors;\nLora/Xcopy_lora_V1-000010.safetensors;\nLora/Xcopy_lora_V1-000011.safetensors;\nLora/Xcopy_lora_V1-000012.safetensors;\nLora/Xcopy_lora_V1-000013.safetensors;\nLora/Xcopy_lora_V1-000014.safetensors;\nLora/Xcopy_lora_V1-000015.safetensors;\nLora/Xcopy_lora_V1-000016.safetensors;\nLora/Xcopy_lora_V1-000017.safetensors;\nLora/Xcopy_lora_V1-000018.safetensors;\nLora/Xcopy_lora_V1-000019.safetensors;\nLora/Xcopy_lora_V1-000020.safetensors;\nLora/Xcopy_lora_V1-000021.safetensors;\nLora/Xcopy_lora_V1-000022.safetensors;\nLora/Xcopy_lora_V1-000023.safetensors;\nLora/Xcopy_lora_V1-000024.safetensors;\nLora/Xcopy_lora_V1-000025.safetensors;\nLora/Xcopy_lora_V1-000026.safetensors;\nLora/Xcopy_lora_V1-000027.safetensors;\nLora/Xcopy_lora_V1-000028.safetensors;\nLora/Xcopy_lora_V1.safetensors;\nLora/Xcopy_lora_V1_DPO-000001.safetensors;\nLora/Xcopy_lora_V1_DPO-000002.safetensors;\nLora/Xcopy_lora_V1_DPO-000003.safetensors;\nLora/Xcopy_lora_V1_DPO-000004.safetensors;\nLora/Xcopy_lora_V1_DPO-000005.safetensors;\nLora/Xcopy_lora_V1_DPO-000006.safetensors;\nLora/Xcopy_lora_V1_DPO-000007.safetensors;\nLora/Xcopy_lora_V1_DPO-000008.safetensors;\nLora/Xcopy_lora_V1_DPO-000009.safetensors;\nLora/Xcopy_lora_V1_DPO-000010.safetensors;\nLora/Xcopy_lora_V1_DPO-000011.safetensors;\nLora/Xcopy_lora_V1_DPO-000012.safetensors;\nLora/Xcopy_lora_V1_DPO-000013.safetensors;\nLora/Xcopy_lora_V1_DPO-000014.safetensors;\nLora/Xcopy_lora_V1_DPO-000015.safetensors;\nLora/Xcopy_lora_V1_DPO-000016.safetensors;\nLora/Xcopy_lora_V1_DPO-000017.safetensors;\nLora/Xcopy_lora_V1_DPO-000018.safetensors;\nLora/Xcopy_lora_V1_DPO-000019.safetensors;\nLora/Xcopy_lora_V1_DPO-000020.safetensors;\nLora/Xcopy_lora_V1_DPO-000021.safetensors;\nLora/Xcopy_lora_V1_DPO-000022.safetensors;\nLora/Xcopy_lora_V1_DPO-000023.safetensors;\nLora/Xcopy_lora_V1_DPO-000024.safetensors;\nLora/Xcopy_lora_V1_DPO-000025.safetensors;\nLora/Xcopy_lora_V1_DPO-000026.safetensors;\nLora/Xcopy_lora_V1_DPO-000027.safetensors;\nLora/Xcopy_lora_V1_DPO-000028.safetensors;\nLora/Xcopy_lora_V1_DPO.safetensors;\nLora/Xcopy_lora_V2-000001.safetensors;\nLora/Xcopy_lora_V2-000002.safetensors;\nLora/Xcopy_lora_V2-000003.safetensors;\nLora/Xcopy_lora_V2-000004.safetensors;\nLora/Xcopy_lora_V2-000005.safetensors;\nLora/Xcopy_lora_V2-000006.safetensors;\nLora/Xcopy_lora_V2-000007.safetensors;\nLora/Xcopy_lora_V2-000008.safetensors;\nLora/Xcopy_lora_V2-000009.safetensors;\nLora/Xcopy_lora_V2-000010.safetensors;\nLora/Xcopy_lora_V2-000011.safetensors;\nLora/Xcopy_lora_V2-000012.safetensors;\nLora/Xcopy_lora_V2-000013.safetensors;\nLora/Xcopy_lora_V2-000014.safetensors;\nLora/Xcopy_lora_V2-000015.safetensors;\nLora/Xcopy_lora_V2-000016.safetensors;\nLora/Xcopy_lora_V2-000017.safetensors;\nLora/Xcopy_lora_V2-000018.safetensors;\nLora/Xcopy_lora_V2-000019.safetensors;\nLora/Xcopy_lora_V2-000020.safetensors;\nLora/Xcopy_lora_V2-000021.safetensors;\nLora/Xcopy_lora_V2-000022.safetensors;\nLora/Xcopy_lora_V2-000023.safetensors;\nLora/Xcopy_lora_V2-000024.safetensors;\nLora/Xcopy_lora_V2-000025.safetensors;\nLora/Xcopy_lora_V2-000026.safetensors;\nLora/Xcopy_lora_V2-000027.safetensors;\nLora/Xcopy_lora_V2-000028.safetensors;\nLora/Xcopy_lora_V2.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000001.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000002.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000003.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000004.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000005.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000006.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000007.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000008.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000009.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000010.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000011.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000012.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000013.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000014.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000015.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000016.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000017.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000018.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000019.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000020.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000021.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000022.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000023.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000024.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000025.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000026.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000027.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000028.safetensors;\nLora/Xcopy_sl1.5_lora_V1-000029.safetensors;\nLora/Xcopy_sl1.5_lora_V1.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000001.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000002.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000003.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000004.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000005.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000006.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000007.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000008.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000009.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000010.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000011.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000012.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000013.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000014.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000015.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000016.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000017.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000018.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000019.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000020.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000021.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000022.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000023.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000024.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000025.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000026.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000027.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000028.safetensors;\nLora/Xcopy_sl1.5_lora_V2-000029.safetensors;\nLora/Xcopy_sl1.5_lora_V2.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000001.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000002.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000003.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000004.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000005.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000006.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000007.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000008.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000009.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000010.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000011.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000012.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000013.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000014.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000015.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000016.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000017.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000018.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000019.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000020.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000021.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000022.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000023.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000024.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000025.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000026.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000027.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000028.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO-000029.safetensors;\nLora/Xcopy_sl1.x_lora_V1_DPO.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000001.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000002.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000003.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000004.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000005.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000006.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000007.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000008.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000009.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000010.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000011.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000012.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000013.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000014.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000015.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000016.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000017.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000018.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000019.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000020.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000021.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000022.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000023.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000024.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000025.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000026.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000027.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000028.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO-000029.safetensors;\nLora/Xcopy_sl1.x_lora_V2_DPO.safetensors;\nLora/add-detail-xl.safetensors;\nLora/bshmn_prodigyV2.1-000001.safetensors;\nLora/bshmn_prodigyV2.1-000002.safetensors;\nLora/bshmn_prodigyV2.1.safetensors;\nLora/drax_V15c1.safetensors;\nLora/furtherrr_01-000012.safetensors;\nLora/furtherrr_01.safetensors;\nLora/furtherrr_02.safetensors;\nLora/furtherrr_03-000007.safetensors;\nLora/furtherrr_03.safetensors;\nLora/furtherrr_04-000007.safetensors;\nLora/furtherrr_04.safetensors;\nLora/gta5.safetensors;\nLora/hajime_sorayama_finetuned.safetensors;\nLora/jennifer_lora_sdxl_v1-000008.safetensors;\nLora/lora_kendall_v1_from_v1_160.safetensors;\nLora/mshn.safetensors;\nLora/nori.safetensors;\nLora/noriyoshi_sdxl.safetensors;\nLora/scarlet_lora_sdxl_v3-000008.safetensors;\nLora/sdxl-PaperCutouts-Dreambooth.safetensors;\nLora/sketch_style_SDXL.safetensors;\nLora/theWhiteQueen_v10.safetensors;\nLora/xl_MaxRos.safetensors;\nLora/xl_more_art-full-beta2.safetensors;\nLora/xl_more_art-full_v1.safetensors;\nNK_DJMD_323632_V1.safetensors;\nNK_Jumpsuits_V1-000001.safetensors;\nNK_Jumpsuits_V1-000014.safetensors;\nNK_Jumpsuits_V1-000015.safetensors;\nNK_Jumpsuits_V1-000016.safetensors;\nNK_Jumpsuits_V1-000017.safetensors;\nNK_Jumpsuits_V1-000018.safetensors;\nNK_Jumpsuits_V1-000019.safetensors;\nNK_Jumpsuits_V1-000020.safetensors;\nNK_Jumpsuits_V1-000021.safetensors;\nNK_Jumpsuits_V1-000022.safetensors;\nNK_Jumpsuits_V1-000023.safetensors;\nNK_Jumpsuits_V1-000024.safetensors;\nNK_Jumpsuits_V1-000025.safetensors;\nNK_Jumpsuits_V1-000026.safetensors;\nNK_Jumpsuits_V1-000027.safetensors;\nNK_Jumpsuits_V1-000028.safetensors;\nNK_Jumpsuits_V1-000029.safetensors;\nNK_Jumpsuits_V1.safetensors;\nNatalie Portman.safetensors;\nRyan_gosling_no_classimg.safetensors;\nSB_bigger_lora_sdxl_01_prodigy_03-000007.safetensors;\nScarlett4.safetensors;\nSorayama Style 1.0.safetensors;\nSorayama Style1.1.safetensors;\nSylvesterStallone_SD1.5_V1.safetensors;\nXcopy_lora_V1-000001.safetensors;\nXcopy_lora_V1-000002.safetensors;\nXcopy_lora_V1-000003.safetensors;\nXcopy_lora_V1-000004.safetensors;\nXcopy_lora_V1-000005.safetensors;\nXcopy_lora_V1-000006.safetensors;\nXcopy_lora_V1-000007.safetensors;\nXcopy_lora_V1-000008.safetensors;\nXcopy_lora_V1-000009.safetensors;\nXcopy_lora_V1-000010.safetensors;\nXcopy_lora_V1-000011.safetensors;\nXcopy_lora_V1-000012.safetensors;\nXcopy_lora_V1-000013.safetensors;\nXcopy_lora_V1-000014.safetensors;\nXcopy_lora_V1-000015.safetensors;\nXcopy_lora_V1-000016.safetensors;\nXcopy_lora_V1-000017.safetensors;\nXcopy_lora_V1-000018.safetensors;\nXcopy_lora_V1-000019.safetensors;\nXcopy_lora_V1-000020.safetensors;\nXcopy_lora_V1-000021.safetensors;\nXcopy_lora_V1-000022.safetensors;\nXcopy_lora_V1-000023.safetensors;\nXcopy_lora_V1-000024.safetensors;\nXcopy_lora_V1-000025.safetensors;\nXcopy_lora_V1-000026.safetensors;\nXcopy_lora_V1-000027.safetensors;\nXcopy_lora_V1-000028.safetensors;\nXcopy_lora_V1.safetensors;\nXcopy_lora_V1_DPO-000001.safetensors;\nXcopy_lora_V1_DPO-000002.safetensors;\nXcopy_lora_V1_DPO-000003.safetensors;\nXcopy_lora_V1_DPO-000004.safetensors;\nXcopy_lora_V1_DPO-000005.safetensors;\nXcopy_lora_V1_DPO-000006.safetensors;\nXcopy_lora_V1_DPO-000007.safetensors;\nXcopy_lora_V1_DPO-000008.safetensors;\nXcopy_lora_V1_DPO-000009.safetensors;\nXcopy_lora_V1_DPO-000010.safetensors;\nXcopy_lora_V1_DPO-000011.safetensors;\nXcopy_lora_V1_DPO-000012.safetensors;\nXcopy_lora_V1_DPO-000013.safetensors;\nXcopy_lora_V1_DPO-000014.safetensors;\nXcopy_lora_V1_DPO-000015.safetensors;\nXcopy_lora_V1_DPO-000016.safetensors;\nXcopy_lora_V1_DPO-000017.safetensors;\nXcopy_lora_V1_DPO-000018.safetensors;\nXcopy_lora_V1_DPO-000019.safetensors;\nXcopy_lora_V1_DPO-000020.safetensors;\nXcopy_lora_V1_DPO-000021.safetensors;\nXcopy_lora_V1_DPO-000022.safetensors;\nXcopy_lora_V1_DPO-000023.safetensors;\nXcopy_lora_V1_DPO-000024.safetensors;\nXcopy_lora_V1_DPO-000025.safetensors;\nXcopy_lora_V1_DPO-000026.safetensors;\nXcopy_lora_V1_DPO-000027.safetensors;\nXcopy_lora_V1_DPO-000028.safetensors;\nXcopy_lora_V1_DPO.safetensors;\nXcopy_lora_V2-000001.safetensors;\nXcopy_lora_V2-000002.safetensors;\nXcopy_lora_V2-000003.safetensors;\nXcopy_lora_V2-000004.safetensors;\nXcopy_lora_V2-000005.safetensors;\nXcopy_lora_V2-000006.safetensors;\nXcopy_lora_V2-000007.safetensors;\nXcopy_lora_V2-000008.safetensors;\nXcopy_lora_V2-000009.safetensors;\nXcopy_lora_V2-000010.safetensors;\nXcopy_lora_V2-000011.safetensors;\nXcopy_lora_V2-000012.safetensors;\nXcopy_lora_V2-000013.safetensors;\nXcopy_lora_V2-000014.safetensors;\nXcopy_lora_V2-000015.safetensors;\nXcopy_lora_V2-000016.safetensors;\nXcopy_lora_V2-000017.safetensors;\nXcopy_lora_V2-000018.safetensors;\nXcopy_lora_V2-000019.safetensors;\nXcopy_lora_V2-000020.safetensors;\nXcopy_lora_V2-000021.safetensors;\nXcopy_lora_V2-000022.safetensors;\nXcopy_lora_V2-000023.safetensors;\nXcopy_lora_V2-000024.safetensors;\nXcopy_lora_V2-000025.safetensors;\nXcopy_lora_V2-000026.safetensors;\nXcopy_lora_V2-000027.safetensors;\nXcopy_lora_V2-000028.safetensors;\nXcopy_lora_V2.safetensors;\nXcopy_sl1.5_lora_V1-000001.safetensors;\nXcopy_sl1.5_lora_V1-000002.safetensors;\nXcopy_sl1.5_lora_V1-000003.safetensors;\nXcopy_sl1.5_lora_V1-000004.safetensors;\nXcopy_sl1.5_lora_V1-000005.safetensors;\nXcopy_sl1.5_lora_V1-000006.safetensors;\nXcopy_sl1.5_lora_V1-000007.safetensors;\nXcopy_sl1.5_lora_V1-000008.safetensors;\nXcopy_sl1.5_lora_V1-000009.safetensors;\nXcopy_sl1.5_lora_V1-000010.safetensors;\nXcopy_sl1.5_lora_V1-000011.safetensors;\nXcopy_sl1.5_lora_V1-000012.safetensors;\nXcopy_sl1.5_lora_V1-000013.safetensors;\nXcopy_sl1.5_lora_V1-000014.safetensors;\nXcopy_sl1.5_lora_V1-000015.safetensors;\nXcopy_sl1.5_lora_V1-000016.safetensors;\nXcopy_sl1.5_lora_V1-000017.safetensors;\nXcopy_sl1.5_lora_V1-000018.safetensors;\nXcopy_sl1.5_lora_V1-000019.safetensors;\nXcopy_sl1.5_lora_V1-000020.safetensors;\nXcopy_sl1.5_lora_V1-000021.safetensors;\nXcopy_sl1.5_lora_V1-000022.safetensors;\nXcopy_sl1.5_lora_V1-000023.safetensors;\nXcopy_sl1.5_lora_V1-000024.safetensors;\nXcopy_sl1.5_lora_V1-000025.safetensors;\nXcopy_sl1.5_lora_V1-000026.safetensors;\nXcopy_sl1.5_lora_V1-000027.safetensors;\nXcopy_sl1.5_lora_V1-000028.safetensors;\nXcopy_sl1.5_lora_V1-000029.safetensors;\nXcopy_sl1.5_lora_V1.safetensors;\nXcopy_sl1.5_lora_V2-000001.safetensors;\nXcopy_sl1.5_lora_V2-000002.safetensors;\nXcopy_sl1.5_lora_V2-000003.safetensors;\nXcopy_sl1.5_lora_V2-000004.safetensors;\nXcopy_sl1.5_lora_V2-000005.safetensors;\nXcopy_sl1.5_lora_V2-000006.safetensors;\nXcopy_sl1.5_lora_V2-000007.safetensors;\nXcopy_sl1.5_lora_V2-000008.safetensors;\nXcopy_sl1.5_lora_V2-000009.safetensors;\nXcopy_sl1.5_lora_V2-000010.safetensors;\nXcopy_sl1.5_lora_V2-000011.safetensors;\nXcopy_sl1.5_lora_V2-000012.safetensors;\nXcopy_sl1.5_lora_V2-000013.safetensors;\nXcopy_sl1.5_lora_V2-000014.safetensors;\nXcopy_sl1.5_lora_V2-000015.safetensors;\nXcopy_sl1.5_lora_V2-000016.safetensors;\nXcopy_sl1.5_lora_V2-000017.safetensors;\nXcopy_sl1.5_lora_V2-000018.safetensors;\nXcopy_sl1.5_lora_V2-000019.safetensors;\nXcopy_sl1.5_lora_V2-000020.safetensors;\nXcopy_sl1.5_lora_V2-000021.safetensors;\nXcopy_sl1.5_lora_V2-000022.safetensors;\nXcopy_sl1.5_lora_V2-000023.safetensors;\nXcopy_sl1.5_lora_V2-000024.safetensors;\nXcopy_sl1.5_lora_V2-000025.safetensors;\nXcopy_sl1.5_lora_V2-000026.safetensors;\nXcopy_sl1.5_lora_V2-000027.safetensors;\nXcopy_sl1.5_lora_V2-000028.safetensors;\nXcopy_sl1.5_lora_V2-000029.safetensors;\nXcopy_sl1.5_lora_V2.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000001.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000002.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000003.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000004.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000005.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000006.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000007.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000008.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000009.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000010.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000011.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000012.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000013.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000014.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000015.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000016.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000017.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000018.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000019.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000020.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000021.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000022.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000023.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000024.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000025.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000026.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000027.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000028.safetensors;\nXcopy_sl1.x_lora_V1_DPO-000029.safetensors;\nXcopy_sl1.x_lora_V1_DPO.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000001.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000002.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000003.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000004.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000005.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000006.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000007.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000008.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000009.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000010.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000011.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000012.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000013.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000014.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000015.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000016.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000017.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000018.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000019.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000020.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000021.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000022.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000023.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000024.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000025.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000026.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000027.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000028.safetensors;\nXcopy_sl1.x_lora_V2_DPO-000029.safetensors;\nXcopy_sl1.x_lora_V2_DPO.safetensors;\nZendaya.safetensors;\nadd-detail-xl.safetensors;\nbshmn_prodigyV2.1-000001.safetensors;\nbshmn_prodigyV2.1-000002.safetensors;\nbshmn_prodigyV2.1.safetensors;\ndrax_V15c1.safetensors;\nfurtherrr_01-000012.safetensors;\nfurtherrr_01.safetensors;\nfurtherrr_02.safetensors;\nfurtherrr_03-000007.safetensors;\nfurtherrr_03.safetensors;\nfurtherrr_04-000007.safetensors;\nfurtherrr_04.safetensors;\ngta5.safetensors;\nhajime_sorayama_finetuned.safetensors;\njennifer_lora_sdxl_v1-000008.safetensors;\nlocon_tomcruise_v1_from_v1_64_32.safetensors;\nlora_kendall_v1_from_v1_160.safetensors;\nmshn.safetensors;\nnori.safetensors;\nnoriyoshi_sdxl.safetensors;\nscarlet_lora_sdxl_v3-000008.safetensors;\nsdxl-PaperCutouts-Dreambooth.safetensors;\nsketch_style_SDXL.safetensors;\ntheWhiteQueen_v10.safetensors;\nxl_MaxRos.safetensors;\nxl_more_art-full-beta2.safetensors;\nxl_more_art-full_v1.safetensors\n"
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 32,
+      "type": "XY Input: Manual XY Entry",
+      "pos": [
+        936,
+        917
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "X or Y",
+          "type": "XY",
+          "links": [
+            57
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Input: Manual XY Entry"
+      },
+      "widgets_values": [
+        "Checkpoint",
+        "sd_xl_base_1.0.safetensors;\nrealvisxlV40_v40LightningBakedvae.safetensors;\njuggernautXL_v8Rundiffusion.safetensors;\nFFXL400-LoRA-XL-FFusion-v1.1.fp16.safetensors;"
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 49,
+      "type": "LoRA Stacker",
+      "pos": [
+        631,
+        -255
+      ],
+      "size": {
+        "0": 315,
+        "1": 154
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LORA_STACK",
+          "type": "LORA_STACK",
+          "links": [
+            58
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoRA Stacker"
+      },
+      "widgets_values": [
+        "advanced",
+        1,
+        "Faena_V4_test.safetensors",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#222233",
+      "bgcolor": "#333355",
+      "shape": 1
+    },
+    {
+      "id": 37,
+      "type": "SaveImage",
+      "pos": [
+        1917,
+        57
+      ],
+      "size": {
+        "0": 684.9575805664062,
+        "1": 694.8729248046875
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 40
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "V4_LoRA_V2 prmpts_checkpointTST"
+      ]
+    }
+  ],
+  "links": [
+    [
+      33,
+      22,
+      0,
+      29,
+      0,
+      "STRING"
+    ],
+    [
+      37,
+      35,
+      0,
+      36,
+      0,
+      "SDXL_TUPLE"
+    ],
+    [
+      38,
+      35,
+      1,
+      36,
+      1,
+      "LATENT"
+    ],
+    [
+      39,
+      35,
+      2,
+      36,
+      2,
+      "VAE"
+    ],
+    [
+      40,
+      36,
+      3,
+      37,
+      0,
+      "IMAGE"
+    ],
+    [
+      53,
+      43,
+      0,
+      33,
+      2,
+      "XY"
+    ],
+    [
+      55,
+      35,
+      3,
+      33,
+      0,
+      "DEPENDENCIES"
+    ],
+    [
+      56,
+      33,
+      0,
+      36,
+      3,
+      "SCRIPT"
+    ],
+    [
+      57,
+      32,
+      0,
+      33,
+      1,
+      "XY"
+    ],
+    [
+      58,
+      49,
+      0,
+      35,
+      0,
+      "LORA_STACK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

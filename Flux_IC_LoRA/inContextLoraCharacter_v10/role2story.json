@@ -1,0 +1,4510 @@
+{
+  "last_node_id": 187,
+  "last_link_id": 243,
+  "nodes": [
+    {
+      "id": 78,
+      "type": "BizyAir_PulidFluxModelLoader",
+      "pos": {
+        "0": 787,
+        "1": 1846
+      },
+      "size": {
+        "0": 302.4410400390625,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "pulid_flux",
+          "type": "BIZYAIR_PULIDFLUX",
+          "links": [
+            126
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_PulidFluxModelLoader"
+      },
+      "widgets_values": [
+        "pulid_flux_v0.9.0.safetensors"
+      ]
+    },
+    {
+      "id": 79,
+      "type": "BizyAir_PulidFluxEvaClipLoader",
+      "pos": {
+        "0": 799,
+        "1": 1959
+      },
+      "size": {
+        "0": 302.3999938964844,
+        "1": 26
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "eva_clip",
+          "type": "BIZYAIR_EVA_CLIP",
+          "links": [
+            127
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_PulidFluxEvaClipLoader"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 81,
+      "type": "BizyAir_PulidFluxInsightFaceLoader",
+      "pos": {
+        "0": 793,
+        "1": 2030
+      },
+      "size": {
+        "0": 327.6000061035156,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "face_analysis",
+          "type": "BIZYAIR_FACEANALYSIS",
+          "links": [
+            129
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_PulidFluxInsightFaceLoader"
+      },
+      "widgets_values": [
+        "CUDA"
+      ]
+    },
+    {
+      "id": 107,
+      "type": "Note",
+      "pos": {
+        "0": 366,
+        "1": 1470
+      },
+      "size": {
+        "0": 380.41119384765625,
+        "1": 183.65455627441406
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI-PuLID-Flux Limitations:\n\n1. **LoRA Not Supported**\n2. **Maximum Output Size**: 1x1024x1024 (batch_size=1, height=1024, width=1024)"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 117,
+      "type": "GetNode",
+      "pos": {
+        "0": 1173,
+        "1": 2108
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            150
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_inputimage",
+      "properties": {},
+      "widgets_values": [
+        "inputimage"
+      ]
+    },
+    {
+      "id": 116,
+      "type": "GetNode",
+      "pos": {
+        "0": -832.4166259765625,
+        "1": 1541.918701171875
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            149
+          ]
+        }
+      ],
+      "title": "Get_inputimage",
+      "properties": {},
+      "widgets_values": [
+        "inputimage"
+      ]
+    },
+    {
+      "id": 126,
+      "type": "GetNode",
+      "pos": {
+        "0": -810,
+        "1": 2060
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            157
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_inputscene",
+      "properties": {},
+      "widgets_values": [
+        "inputscene"
+      ]
+    },
+    {
+      "id": 122,
+      "type": "TextImageChat",
+      "pos": {
+        "0": -820,
+        "1": 2130
+      },
+      "size": {
+        "0": 400,
+        "1": 310
+      },
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "client",
+          "type": "STEPFUN_CLIENT",
+          "link": null
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "user_prompt",
+          "type": "STRING",
+          "link": 157,
+          "widget": {
+            "name": "user_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            155
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "total_tokens",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "finish_reason",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextImageChat"
+      },
+      "widgets_values": [
+        "step-2-16k",
+        "low",
+        "Based on the keywords entered, imagine a scene where the story takes place and return a visual description of the scene. The description should be pure scene parts, concise and no nonsense.\nDo not have elements that cannot be visualized, such as sounds, smells, etc.\nReturn in English",
+        "",
+        false,
+        0.5,
+        0.9,
+        2048
+      ]
+    },
+    {
+      "id": 125,
+      "type": "SetNode",
+      "pos": {
+        "0": -250,
+        "1": 2340
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 62,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 166
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_sceneprompt",
+      "properties": {
+        "previousName": "sceneprompt"
+      },
+      "widgets_values": [
+        "sceneprompt"
+      ]
+    },
+    {
+      "id": 131,
+      "type": "GetNode",
+      "pos": {
+        "0": -561,
+        "1": 2594
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            161
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_roleprompt",
+      "properties": {},
+      "widgets_values": [
+        "roleprompt"
+      ]
+    },
+    {
+      "id": 130,
+      "type": "GetNode",
+      "pos": {
+        "0": -817,
+        "1": 2591
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            162
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_sceneprompt",
+      "properties": {},
+      "widgets_values": [
+        "sceneprompt"
+      ]
+    },
+    {
+      "id": 119,
+      "type": "SetNode",
+      "pos": {
+        "0": -236,
+        "1": 1829
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 164
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_roleprompt",
+      "properties": {
+        "previousName": "roleprompt"
+      },
+      "widgets_values": [
+        "roleprompt"
+      ]
+    },
+    {
+      "id": 135,
+      "type": "GetNode",
+      "pos": {
+        "0": 796,
+        "1": 954
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            168,
+            169
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_genprompt1",
+      "properties": {},
+      "widgets_values": [
+        "genprompt1"
+      ]
+    },
+    {
+      "id": 138,
+      "type": "BizyAir_LoraLoader",
+      "pos": {
+        "0": 475,
+        "1": 627
+      },
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": 172
+        },
+        {
+          "name": "clip",
+          "type": "BIZYAIR_CLIP",
+          "link": 173
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "BIZYAIR_MODEL",
+          "links": [
+            174
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "BIZYAIR_CLIP",
+          "links": [
+            175
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_LoraLoader"
+      },
+      "widgets_values": [
+        "filmstoryboard/film-storyboard.safetensors",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 140,
+      "type": "Anything Everywhere",
+      "pos": {
+        "0": 826,
+        "1": 586
+      },
+      "size": {
+        "0": 239.40000915527344,
+        "1": 26
+      },
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "BIZYAIR_MODEL",
+          "type": "*",
+          "link": 174,
+          "shape": 7,
+          "color_on": "#7C5AEC"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 141,
+      "type": "Anything Everywhere",
+      "pos": {
+        "0": 840,
+        "1": 673
+      },
+      "size": {
+        "0": 239.40000915527344,
+        "1": 26
+      },
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "BIZYAIR_CLIP",
+          "type": "*",
+          "link": 175,
+          "shape": 7,
+          "color_on": "#FFF4C4"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 137,
+      "type": "Anything Everywhere",
+      "pos": {
+        "0": 350,
+        "1": 1443
+      },
+      "size": {
+        "0": 239.40000915527344,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "BIZYAIR_VAE",
+          "type": "*",
+          "link": 171,
+          "shape": 7,
+          "color_on": "#FF5959"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 106,
+      "type": "Reroute",
+      "pos": {
+        "0": 2015,
+        "1": 1166
+      },
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 139
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "BIZYAIR_VAE",
+          "links": [
+            140
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 91,
+      "type": "BizyAir_VAELoader",
+      "pos": {
+        "0": 355,
+        "1": 1334
+      },
+      "size": {
+        "0": 365.0637512207031,
+        "1": 58.98834991455078
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "vae",
+          "type": "BIZYAIR_VAE",
+          "links": [
+            139,
+            171
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_VAELoader"
+      },
+      "widgets_values": [
+        "flux/ae.sft"
+      ]
+    },
+    {
+      "id": 129,
+      "type": "SetNode",
+      "pos": {
+        "0": -223,
+        "1": 2959
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 66,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            193
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Set_genprompt1",
+      "properties": {
+        "previousName": "genprompt1"
+      },
+      "widgets_values": [
+        "genprompt1"
+      ]
+    },
+    {
+      "id": 163,
+      "type": "GetNode",
+      "pos": {
+        "0": 2270,
+        "1": 680.4000244140625
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            197,
+            198
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_genprompt2",
+      "properties": {},
+      "widgets_values": [
+        "genprompt2"
+      ]
+    },
+    {
+      "id": 158,
+      "type": "BizyAir_CLIPTextEncodeFlux",
+      "pos": {
+        "0": 2270,
+        "1": 780.4000244140625
+      },
+      "size": {
+        "0": 448.6112060546875,
+        "1": 147.642578125
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "BIZYAIR_CLIP",
+          "link": null
+        },
+        {
+          "name": "t5xxl",
+          "type": "STRING",
+          "link": 197,
+          "widget": {
+            "name": "t5xxl"
+          }
+        },
+        {
+          "name": "clip_l",
+          "type": "STRING",
+          "link": 198,
+          "widget": {
+            "name": "clip_l"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "BIZYAIR_CONDITIONING",
+          "links": [
+            192
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "a woman holding sign with glowing green text \"PuLID for FLUX\"",
+        "a woman holding sign with glowing green text \"PuLID for FLUX\"",
+        3.5
+      ]
+    },
+    {
+      "id": 149,
+      "type": "BizyAir_RandomNoise",
+      "pos": {
+        "0": 2750,
+        "1": 860.4000244140625
+      },
+      "size": {
+        "0": 248.53359985351562,
+        "1": 82
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            183
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_RandomNoise"
+      },
+      "widgets_values": [
+        108,
+        "increment"
+      ]
+    },
+    {
+      "id": 147,
+      "type": "BizyAir_BasicGuider",
+      "pos": {
+        "0": 2740,
+        "1": 970.4000244140625
+      },
+      "size": {
+        "0": 264.5999755859375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": null
+        },
+        {
+          "name": "conditioning",
+          "type": "BIZYAIR_CONDITIONING",
+          "link": 192
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            181
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_BasicGuider"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 148,
+      "type": "BizyAir_KSamplerSelect",
+      "pos": {
+        "0": 2750,
+        "1": 1060.4000244140625
+      },
+      "size": {
+        "0": 259.90234375,
+        "1": 58
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            182
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 150,
+      "type": "BizyAir_BasicScheduler",
+      "pos": {
+        "0": 2750,
+        "1": 1170.4000244140625
+      },
+      "size": {
+        "0": 242.97654724121094,
+        "1": 106
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            184
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1
+      ]
+    },
+    {
+      "id": 155,
+      "type": "BizyAir_VAEEncode",
+      "pos": {
+        "0": 2740,
+        "1": 1340.4000244140625
+      },
+      "size": {
+        "0": 252,
+        "1": 46
+      },
+      "flags": {},
+      "order": 71,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 187
+        },
+        {
+          "name": "vae",
+          "type": "BIZYAIR_VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            188
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_VAEEncode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 156,
+      "type": "SetLatentNoiseMask",
+      "pos": {
+        "0": 3069,
+        "1": 1260
+      },
+      "size": {
+        "0": 264.5999755859375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 73,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 188
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 189
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            190,
+            199
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SetLatentNoiseMask"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 144,
+      "type": "TTP_Expand_And_Mask",
+      "pos": {
+        "0": 2330,
+        "1": 1000.4000244140625
+      },
+      "size": {
+        "0": 315,
+        "1": 150
+      },
+      "flags": {},
+      "order": 68,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 178
+        }
+      ],
+      "outputs": [
+        {
+          "name": "EXPANDED_IMAGE",
+          "type": "IMAGE",
+          "links": [
+            187
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            189
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TTP_Expand_And_Mask"
+      },
+      "widgets_values": [
+        "white",
+        "bottom",
+        2,
+        true
+      ]
+    },
+    {
+      "id": 154,
+      "type": "BizyAir_VAEDecode",
+      "pos": {
+        "0": 3110,
+        "1": 988
+      },
+      "size": {
+        "0": 252,
+        "1": 46
+      },
+      "flags": {},
+      "order": 80,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 186
+        },
+        {
+          "name": "vae",
+          "type": "BIZYAIR_VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            191
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 109,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 1658,
+        "1": 1765
+      },
+      "size": {
+        "0": 434.7113037109375,
+        "1": 458.6269226074219
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 151
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 121,
+      "type": "SetNode",
+      "pos": {
+        "0": 741,
+        "1": 2677
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 153
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_inputscene",
+      "properties": {
+        "previousName": "inputscene"
+      },
+      "widgets_values": [
+        "inputscene"
+      ]
+    },
+    {
+      "id": 115,
+      "type": "SetNode",
+      "pos": {
+        "0": 502,
+        "1": 2677
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "link": 148
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_inputimage",
+      "properties": {
+        "previousName": "inputimage"
+      },
+      "widgets_values": [
+        "inputimage"
+      ]
+    },
+    {
+      "id": 169,
+      "type": "GetNode",
+      "pos": {
+        "0": -505,
+        "1": 3123
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            204
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_inputstory",
+      "properties": {},
+      "widgets_values": [
+        "inputstory"
+      ]
+    },
+    {
+      "id": 123,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": -400,
+        "1": 2130
+      },
+      "size": {
+        "0": 407.36553955078125,
+        "1": 159.2279815673828
+      },
+      "flags": {},
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 155,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            165
+          ],
+          "slot_index": 0,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "A serene campus with cherry blossom petals gently drifting through the air, settling on pathways and lawns. The trees are in full bloom, their branches laden with delicate pink flowers. Students walk under the blossoms, some with books in hand, others chatting in groups. The buildings are traditional with wooden elements and tile roofs, complementing the natural beauty of the surroundings. A light breeze causes the petals to flutter, creating a picturesque scene of tranquility and youth."
+      ]
+    },
+    {
+      "id": 113,
+      "type": "TextImageChat",
+      "pos": {
+        "0": -822,
+        "1": 1622
+      },
+      "size": {
+        "0": 400,
+        "1": 310
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "client",
+          "type": "STEPFUN_CLIENT",
+          "link": null
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 149,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            147
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "total_tokens",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "finish_reason",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextImageChat"
+      },
+      "widgets_values": [
+        "step-1.5v-mini",
+        "low",
+        "Briefly describe the picture, including the person's appearance, clothing, features, etc.\nNote: Only the character description, do not have any scene description!\nDon't describe background.\nDon't describe the expression.\nReturn in 30 words\nep.: An age gender, appearance",
+        "",
+        false,
+        0.5,
+        0.9,
+        256
+      ]
+    },
+    {
+      "id": 160,
+      "type": "CombineStrings",
+      "pos": {
+        "0": -269,
+        "1": 3086
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 70,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 193,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            203
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "The [SCENE-1] is ",
+        "",
+        "Take the above summary as SCENE-1, and then imagine a bizarre story development, design SCENE-2 and SCENE-3, both of which should have corresponding changes in character actions and expressions. SCENE-2 starts with medium shot, and SCENE-3 starts with close-up shot"
+      ]
+    },
+    {
+      "id": 133,
+      "type": "CombineStrings",
+      "pos": {
+        "0": -419,
+        "1": 1868
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 163,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            164
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "RolePrompts:",
+        "",
+        ","
+      ]
+    },
+    {
+      "id": 134,
+      "type": "CombineStrings",
+      "pos": {
+        "0": -424,
+        "1": 2349
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 165,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            166
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "ScenePrompts:",
+        "",
+        ","
+      ]
+    },
+    {
+      "id": 114,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": -375,
+        "1": 1552
+      },
+      "size": {
+        "0": 354.010009765625,
+        "1": 150.81198120117188
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 147,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            163
+          ],
+          "slot_index": 0,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "Young woman with long, dark hair, wearing a black top, gold necklace, and a large black bow headband."
+      ]
+    },
+    {
+      "id": 174,
+      "type": "CombineStrings",
+      "pos": {
+        "0": 1086,
+        "1": 2703
+      },
+      "size": {
+        "0": 400,
+        "1": 216
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 213,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            216
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "The story is:{",
+        "",
+        "},"
+      ]
+    },
+    {
+      "id": 176,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": 1084,
+        "1": 2661
+      },
+      "size": {
+        "0": 315,
+        "1": 76
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 53,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 216,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            227
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "The story is:{,在草地上露营，碰到了一只会吐金币的金色青蛙,},"
+      ]
+    },
+    {
+      "id": 167,
+      "type": "SetNode",
+      "pos": {
+        "0": 1110,
+        "1": 2608
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 227
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "Set_inputstory",
+      "properties": {
+        "previousName": "inputstory"
+      },
+      "widgets_values": [
+        "inputstory"
+      ]
+    },
+    {
+      "id": 127,
+      "type": "TextImageChat",
+      "pos": {
+        "0": -807,
+        "1": 2779
+      },
+      "size": {
+        "0": 400,
+        "1": 310
+      },
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "client",
+          "type": "STEPFUN_CLIENT",
+          "link": null
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "user_prompt",
+          "type": "STRING",
+          "link": 209,
+          "widget": {
+            "name": "user_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            159
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "total_tokens",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "finish_reason",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextImageChat"
+      },
+      "widgets_values": [
+        "step-1v-8k",
+        "low",
+        "According to the input scene and character prompt words, design a scene of the character's appearance in the scene, including location, time, character action, expression, etc.,\nDo not copy the input prompt words exactly, simply use the necessary prompt words, concise words.\nCharacters must have expressions and movements.\nstarting with \"a realistic flim close-up shot,\".\nThe result is collated into a natural language prompt paragraph, 200 words or less, concise and returned in English.\nep.:a realistic flim close-up shot of an X person doing in X place with X expressions and x actions",
+        "",
+        false,
+        0.5,
+        0.9,
+        256
+      ]
+    },
+    {
+      "id": 165,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 3602,
+        "1": 1498
+      },
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 81,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 200
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 164,
+      "type": "BizyAir_VAEDecode",
+      "pos": {
+        "0": 3312,
+        "1": 1449
+      },
+      "size": {
+        "0": 252,
+        "1": 46
+      },
+      "flags": {},
+      "order": 77,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 199
+        },
+        {
+          "name": "vae",
+          "type": "BIZYAIR_VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            200
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 146,
+      "type": "BizyAir_SamplerCustomAdvanced",
+      "pos": {
+        "0": 3060,
+        "1": 1100
+      },
+      "size": {
+        "0": 390.5999755859375,
+        "1": 106
+      },
+      "flags": {},
+      "order": 76,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 183
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 181
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 182
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 184
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 190
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            186
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 132,
+      "type": "CombineStrings",
+      "pos": {
+        "0": -222,
+        "1": 2606
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_1",
+          "type": "STRING",
+          "link": 161,
+          "widget": {
+            "name": "input_1"
+          }
+        },
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 162,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            206
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "Based on the input character and scene prompt words, design a special character action and expression as the first act of"
+      ]
+    },
+    {
+      "id": 171,
+      "type": "GetNode",
+      "pos": {
+        "0": -196,
+        "1": 2536
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            207
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_inputstory",
+      "properties": {},
+      "widgets_values": [
+        "inputstory"
+      ]
+    },
+    {
+      "id": 170,
+      "type": "CombineStrings",
+      "pos": {
+        "0": -237,
+        "1": 2659
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_1",
+          "type": "STRING",
+          "link": 206,
+          "widget": {
+            "name": "input_1"
+          }
+        },
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 207,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            209,
+            210
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "The description should be concise, including character actions, character expressions, scene locations,The character must have significant unique body movements according to the story!!"
+      ]
+    },
+    {
+      "id": 172,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": -25,
+        "1": 2651
+      },
+      "size": [
+        426.6545713713458,
+        255.0777739066698
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 210,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "RolePrompts:,Young girl with long blonde hair, wearing a white headband, white sleeveless top, and gold hoop earrings. She has a yellow pencil in her hand.,,,ScenePrompts:,A serene campus with cherry blossom petals gently drifting through the air, settling on pathways and lawns. The trees are in full bloom, their branches laden with delicate pink flowers. Students walk under the blossoms, some with books in hand, others chatting in groups. The buildings are traditional with wooden elements and tile roofs, complementing the natural beauty of the surroundings. A light breeze causes the petals to flutter, creating a picturesque scene of tranquility and youth.,,,Based on the input character and scene prompt words, design a special character action and expression as the first act of,The story is:{,在草地上露营，碰到了一只会吐金币的金色青蛙,},,The description should be concise, including character actions, character expressions, scene locations,The character must have significant unique body movements according to the story!!"
+      ]
+    },
+    {
+      "id": 168,
+      "type": "CombineStrings",
+      "pos": {
+        "0": -219,
+        "1": 3146
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 72,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_3",
+          "type": "STRING",
+          "link": 203,
+          "widget": {
+            "name": "input_3"
+          }
+        },
+        {
+          "name": "input_2",
+          "type": "STRING",
+          "link": 204,
+          "widget": {
+            "name": "input_2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string_array",
+          "type": "STRING_LIST",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "combined_string",
+          "type": "STRING",
+          "links": [
+            205,
+            228
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CombineStrings"
+      },
+      "widgets_values": [
+        "Use the story as",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 128,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": -292,
+        "1": 2764
+      },
+      "size": {
+        "0": 407.36553955078125,
+        "1": 159.2279815673828
+      },
+      "flags": {},
+      "order": 63,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 159,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            160
+          ],
+          "slot_index": 0,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "a realistic film close-up shot of a young girl with long blonde hair, wearing a white headband, white sleeveless top, and gold hoop earrings, sitting on a grassy lawn on a serene campus. She has a look of surprise and delight on her face as she holds a yellow pencil in her hand. The girl's eyes are wide with astonishment, and she is leaning forward slightly, her mouth open in amazement. In front of her, there is a golden frog sitting on a rock, with a shiny gold coin resting on its tongue. Cherry blossom petals are gently drifting through the air, creating a magical atmosphere around them. The girl's body language shows she is completely engrossed in the unexpected and fantastical encounter."
+      ]
+    },
+    {
+      "id": 177,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": 86,
+        "1": 3154
+      },
+      "size": [
+        315,
+        76
+      ],
+      "flags": {},
+      "order": 75,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 228,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "Use the story as,The story is:{,在草地上露营，碰到了一只会吐金币的金色青蛙,},,The [SCENE-1] is,a realistic film close-up shot of a young girl with long blonde hair, wearing a white headband, white sleeveless top, and gold hoop earrings, sitting on a grassy lawn on a serene campus. She has a look of surprise and delight on her face as she holds a yellow pencil in her hand. The girl's eyes are wide with astonishment, and she is leaning forward slightly, her mouth open in amazement. In front of her, there is a golden frog sitting on a rock, with a shiny gold coin resting on its tongue. Cherry blossom petals are gently drifting through the air, creating a magical atmosphere around them. The girl's body language shows she is completely engrossed in the unexpected and fantastical encounter.,Take the above summary as SCENE-1, and then imagine a bizarre story development, design SCENE-2 and SCENE-3, both of which should have corresponding changes in character actions and expressions. SCENE-2 starts with medium shot, and SCENE-3 starts with close-up shot"
+      ]
+    },
+    {
+      "id": 161,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": -300,
+        "1": 3340
+      },
+      "size": {
+        "0": 407.36553955078125,
+        "1": 159.2279815673828
+      },
+      "flags": {},
+      "order": 78,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 195,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            196
+          ],
+          "slot_index": 0,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "[MOVIE-SHOTS] This three-scene image captures a whimsical and enchanting story involving a young girl and a golden frog. [SCENE-1] begins with a close-up shot of a young girl with long blonde hair, wearing a white headband, white sleeveless top, and gold hoop earrings. She sits on a grassy lawn on a serene campus, her expression a mix of surprise and delight. She holds a yellow pencil in her hand, eyes wide with astonishment, mouth agape, and body leaning forward in amazement. In front of her, a golden frog sits on a rock, a shiny gold coin resting on its tongue, while cherry blossom petals drift gently through the air, enhancing the magical atmosphere. [SCENE-2] transitions to a medium shot, revealing the girl now standing up, her posture more assertive. She holds the pencil outstretched towards the frog, her eyes focused intently. The frog remains seated on the rock, the gold coin still on its tongue, but its eyes follow the pencil's movement. The air around them is filled with more cherry blossom petals, intensifying the magical aura. [SCENE-3] shifts to a close-up shot of the girl's face, her expression now a blend of determination and curiosity. She extends the pencil even closer to the frog, her fingers gripping it tightly. The frog's eyes are wide open, seemingly intrigued by the pencil. The gold coin on its tongue glistens under the soft light, and the cherry blossom petals continue to swirl around them, creating a sense of anticipation and wonder."
+      ]
+    },
+    {
+      "id": 159,
+      "type": "TextImageChat",
+      "pos": {
+        "0": -720,
+        "1": 3258
+      },
+      "size": {
+        "0": 400,
+        "1": 310
+      },
+      "flags": {},
+      "order": 74,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "client",
+          "type": "STEPFUN_CLIENT",
+          "link": null
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "user_prompt",
+          "type": "STRING",
+          "link": 205,
+          "widget": {
+            "name": "user_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            195,
+            229
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "total_tokens",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "finish_reason",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextImageChat"
+      },
+      "widgets_values": [
+        "step-1v-8k",
+        "low",
+        "Create a short description of this three-scene image featuring movie shots, beginning with the prefix [MOVIE-SHOTS] for the entire caption, followed by an overall summary of the image. Each scene detail should flow within the same sentence, with specific markers [SCENE-1], [SCENE-2], [SCENE-3], indicating the start of each scene’s description. Name the role(s) with random name(s) if necessary, and wrap the name(s) with \"<\" and \">\". Ensure the entire description is cohesive, flows as one sentence, and remains within 512 words.\nEach scene should be a shot visual description of a story paragraph, not the full story, and only output the visual elements within the shot at this moment.\nEach SCENE should be a moment captured by the camera, not too long!!!",
+        "",
+        false,
+        0.5,
+        0.9,
+        1024
+      ]
+    },
+    {
+      "id": 162,
+      "type": "SetNode",
+      "pos": {
+        "0": -209,
+        "1": 3544
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 82,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 196
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "title": "Set_genprompt2",
+      "properties": {
+        "previousName": "genprompt2"
+      },
+      "widgets_values": [
+        "genprompt2"
+      ]
+    },
+    {
+      "id": 180,
+      "type": "SetNode",
+      "pos": {
+        "0": -244.01882934570312,
+        "1": 3899.03759765625
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 85,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 231
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "title": "Set_coverprompt",
+      "properties": {
+        "previousName": "coverprompt"
+      },
+      "widgets_values": [
+        "coverprompt"
+      ]
+    },
+    {
+      "id": 92,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 2132,
+        "1": 1764
+      },
+      "size": {
+        "0": 441.4819030761719,
+        "1": 467.0842590332031
+      },
+      "flags": {},
+      "order": 67,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 119
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 89,
+      "type": "BizyAir_SamplerCustomAdvanced",
+      "pos": {
+        "0": 1732,
+        "1": 1022
+      },
+      "size": {
+        "0": 390.5999755859375,
+        "1": 106
+      },
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 114
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 122
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 115
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 116
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            117
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 90,
+      "type": "BizyAir_VAEDecode",
+      "pos": {
+        "0": 1854,
+        "1": 1294
+      },
+      "size": {
+        "0": 252,
+        "1": 46
+      },
+      "flags": {},
+      "order": 64,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 117
+        },
+        {
+          "name": "vae",
+          "type": "BIZYAIR_VAE",
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            119,
+            178
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 181,
+      "type": "BizyAir_SamplerCustomAdvanced",
+      "pos": {
+        "0": 1808.7969970703125,
+        "1": 1468.7156982421875
+      },
+      "size": {
+        "0": 390.5999755859375,
+        "1": 106
+      },
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 235
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 238
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 234
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 236
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 237
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            232
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 118,
+      "type": "GetNode",
+      "pos": {
+        "0": 1682,
+        "1": 1728
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            151
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_inputimage",
+      "properties": {},
+      "widgets_values": [
+        "inputimage"
+      ]
+    },
+    {
+      "id": 182,
+      "type": "BizyAir_VAEDecode",
+      "pos": {
+        "0": 2277.30908203125,
+        "1": 1542.8968505859375
+      },
+      "size": {
+        "0": 252,
+        "1": 46
+      },
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 232
+        },
+        {
+          "name": "vae",
+          "type": "BIZYAIR_VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            233
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_VAEDecode"
+      }
+    },
+    {
+      "id": 87,
+      "type": "BizyAir_KSamplerSelect",
+      "pos": {
+        "0": 1349,
+        "1": 1142
+      },
+      "size": {
+        "0": 259.90234375,
+        "1": 58
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            115,
+            234
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 88,
+      "type": "BizyAir_RandomNoise",
+      "pos": {
+        "0": 1354,
+        "1": 1271
+      },
+      "size": {
+        "0": 248.53359985351562,
+        "1": 82
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            114,
+            235
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_RandomNoise"
+      },
+      "widgets_values": [
+        108,
+        "increment"
+      ]
+    },
+    {
+      "id": 86,
+      "type": "BizyAir_BasicScheduler",
+      "pos": {
+        "0": 1357,
+        "1": 1427
+      },
+      "size": {
+        "0": 242.97654724121094,
+        "1": 106
+      },
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": 130
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            116,
+            236
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1
+      ]
+    },
+    {
+      "id": 60,
+      "type": "EmptyLatentImage",
+      "pos": {
+        "0": 841,
+        "1": 1503
+      },
+      "size": {
+        "0": 331.86749267578125,
+        "1": 172.31396484375
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            133
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "Latent"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 184,
+      "type": "EmptyLatentImage",
+      "pos": {
+        "0": 1355,
+        "1": 1581
+      },
+      "size": {
+        "0": 331.86749267578125,
+        "1": 172.31396484375
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            237
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "Latent"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        864,
+        1280,
+        1
+      ]
+    },
+    {
+      "id": 95,
+      "type": "BizyAir_BasicGuider",
+      "pos": {
+        "0": 1348,
+        "1": 1025
+      },
+      "size": {
+        "0": 264.5999755859375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": 124
+        },
+        {
+          "name": "conditioning",
+          "type": "BIZYAIR_CONDITIONING",
+          "link": 121
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            122
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_BasicGuider"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 83,
+      "type": "BizyAir_UNETLoader",
+      "pos": {
+        "0": 343,
+        "1": 1006
+      },
+      "size": {
+        "0": 378,
+        "1": 82
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BIZYAIR_MODEL",
+          "type": "BIZYAIR_MODEL",
+          "links": [
+            125,
+            172
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_UNETLoader"
+      },
+      "widgets_values": [
+        "flux/flux1-dev.sft",
+        "default"
+      ]
+    },
+    {
+      "id": 97,
+      "type": "BizyAir_ApplyPulidFlux",
+      "pos": {
+        "0": 1196,
+        "1": 1831
+      },
+      "size": {
+        "0": 404.95245361328125,
+        "1": 219.5450439453125
+      },
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": 125
+        },
+        {
+          "name": "pulid_flux",
+          "type": "BIZYAIR_PULIDFLUX",
+          "link": 126
+        },
+        {
+          "name": "eva_clip",
+          "type": "BIZYAIR_EVA_CLIP",
+          "link": 127
+        },
+        {
+          "name": "face_analysis",
+          "type": "BIZYAIR_FACEANALYSIS",
+          "link": 129
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 150
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BIZYAIR_MODEL",
+          "type": "BIZYAIR_MODEL",
+          "links": [
+            124,
+            130,
+            239
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_ApplyPulidFlux"
+      },
+      "widgets_values": [
+        0.6,
+        0,
+        0.7000000000000001
+      ]
+    },
+    {
+      "id": 85,
+      "type": "BizyAir_CLIPTextEncodeFlux",
+      "pos": {
+        "0": 801,
+        "1": 1055
+      },
+      "size": {
+        "0": 448.6112060546875,
+        "1": 147.642578125
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "BIZYAIR_CLIP",
+          "link": 113
+        },
+        {
+          "name": "t5xxl",
+          "type": "STRING",
+          "link": 168,
+          "widget": {
+            "name": "t5xxl"
+          }
+        },
+        {
+          "name": "clip_l",
+          "type": "STRING",
+          "link": 169,
+          "widget": {
+            "name": "clip_l"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "BIZYAIR_CONDITIONING",
+          "links": [
+            121
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "a woman holding sign with glowing green text \"PuLID for FLUX\"",
+        "a woman holding sign with glowing green text \"PuLID for FLUX\"",
+        3.5
+      ]
+    },
+    {
+      "id": 84,
+      "type": "BizyAir_DualCLIPLoader",
+      "pos": {
+        "0": 356,
+        "1": 1155
+      },
+      "size": {
+        "0": 367.9985046386719,
+        "1": 106
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BIZYAIR_CLIP",
+          "type": "BIZYAIR_CLIP",
+          "links": [
+            113,
+            173,
+            241
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp16.safetensors",
+        "clip_l.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 185,
+      "type": "BizyAir_BasicGuider",
+      "pos": {
+        "0": 1743,
+        "1": 1404
+      },
+      "size": {
+        "0": 264.5999755859375,
+        "1": 46
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "BIZYAIR_MODEL",
+          "link": 239
+        },
+        {
+          "name": "conditioning",
+          "type": "BIZYAIR_CONDITIONING",
+          "link": 240
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            238
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_BasicGuider"
+      }
+    },
+    {
+      "id": 187,
+      "type": "GetNode",
+      "pos": {
+        "0": 1155,
+        "1": 1488
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            242,
+            243
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Get_coverprompt",
+      "properties": {},
+      "widgets_values": [
+        "coverprompt"
+      ]
+    },
+    {
+      "id": 179,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": -324.01898193359375,
+        "1": 3789.03759765625
+      },
+      "size": [
+        315,
+        76
+      ],
+      "flags": {},
+      "order": 83,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 230,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            231
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "A realistic film cover of \"The Enchanted Frog\" showcases a young girl with long blonde hair, wearing a white headband and top, sitting on a grassy lawn with a golden frog. The girl's expression transitions from surprise to determination as she interacts with the frog, holding a yellow pencil. The scene is filled with cherry blossom petals, enhancing the magical atmosphere. The cover captures the essence of the story, highlighting the protagonist's unique pose and the enchanting elements surrounding her."
+      ]
+    },
+    {
+      "id": 183,
+      "type": "SaveImage",
+      "pos": {
+        "0": 1470,
+        "1": 2620
+      },
+      "size": [
+        571.994236382069,
+        873.7082017817443
+      ],
+      "flags": {},
+      "order": 69,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 233
+        }
+      ],
+      "outputs": [],
+      "title": "Cover",
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 186,
+      "type": "BizyAir_CLIPTextEncodeFlux",
+      "pos": {
+        "0": 1595,
+        "1": 1456
+      },
+      "size": {
+        "0": 448.6112060546875,
+        "1": 147.642578125
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "BIZYAIR_CLIP",
+          "link": 241
+        },
+        {
+          "name": "t5xxl",
+          "type": "STRING",
+          "link": 242,
+          "widget": {
+            "name": "t5xxl"
+          }
+        },
+        {
+          "name": "clip_l",
+          "type": "STRING",
+          "link": 243,
+          "widget": {
+            "name": "clip_l"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "BIZYAIR_CONDITIONING",
+          "links": [
+            240
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BizyAir_CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "a woman holding sign with glowing green text \"PuLID for FLUX\"",
+        "a woman holding sign with glowing green text \"PuLID for FLUX\"",
+        3.5
+      ]
+    },
+    {
+      "id": 178,
+      "type": "TextImageChat",
+      "pos": {
+        "0": -824.0191650390625,
+        "1": 3719.03759765625
+      },
+      "size": {
+        "0": 400,
+        "1": 310
+      },
+      "flags": {},
+      "order": 79,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "client",
+          "type": "STEPFUN_CLIENT",
+          "link": null
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "user_prompt",
+          "type": "STRING",
+          "link": 229,
+          "widget": {
+            "name": "user_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            230
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "total_tokens",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "finish_reason",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextImageChat"
+      },
+      "widgets_values": [
+        "step-1v-8k",
+        "low",
+        "Synthesize the input prompt words, starting with \"a realistic film cover of Title is<XXX>\", summarize the title of the film, and return the prompt words of the film cover, with 100 words or less in English, to have the protagonist and the film title, as well as wonderful scenes and pose.\nThe content of the cover is the most wonderful scene inferred from the story. The protagonist is in the middle of the cover with a unique and large POSE, and the large film title is displayed in the form of story-style art words. The background reveals the story plot",
+        "",
+        false,
+        0.5,
+        0.9,
+        1024
+      ]
+    },
+    {
+      "id": 120,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 930,
+        "1": 2840
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            153
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Scene Input",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "飘散着樱花的校园"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 166,
+      "type": "Text Multiline",
+      "pos": {
+        "0": 930,
+        "1": 3120
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            213
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Story Input",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "在草地上露营，碰到了一只会吐金币的金色青蛙"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 157,
+      "type": "SaveImage",
+      "pos": {
+        "0": 2069,
+        "1": 2611
+      },
+      "size": {
+        "0": 767.14111328125,
+        "1": 884.1154174804688
+      },
+      "flags": {},
+      "order": 84,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 191
+        }
+      ],
+      "outputs": [],
+      "title": "Result",
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 110,
+      "type": "LoadImage",
+      "pos": {
+        "0": 490,
+        "1": 2830
+      },
+      "size": {
+        "0": 410.8099365234375,
+        "1": 490.64910888671875
+      },
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            148
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Role Input",
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_tpcym_00001_.png",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 112,
+      "type": "Anything Everywhere",
+      "pos": {
+        "0": -821,
+        "1": 1343
+      },
+      "size": {
+        "0": 239.40000915527344,
+        "1": 26
+      },
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STEPFUN_CLIENT",
+          "type": "*",
+          "link": 145,
+          "shape": 7,
+          "color_on": ""
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 111,
+      "type": "StepFunClient",
+      "pos": {
+        "0": -797,
+        "1": 1225
+      },
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "client",
+          "type": "STEPFUN_CLIENT",
+          "links": [
+            145
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StepFunClient"
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      113,
+      84,
+      0,
+      85,
+      0,
+      "BIZYAIR_CLIP"
+    ],
+    [
+      114,
+      88,
+      0,
+      89,
+      0,
+      "NOISE"
+    ],
+    [
+      115,
+      87,
+      0,
+      89,
+      2,
+      "SAMPLER"
+    ],
+    [
+      116,
+      86,
+      0,
+      89,
+      3,
+      "SIGMAS"
+    ],
+    [
+      117,
+      89,
+      0,
+      90,
+      0,
+      "LATENT"
+    ],
+    [
+      119,
+      90,
+      0,
+      92,
+      0,
+      "IMAGE"
+    ],
+    [
+      121,
+      85,
+      0,
+      95,
+      1,
+      "BIZYAIR_CONDITIONING"
+    ],
+    [
+      122,
+      95,
+      0,
+      89,
+      1,
+      "GUIDER"
+    ],
+    [
+      124,
+      97,
+      0,
+      95,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      125,
+      83,
+      0,
+      97,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      126,
+      78,
+      0,
+      97,
+      1,
+      "BIZYAIR_PULIDFLUX"
+    ],
+    [
+      127,
+      79,
+      0,
+      97,
+      2,
+      "BIZYAIR_EVA_CLIP"
+    ],
+    [
+      129,
+      81,
+      0,
+      97,
+      3,
+      "BIZYAIR_FACEANALYSIS"
+    ],
+    [
+      130,
+      97,
+      0,
+      86,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      133,
+      60,
+      0,
+      89,
+      4,
+      "LATENT"
+    ],
+    [
+      139,
+      91,
+      0,
+      106,
+      0,
+      "*"
+    ],
+    [
+      140,
+      106,
+      0,
+      90,
+      1,
+      "BIZYAIR_VAE"
+    ],
+    [
+      145,
+      111,
+      0,
+      112,
+      0,
+      "STEPFUN_CLIENT"
+    ],
+    [
+      147,
+      113,
+      0,
+      114,
+      0,
+      "STRING"
+    ],
+    [
+      148,
+      110,
+      0,
+      115,
+      0,
+      "*"
+    ],
+    [
+      149,
+      116,
+      0,
+      113,
+      1,
+      "IMAGE"
+    ],
+    [
+      150,
+      117,
+      0,
+      97,
+      4,
+      "IMAGE"
+    ],
+    [
+      151,
+      118,
+      0,
+      109,
+      0,
+      "IMAGE"
+    ],
+    [
+      153,
+      120,
+      0,
+      121,
+      0,
+      "*"
+    ],
+    [
+      155,
+      122,
+      0,
+      123,
+      0,
+      "STRING"
+    ],
+    [
+      157,
+      126,
+      0,
+      122,
+      2,
+      "STRING"
+    ],
+    [
+      159,
+      127,
+      0,
+      128,
+      0,
+      "STRING"
+    ],
+    [
+      160,
+      128,
+      0,
+      129,
+      0,
+      "*"
+    ],
+    [
+      161,
+      131,
+      0,
+      132,
+      0,
+      "STRING"
+    ],
+    [
+      162,
+      130,
+      0,
+      132,
+      1,
+      "STRING"
+    ],
+    [
+      163,
+      114,
+      0,
+      133,
+      0,
+      "STRING"
+    ],
+    [
+      164,
+      133,
+      1,
+      119,
+      0,
+      "STRING"
+    ],
+    [
+      165,
+      123,
+      0,
+      134,
+      0,
+      "STRING"
+    ],
+    [
+      166,
+      134,
+      1,
+      125,
+      0,
+      "STRING"
+    ],
+    [
+      168,
+      135,
+      0,
+      85,
+      1,
+      "STRING"
+    ],
+    [
+      169,
+      135,
+      0,
+      85,
+      2,
+      "STRING"
+    ],
+    [
+      171,
+      91,
+      0,
+      137,
+      0,
+      "BIZYAIR_VAE"
+    ],
+    [
+      172,
+      83,
+      0,
+      138,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      173,
+      84,
+      0,
+      138,
+      1,
+      "BIZYAIR_CLIP"
+    ],
+    [
+      174,
+      138,
+      0,
+      140,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      175,
+      138,
+      1,
+      141,
+      0,
+      "BIZYAIR_CLIP"
+    ],
+    [
+      178,
+      90,
+      0,
+      144,
+      0,
+      "IMAGE"
+    ],
+    [
+      181,
+      147,
+      0,
+      146,
+      1,
+      "GUIDER"
+    ],
+    [
+      182,
+      148,
+      0,
+      146,
+      2,
+      "SAMPLER"
+    ],
+    [
+      183,
+      149,
+      0,
+      146,
+      0,
+      "NOISE"
+    ],
+    [
+      184,
+      150,
+      0,
+      146,
+      3,
+      "SIGMAS"
+    ],
+    [
+      186,
+      146,
+      0,
+      154,
+      0,
+      "LATENT"
+    ],
+    [
+      187,
+      144,
+      0,
+      155,
+      0,
+      "IMAGE"
+    ],
+    [
+      188,
+      155,
+      0,
+      156,
+      0,
+      "LATENT"
+    ],
+    [
+      189,
+      144,
+      1,
+      156,
+      1,
+      "MASK"
+    ],
+    [
+      190,
+      156,
+      0,
+      146,
+      4,
+      "LATENT"
+    ],
+    [
+      191,
+      154,
+      0,
+      157,
+      0,
+      "IMAGE"
+    ],
+    [
+      192,
+      158,
+      0,
+      147,
+      1,
+      "BIZYAIR_CONDITIONING"
+    ],
+    [
+      193,
+      129,
+      0,
+      160,
+      0,
+      "STRING"
+    ],
+    [
+      195,
+      159,
+      0,
+      161,
+      0,
+      "STRING"
+    ],
+    [
+      196,
+      161,
+      0,
+      162,
+      0,
+      "*"
+    ],
+    [
+      197,
+      163,
+      0,
+      158,
+      1,
+      "STRING"
+    ],
+    [
+      198,
+      163,
+      0,
+      158,
+      2,
+      "STRING"
+    ],
+    [
+      199,
+      156,
+      0,
+      164,
+      0,
+      "LATENT"
+    ],
+    [
+      200,
+      164,
+      0,
+      165,
+      0,
+      "IMAGE"
+    ],
+    [
+      203,
+      160,
+      1,
+      168,
+      0,
+      "STRING"
+    ],
+    [
+      204,
+      169,
+      0,
+      168,
+      1,
+      "STRING"
+    ],
+    [
+      205,
+      168,
+      1,
+      159,
+      2,
+      "STRING"
+    ],
+    [
+      206,
+      132,
+      1,
+      170,
+      0,
+      "STRING"
+    ],
+    [
+      207,
+      171,
+      0,
+      170,
+      1,
+      "STRING"
+    ],
+    [
+      209,
+      170,
+      1,
+      127,
+      2,
+      "STRING"
+    ],
+    [
+      210,
+      170,
+      1,
+      172,
+      0,
+      "STRING"
+    ],
+    [
+      213,
+      166,
+      0,
+      174,
+      0,
+      "STRING"
+    ],
+    [
+      216,
+      174,
+      1,
+      176,
+      0,
+      "STRING"
+    ],
+    [
+      217,
+      111,
+      0,
+      122,
+      0,
+      "STEPFUN_CLIENT"
+    ],
+    [
+      218,
+      138,
+      1,
+      158,
+      0,
+      "BIZYAIR_CLIP"
+    ],
+    [
+      219,
+      138,
+      0,
+      147,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      220,
+      138,
+      0,
+      150,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      221,
+      91,
+      0,
+      155,
+      1,
+      "BIZYAIR_VAE"
+    ],
+    [
+      222,
+      111,
+      0,
+      159,
+      0,
+      "STEPFUN_CLIENT"
+    ],
+    [
+      223,
+      91,
+      0,
+      164,
+      1,
+      "BIZYAIR_VAE"
+    ],
+    [
+      224,
+      91,
+      0,
+      154,
+      1,
+      "BIZYAIR_VAE"
+    ],
+    [
+      225,
+      111,
+      0,
+      127,
+      0,
+      "STEPFUN_CLIENT"
+    ],
+    [
+      226,
+      111,
+      0,
+      113,
+      0,
+      "STEPFUN_CLIENT"
+    ],
+    [
+      227,
+      176,
+      0,
+      167,
+      0,
+      "STRING"
+    ],
+    [
+      228,
+      168,
+      1,
+      177,
+      0,
+      "STRING"
+    ],
+    [
+      229,
+      159,
+      0,
+      178,
+      2,
+      "STRING"
+    ],
+    [
+      230,
+      178,
+      0,
+      179,
+      0,
+      "STRING"
+    ],
+    [
+      231,
+      179,
+      0,
+      180,
+      0,
+      "*"
+    ],
+    [
+      232,
+      181,
+      0,
+      182,
+      0,
+      "LATENT"
+    ],
+    [
+      233,
+      182,
+      0,
+      183,
+      0,
+      "IMAGE"
+    ],
+    [
+      234,
+      87,
+      0,
+      181,
+      2,
+      "SAMPLER"
+    ],
+    [
+      235,
+      88,
+      0,
+      181,
+      0,
+      "NOISE"
+    ],
+    [
+      236,
+      86,
+      0,
+      181,
+      3,
+      "SIGMAS"
+    ],
+    [
+      237,
+      184,
+      0,
+      181,
+      4,
+      "LATENT"
+    ],
+    [
+      238,
+      185,
+      0,
+      181,
+      1,
+      "GUIDER"
+    ],
+    [
+      239,
+      97,
+      0,
+      185,
+      0,
+      "BIZYAIR_MODEL"
+    ],
+    [
+      240,
+      186,
+      0,
+      185,
+      1,
+      "BIZYAIR_CONDITIONING"
+    ],
+    [
+      241,
+      84,
+      0,
+      186,
+      0,
+      "BIZYAIR_CLIP"
+    ],
+    [
+      242,
+      187,
+      0,
+      186,
+      1,
+      "STRING"
+    ],
+    [
+      243,
+      187,
+      0,
+      186,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "4.Covergen",
+      "bounding": [
+        -834,
+        3645,
+        835,
+        394
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "3.GenPrompts",
+      "bounding": [
+        -839,
+        2519,
+        961,
+        1102
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Flux txtimg",
+      "bounding": [
+        302,
+        869,
+        1853,
+        828
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Apply Pulid",
+      "bounding": [
+        420,
+        1728,
+        1195,
+        498
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "1.get role prompt",
+      "bounding": [
+        -842,
+        1469,
+        857,
+        474
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "2.get scene prompt",
+      "bounding": [
+        -842,
+        1976,
+        857,
+        474
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Flux Three Gen",
+      "bounding": [
+        2260,
+        607,
+        1201,
+        790
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Input",
+      "bounding": [
+        480,
+        2756,
+        860,
+        574
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Output",
+      "bounding": [
+        1460,
+        2536,
+        1377,
+        968
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909114,
+      "offset": [
+        2356.9899138338983,
+        -823.220646810086
+      ]
+    },
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ]
+  },
+  "version": 0.4
+}

@@ -1,0 +1,1578 @@
+{
+  "last_node_id": 103,
+  "last_link_id": 126,
+  "nodes": [
+    {
+      "id": 13,
+      "type": "KSampler",
+      "pos": [
+        1452.0000003310547,
+        917.9414927460947
+      ],
+      "size": [
+        320,
+        470
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 108
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 116
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        32603574575332,
+        "fixed",
+        20,
+        8,
+        "euler",
+        "normal",
+        1
+      ]
+    },
+    {
+      "id": 17,
+      "type": "VAELoader",
+      "pos": [
+        1832.0000003310547,
+        1047.9414927460946
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "vae-ft-mse-840000-ema-pruned.safetensors"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1092.0000003310547,
+        997.9414927460947
+      ],
+      "size": {
+        "0": 210,
+        "1": 76
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "1girl, period costume"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1090,
+        1120
+      ],
+      "size": {
+        "0": 210,
+        "1": 90
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 111
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "embedding:EasyNegative,\nnsfw"
+      ]
+    },
+    {
+      "id": 96,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1090,
+        1270
+      ],
+      "size": {
+        "0": 210,
+        "1": 110
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            116
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 94,
+      "type": "CR Load LoRA",
+      "pos": [
+        680,
+        920
+      ],
+      "size": {
+        "0": 320,
+        "1": 150
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 107
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 109
+        },
+        {
+          "name": "lora_name",
+          "type": "None,AM\\AM002_Lada_D.pt,AM\\AM003_Elina_A.pt,AM\\AM008_Linnda.pt,AM\\AM009_Camomile_v2.pt,AM\\AM010_Iriska.pt,AM\\AM019_Carolina_Sampaio.pt,AM\\AM020_Francesca_Rose.pt,AM\\AM023_Valencia.pt,AM\\AM034_Margarita.pt,AM\\AM045_Shayla_v2.pt,AM\\AM046_Amily.pt,AM\\AM055_Junia.pt,AM\\AM058_Kate.pt,AM\\AM066_Agness.pt,AM\\AM109_Georgia.pt,AM\\AM136_Petra_E.pt,AM\\AM171_Zanna.pt,AM\\AM186_Irisha.pt,AM\\AM190_Brigitte.pt,AM\\AM192_Berka.pt,AM\\AM207_Kay_J.pt,AM\\AM209_Chloe_Blue.pt,AM\\AM224_Lika_Star.pt,SD1_5\\2dcharacter.safetensors,SD1_5\\3DMM_V11.safetensors,SD1_5\\AbigailSwimsuitV3[abigailswimsuit,swimsuit,bonnet]-000006.safetensors,SD1_5\\AnyaForger_v10.safetensors,SD1_5\\Architectural_.safetensors,SD1_5\\ArknightsDusk_10.safetensors,SD1_5\\ArknightsNian_20.safetensors,SD1_5\\ArknightsPozyomka_10.safetensors,SD1_5\\ArknightsSurtr_3In1.safetensors,SD1_5\\ArknightsSuzuran_10.safetensors,SD1_5\\ArknightsSuzuran_20.safetensors,SD1_5\\Arnheid.safetensors,SD1_5\\BaltimoreraceV1.safetensors,SD1_5\\BloodsplashOCv1-000050.safetensors,SD1_5\\BondageOutfitV1.safetensors,SD1_5\\CVV2.safetensors,SD1_5\\Cyberpunk-000010.safetensors,SD1_5\\DanglingSpitroastMS.safetensors,SD1_5\\Dark-000010.safetensors,SD1_5\\DesiAEye-Pop-Art-LORA.safetensors,SD1_5\\EnhancedBacklighting_v10.safetensors,SD1_5\\EnvyBeautyMix12.safetensors,SD1_5\\EnvyBeautyMix43.safetensors,SD1_5\\EnvyBeautyMix51.safetensors,SD1_5\\EnvyCuteMix16.safetensors,SD1_5\\EzoredfoxKemonofriends_Kitakitsune.safetensors,SD1_5\\GIGER.safetensors,SD1_5\\GPix.safetensors,SD1_5\\GRAALGLASS.safetensors,SD1_5\\GodPussy1 v3.safetensors,SD1_5\\Holothewisewolf-08.safetensors,SD1_5\\IlyakuvshinovArtistST1-28.safetensors,SD1_5\\Ishtar-v4-07.safetensors,SD1_5\\JaneRogers_v1.0.safetensors,SD1_5\\KagamineRin_kagamineRin.safetensors,SD1_5\\Kazuhiroi_Hori.safetensors,SD1_5\\Kuai.safetensors,SD1_5\\LECO_enhance_straddling_paizuri_last.safetensors,SD1_5\\LassLetsgo.safetensors,SD1_5\\Lillie-10.safetensors,SD1_5\\LizJordan1.safetensors,SD1_5\\LoraBraless_v11.safetensors,SD1_5\\ML-000010.safetensors,SD1_5\\MilkShower_v1.safetensors,SD1_5\\Monroe_V1.safetensors,SD1_5\\Moxin_10.safetensors,SD1_5\\NorseViking_v10.safetensors,SD1_5\\OekakizukiChinaDressV2.safetensors,SD1_5\\PetShamingV1.safetensors,SD1_5\\PinkJune.safetensors,SD1_5\\Pix.safetensors,SD1_5\\RWBYRubyRoseCharacter_lora30.safetensors,SD1_5\\SaileachArknights_40.safetensors,SD1_5\\Selene-10.safetensors,SD1_5\\SenSenchan25Twitter_v10.safetensors,SD1_5\\ShaunaLoraV2-10.safetensors,SD1_5\\StarryShade.safetensors,SD1_5\\Tressa.safetensors,SD1_5\\TreyniV1.safetensors,SD1_5\\Watercolor-000012.safetensors,SD1_5\\WhiteShade.safetensors,SD1_5\\XBV2.safetensors,SD1_5\\Xiaorenshu_v20.safetensors,SD1_5\\YuraOnoda-V1.safetensors,SD1_5\\[LoHa] Longan竜眼 Style (With multires noise version).safetensors,SD1_5\\aMechaMusumeA_arc.safetensors,SD1_5\\accidental_exposure.safetensors,SD1_5\\add_detail.safetensors,SD1_5\\ahegaoRollingEyes_v1114.safetensors,SD1_5\\ahegao_v1.safetensors,SD1_5\\ahriLeagueOfLegends_ahri45Suggested.safetensors,SD1_5\\akemiHomura_v10.safetensors,SD1_5\\akiraToriyamaStyle_toriyamaAkira3.safetensors,SD1_5\\aliceBetty_v10.safetensors,SD1_5\\aliceInWonderlandBy_v10.safetensors,SD1_5\\aliceNakiriFoodWars_v10.safetensors,SD1_5\\aliceNikke_v30.safetensors,SD1_5\\ancientChineseArchitectural_v10Gugong.safetensors,SD1_5\\animeExtract_basic.safetensors,SD1_5\\animeLineartMangaLike_v30MangaLike.safetensors,SD1_5\\animeTarotCardArtStyleLora_v31.safetensors,SD1_5\\antigravitytitsv01.safetensors,SD1_5\\anya_V01.safetensors,SD1_5\\architecturalDesign_v10.safetensors,SD1_5\\architectureSketchStyle_v10.safetensors,SD1_5\\arknightsBLUEPOISON_v114514.safetensors,SD1_5\\arknightsDUSK_v10.safetensors,SD1_5\\arknightsSAGA_v10.safetensors,SD1_5\\arknightsSkadiThe_v10.safetensors,SD1_5\\arknightsSuzuran_lionv3.safetensors,SD1_5\\arknightsTexasThe_v10.safetensors,SD1_5\\aruru_otsuki(starlight).safetensors,SD1_5\\asunaYuukiSwordArt_v10.safetensors,SD1_5\\blindbox_v1_mix.safetensors,SD1_5\\breastinclassBetter_v13.safetensors,SD1_5\\breastsOnTray_v20.safetensors,SD1_5\\bridal_hairstyle-10.safetensors,SD1_5\\bunnysuit.safetensors,SD1_5\\cMechaMusumeC_cV1.safetensors,SD1_5\\catLingerieCatCutout_v10.safetensors,SD1_5\\catLingerie_v10.safetensors,SD1_5\\char-danzaburoudanuki.safetensors,SD1_5\\character_pokemon_dawn_v6.safetensors,SD1_5\\character_pokemon_hilda_v3.safetensors,SD1_5\\character_pokemon_lillie_v5.safetensors,SD1_5\\character_pokemon_may_v6.safetensors,SD1_5\\character_pokemon_serena_v3.safetensors,SD1_5\\clonionStyleLora_v20.safetensors,SD1_5\\colored_buzzcut_hairstyle-10.safetensors,SD1_5\\concept-slimegirls.safetensors,SD1_5\\conceptCowgirl_v10.safetensors,SD1_5\\counterfeitLora300_counterfeitLora300.safetensors,SD1_5\\cute.safetensors,SD1_5\\cuteGirlMix4_v10.safetensors,SD1_5\\cuteJointsDollsLora_2.safetensors,SD1_5\\cyberpunk_edgerunners_offset.safetensors,SD1_5\\czerosJoiBladerunnerPlayedBy_v1.safetensors,SD1_5\\daisya.safetensors,SD1_5\\darkMagicianGirlLora_1.safetensors,SD1_5\\diffusiondesign_DaftPunk_V1-08.safetensors,SD1_5\\diffusiondesign_Takahashi_LoRA_v1-08.safetensors,SD1_5\\dionaGenshinImpact_v10.safetensors,SD1_5\\doggystyleFromSide_dsv02.safetensors,SD1_5\\doggystyleSideView_ekunesidedoggstyle.safetensors,SD1_5\\doggystyle_lora32V1.safetensors,SD1_5\\downblouseForBoobs_v1.safetensors,SD1_5\\eastasianDoll_v40.safetensors,SD1_5\\elegantHanfuRuqun_v10.safetensors,SD1_5\\emilyBloom_v10.safetensors,SD1_5\\emperorpenguin-kemonofriends-richy-v1.safetensors,SD1_5\\emptyEyesLoraUtsurome_v30.safetensors,SD1_5\\epiNoiseoffset_v2.safetensors,SD1_5\\fainaBona_v10.safetensors,SD1_5\\fairFacedConcrete_v10.safetensors,SD1_5\\faruzanGenshinImpact_v10.safetensors,SD1_5\\fashionGirl_v20SmallFileSize.safetensors,SD1_5\\fashionGirl_v36.safetensors,SD1_5\\femaleNobleClassHanbok_v10.safetensors,SD1_5\\flannery-v2-epoch-000008.safetensors,SD1_5\\frd.safetensors,SD1_5\\gachaSplashLORA_gachaSplashFantasy20.safetensors,SD1_5\\gachaSplashLORA_gachaSplashFarShot.safetensors,SD1_5\\gachaSplashLORA_gachaSplashMidShot.safetensors,SD1_5\\gachaSplashLORA_gachaSplashWideShot.safetensors,SD1_5\\ganyuGenshinImpact_v10.safetensors,SD1_5\\glasses-2.safetensors,SD1_5\\gundamRX78_v2.safetensors,SD1_5\\gyokai.safetensors,SD1_5\\hanfuMingDynasty_hanfumingDynastyV10.safetensors,SD1_5\\hanfu_v30Ming.safetensors,SD1_5\\hestiaDanmachiLora_v10.safetensors,SD1_5\\hifuPersonalLora_v10.safetensors,SD1_5\\hipoly3DModelLora_v10.safetensors,SD1_5\\holo-10.safetensors,SD1_5\\holo_locon_v1a.safetensors,SD1_5\\horseCock_v2.safetensors,SD1_5\\huTaoGenshinImpact_v10.safetensors,SD1_5\\hugAndSuckConcept_v1.safetensors,SD1_5\\hugeAssAndBoobs_v1.safetensors,SD1_5\\iesk-05.safetensors,SD1_5\\inniesBetterVaginas_v11.safetensors,SD1_5\\instantCumshot_v1.safetensors,SD1_5\\japaneseDollLikeness_v10.safetensors,SD1_5\\jeanneDarcAlterFate_v10.safetensors,SD1_5\\jeanneDarcFate_v10.safetensors,SD1_5\\jeffMilton_v10.safetensors,SD1_5\\jinxLeagueOfLegends_v10.safetensors,SD1_5\\jrEastE235SeriesTrain_ver5.safetensors,SD1_5\\kamisatoAyakaGenshin_v10.safetensors,SD1_5\\kanameMadoka_v10.safetensors,SD1_5\\katarinaLeagueOf_v1.safetensors,SD1_5\\katy_(pokemon)_v1.safetensors,SD1_5\\keqingGenshinImpact3in1_v10.safetensors,SD1_5\\keqingGenshinImpact_v10.safetensors,SD1_5\\kiyokoShimizuHaikyuu_v10.safetensors,SD1_5\\koreanDollLikeness.safetensors,SD1_5\\koreanDollLikeness_v10.safetensors,SD1_5\\lactationConv2D2.5e-5_BF16.safetensors,SD1_5\\lactation_v10.safetensors,SD1_5\\last-000030.safetensors,SD1_5\\liangzi_younger.safetensors,SD1_5\\linebaby.safetensors,SD1_5\\linkle_v1.safetensors,SD1_5\\liyueGenshinImpact_v10.safetensors,SD1_5\\lora-hanfugirl-v1-5.safetensors,SD1_5\\lora-hanfugirl-v1.safetensors,SD1_5\\lora_Spicytail_Holo.safetensors,SD1_5\\lora_bondage.safetensors,SD1_5\\lottalewdsLargeMecha_v1.safetensors,SD1_5\\lottalewdsMechanical_v1.safetensors,SD1_5\\lucyCyberpunk_35Epochs.safetensors,SD1_5\\lunasUekuraEkuStyle_uekakuEkuStyleLora.safetensors,SD1_5\\lycorisRecoilCafe_v10.safetensors,SD1_5\\lycorisRecoilSchool_v10.safetensors,SD1_5\\lycorisRecoilWalnut_v10.safetensors,SD1_5\\makimaChainsawMan_makimaChainsawMan.safetensors,SD1_5\\makimaChainsawMan_offset.safetensors,SD1_5\\makimaEyesInpaint_csmakima.safetensors,SD1_5\\manaStyleLORA9mb_v1.safetensors,SD1_5\\marnie_v1.safetensors,SD1_5\\mechaGirlsAndKarukans_karukanV1.safetensors,SD1_5\\mechaQuadrupedMechas_mechaQuadrupedMechas.safetensors,SD1_5\\mecha_.safetensors,SD1_5\\meinaunreal_v41.safetensors,SD1_5\\mejiroDoberUmamusume_v10.safetensors,SD1_5\\milkingMachine_v11.safetensors,SD1_5\\minatoAquaMaidVer_v1.safetensors,SD1_5\\minimalist_interior.safetensors,SD1_5\\mission_complete_v011.safetensors,SD1_5\\mochidukikei.safetensors,SD1_5\\modernBuildingsStyle_v10.safetensors,SD1_5\\monaGenshinImpact_v2.safetensors,SD1_5\\murkysCheekBulge_1.safetensors,SD1_5\\mxf_dvarchmultiprompt.safetensors,SD1_5\\my_ServalKemonoFriends_v1.safetensors,SD1_5\\narwhal_(kemono_friends)_v2.1.safetensors,SD1_5\\neeko_.safetensors,SD1_5\\negligee_v10.safetensors,SD1_5\\neoPolitanRWBYLora_v1.safetensors,SD1_5\\niaXenobladeChronicles4_v10.safetensors,SD1_5\\nijiMecha.safetensors,SD1_5\\nijiStyle.safetensors,SD1_5\\noelleGenshinImpact_v10.safetensors,SD1_5\\noraValkyrieRWBY_v10.safetensors,SD1_5\\oyamaMahiro_oyamaMahiro2.safetensors,SD1_5\\paimonGenshinImpact_v10.safetensors,SD1_5\\palina-nvwls-v1-final.safetensors,SD1_5\\pantyPullPantyDrop_pantypullPantydropV1.safetensors,SD1_5\\paruko-20.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixLoraVersion.safetensors,SD1_5\\pastelVector_v10.safetensors,SD1_5\\pastelmixInspiredV5_v5.safetensors,SD1_5\\pearl_thong.safetensors,SD1_5\\pennyPolendinaRWBY_pennyPolendinaV1.safetensors,SD1_5\\perky_breasts1.safetensors,SD1_5\\personaCatherineSoejima_1.safetensors,SD1_5\\plastiq_10.safetensors,SD1_5\\povBreastGrab_v2.safetensors,SD1_5\\punishingGreyRaven_luna.safetensors,SD1_5\\pyrrha nikos.safetensors,SD1_5\\raidenShogunLora_raidenShogun.safetensors,SD1_5\\raidenShogunRealistic_raidenshogun.safetensors,SD1_5\\realisticVaginasGod_sdVSGp1S.safetensors,SD1_5\\redoOfPovbjer_v2.safetensors,SD1_5\\rias_gremory_v2.safetensors,SD1_5\\ridingDildoSexActLora_v10.safetensors,SD1_5\\riseKujikawaPersona4_v10.safetensors,SD1_5\\rosa_(pokemon)_v10.safetensors,SD1_5\\sabrinaYoung_v10.safetensors,SD1_5\\sangonomiyaKokomi_v10.safetensors,SD1_5\\sayuGenshinImpact_v10.safetensors,SD1_5\\seeThroughSilhouette_v11.safetensors,SD1_5\\serena_v1.safetensors,SD1_5\\sexy jk.safetensors,SD1_5\\shawni_v10.safetensors,SD1_5\\shinjoAkaneSSSS_v1.safetensors,SD1_5\\shirtTugPoseLORA_shirtTug.safetensors,SD1_5\\shun.safetensors,SD1_5\\skirtliftTheAstonishing_skirtliftv1.safetensors,SD1_5\\slimes_realistic-1.safetensors,SD1_5\\slitPupilsInpaint_slitPupils.safetensors,SD1_5\\space_buns_hairstyle.safetensors,SD1_5\\specimenGirl_10.safetensors,SD1_5\\ssssGRIDMANShinjou_saV1.safetensors,SD1_5\\ssssGRIDMANTakarada_trV1.safetensors,SD1_5\\swholo.safetensors,SD1_5\\swimmerOra-08.safetensors,SD1_5\\tableSex_v10.safetensors,SD1_5\\takaradaRikkaSSSS_v10.safetensors,SD1_5\\teammagmagrunt-nvwls-v1-final.safetensors,SD1_5\\tendouAlice_v1.safetensors,SD1_5\\tentacle-pit-000008.safetensors,SD1_5\\theovercomer8sContrastFix_sd15.safetensors,SD1_5\\theovercomer8sContrastFix_sd21768.safetensors,SD1_5\\thickline_fp16.safetensors,SD1_5\\tifa_v2.3.safetensors,SD1_5\\tohsakaRinFate_v10.safetensors,SD1_5\\tonyTakaStyleLora_1.safetensors,SD1_5\\trueseifuku_proto.safetensors,SD1_5\\ukiyoE_ukiyoE.pt,SD1_5\\undressing_panties_v0.1.safetensors,SD1_5\\valerie_mache.safetensors,SD1_5\\venus_bikini.safetensors,SD1_5\\vwb33tl3.safetensors,SD1_5\\vwk0mb1.safetensors,SD1_5\\weissSchneeRWBY_weissSchneeV10.safetensors,SD1_5\\xRayGlasses_v00.safetensors,SD1_5\\xayahFromLeagueOf_xayahV1.safetensors,SD1_5\\xinyanGenshinImpact_v10.safetensors,SD1_5\\xsarchitectural_11fantasyArchitecture.safetensors,SD1_5\\xsarchitectural_20manualbuildingmodel.safetensors,SD1_5\\xsarchitectural_22mangastyle.safetensors,SD1_5\\xsarchitectural_9scienceFiction.safetensors,SD1_5\\yangXiaoLong_v1.safetensors,SD1_5\\zerotwo_offset.safetensors,SD1_5\\寺田_融合.safetensors,SD1_5\\巫恋(全身shamare头shamarehead).safetensors,SDXL\\0.9\\PlagueDoctorXL-lora.safetensors,SDXL\\0.9\\fcAnimeXL-lora.safetensors,SDXL\\0.9\\fcBeautyXL.safetensors,SDXL\\0.9\\fcPawgfC-XL.safetensors,SDXL\\0.9\\fcStyledXL.safetensors,SDXL\\0.9\\futuristicScapeXL.safetensors,SDXL\\0.9\\ilya_kuvshinov-bf16-16-wdxl-000006.safetensors,SDXL\\AtomicSocietyXL-lora.safetensors,SDXL\\Billie_lora_sdxl_v2.safetensors,SDXL\\BlackSunXL-lora.safetensors,SDXL\\BoutXOval_SDXL_dim32-000005.safetensors,SDXL\\Bowser.safetensors,SDXL\\BurumaShortsXL.safetensors,SDXL\\E235l_SDXL_V1.safetensors,SDXL\\Empire_SDXL_OnSite.safetensors,SDXL\\EnokaevaXL2.safetensors,SDXL\\FGOKAMAV1.safetensors,SDXL\\Gakkou_SDXL_V1.safetensors,SDXL\\GarterbeltXL.safetensors,SDXL\\Haute_CoutureXL.safetensors,SDXL\\JasmineBWXLDoguMini.safetensors,SDXL\\JustCum.safetensors,SDXL\\Neon Punk-V1.safetensors,SDXL\\PAseer-阿凡达纳美人V2.safetensors,SDXL\\PostApocalypticXL_v2.safetensors,SDXL\\SDXLHighDetail_v5-000004.safetensors,SDXL\\SDXL_holloAI_v1.0.safetensors,SDXL\\UnderboobXL.safetensors,SDXL\\WTS - WhatTheSuck - v1.safetensors,SDXL\\aogami_v23.safetensors,SDXL\\asphalt-SDXL-m.safetensors,SDXL\\bl4ckl1ghtxl.safetensors,SDXL\\cockteaseLoRASDXL.safetensors,SDXL\\cyberui_sdxl.safetensors,SDXL\\cyborg_style_xl-alpha.safetensors,SDXL\\dalcefo_XL-villacotta.safetensors,SDXL\\edgApronXL.safetensors,SDXL\\edgFuturisticXL.safetensors,SDXL\\edgRenaissanceXL.safetensors,SDXL\\edgWalkureXL.safetensors,SDXL\\edgleotardXL1.safetensors,SDXL\\faces_v1.safetensors,SDXL\\fajyobore-000191.safetensors,SDXL\\first_nsfw.safetensors,SDXL\\greg_rutkowski_xl_2.safetensors,SDXL\\jenna_lora_sdxl_v2-000009.safetensors,SDXL\\laserXL.safetensors,SDXL\\last-000005.safetensors,SDXL\\loha_ghibli-gh_artstyle-0.8_weight-by_AI_Characters.safetensors,SDXL\\lwmirXL-V1.0.safetensors,SDXL\\magical_vibrance_XL.safetensors,SDXL\\megumin.safetensors,SDXL\\moebzxl.safetensors,SDXL\\neg4all_bdsqlsz_xl_V6.safetensors,SDXL\\nurlens_SDXL_V0.1.safetensors,SDXL\\oil painting.safetensors,SDXL\\picbookXLloraV1.safetensors,SDXL\\pixel-art-xl.safetensors,SDXL\\plowcam_doggystyle.safetensors,SDXL\\sd_xl_offset_example-lora_1.0.safetensors,SDXL\\sdxl-1.0-小舞.safetensors,SDXL\\sdxl_loha_miniature2_v2-000080.safetensors,SDXL\\sdxl_photorealistic_slider_v1-0.safetensors,SDXL\\sdxl_power_v4-1000.safetensors,SDXL\\sketch_last.safetensors,SDXL\\sl_lye.safetensors,SDXL\\sl_nana.safetensors,SDXL\\swhuazi_v1.safetensors,SDXL\\wegg.safetensors",
+          "link": 114,
+          "widget": {
+            "name": "lora_name",
+            "config": [
+              [
+                "None",
+                "AM\\AM002_Lada_D.pt",
+                "AM\\AM003_Elina_A.pt",
+                "AM\\AM008_Linnda.pt",
+                "AM\\AM009_Camomile_v2.pt",
+                "AM\\AM010_Iriska.pt",
+                "AM\\AM019_Carolina_Sampaio.pt",
+                "AM\\AM020_Francesca_Rose.pt",
+                "AM\\AM023_Valencia.pt",
+                "AM\\AM034_Margarita.pt",
+                "AM\\AM045_Shayla_v2.pt",
+                "AM\\AM046_Amily.pt",
+                "AM\\AM055_Junia.pt",
+                "AM\\AM058_Kate.pt",
+                "AM\\AM066_Agness.pt",
+                "AM\\AM109_Georgia.pt",
+                "AM\\AM136_Petra_E.pt",
+                "AM\\AM171_Zanna.pt",
+                "AM\\AM186_Irisha.pt",
+                "AM\\AM190_Brigitte.pt",
+                "AM\\AM192_Berka.pt",
+                "AM\\AM207_Kay_J.pt",
+                "AM\\AM209_Chloe_Blue.pt",
+                "AM\\AM224_Lika_Star.pt",
+                "SD1_5\\2dcharacter.safetensors",
+                "SD1_5\\3DMM_V11.safetensors",
+                "SD1_5\\AbigailSwimsuitV3[abigailswimsuit,swimsuit,bonnet]-000006.safetensors",
+                "SD1_5\\AnyaForger_v10.safetensors",
+                "SD1_5\\Architectural_.safetensors",
+                "SD1_5\\ArknightsDusk_10.safetensors",
+                "SD1_5\\ArknightsNian_20.safetensors",
+                "SD1_5\\ArknightsPozyomka_10.safetensors",
+                "SD1_5\\ArknightsSurtr_3In1.safetensors",
+                "SD1_5\\ArknightsSuzuran_10.safetensors",
+                "SD1_5\\ArknightsSuzuran_20.safetensors",
+                "SD1_5\\Arnheid.safetensors",
+                "SD1_5\\BaltimoreraceV1.safetensors",
+                "SD1_5\\BloodsplashOCv1-000050.safetensors",
+                "SD1_5\\BondageOutfitV1.safetensors",
+                "SD1_5\\CVV2.safetensors",
+                "SD1_5\\Cyberpunk-000010.safetensors",
+                "SD1_5\\DanglingSpitroastMS.safetensors",
+                "SD1_5\\Dark-000010.safetensors",
+                "SD1_5\\DesiAEye-Pop-Art-LORA.safetensors",
+                "SD1_5\\EnhancedBacklighting_v10.safetensors",
+                "SD1_5\\EnvyBeautyMix12.safetensors",
+                "SD1_5\\EnvyBeautyMix43.safetensors",
+                "SD1_5\\EnvyBeautyMix51.safetensors",
+                "SD1_5\\EnvyCuteMix16.safetensors",
+                "SD1_5\\EzoredfoxKemonofriends_Kitakitsune.safetensors",
+                "SD1_5\\GIGER.safetensors",
+                "SD1_5\\GPix.safetensors",
+                "SD1_5\\GRAALGLASS.safetensors",
+                "SD1_5\\GodPussy1 v3.safetensors",
+                "SD1_5\\Holothewisewolf-08.safetensors",
+                "SD1_5\\IlyakuvshinovArtistST1-28.safetensors",
+                "SD1_5\\Ishtar-v4-07.safetensors",
+                "SD1_5\\JaneRogers_v1.0.safetensors",
+                "SD1_5\\KagamineRin_kagamineRin.safetensors",
+                "SD1_5\\Kazuhiroi_Hori.safetensors",
+                "SD1_5\\Kuai.safetensors",
+                "SD1_5\\LECO_enhance_straddling_paizuri_last.safetensors",
+                "SD1_5\\LassLetsgo.safetensors",
+                "SD1_5\\Lillie-10.safetensors",
+                "SD1_5\\LizJordan1.safetensors",
+                "SD1_5\\LoraBraless_v11.safetensors",
+                "SD1_5\\ML-000010.safetensors",
+                "SD1_5\\MilkShower_v1.safetensors",
+                "SD1_5\\Monroe_V1.safetensors",
+                "SD1_5\\Moxin_10.safetensors",
+                "SD1_5\\NorseViking_v10.safetensors",
+                "SD1_5\\OekakizukiChinaDressV2.safetensors",
+                "SD1_5\\PetShamingV1.safetensors",
+                "SD1_5\\PinkJune.safetensors",
+                "SD1_5\\Pix.safetensors",
+                "SD1_5\\RWBYRubyRoseCharacter_lora30.safetensors",
+                "SD1_5\\SaileachArknights_40.safetensors",
+                "SD1_5\\Selene-10.safetensors",
+                "SD1_5\\SenSenchan25Twitter_v10.safetensors",
+                "SD1_5\\ShaunaLoraV2-10.safetensors",
+                "SD1_5\\StarryShade.safetensors",
+                "SD1_5\\Tressa.safetensors",
+                "SD1_5\\TreyniV1.safetensors",
+                "SD1_5\\Watercolor-000012.safetensors",
+                "SD1_5\\WhiteShade.safetensors",
+                "SD1_5\\XBV2.safetensors",
+                "SD1_5\\Xiaorenshu_v20.safetensors",
+                "SD1_5\\YuraOnoda-V1.safetensors",
+                "SD1_5\\[LoHa] Longan竜眼 Style (With multires noise version).safetensors",
+                "SD1_5\\aMechaMusumeA_arc.safetensors",
+                "SD1_5\\accidental_exposure.safetensors",
+                "SD1_5\\add_detail.safetensors",
+                "SD1_5\\ahegaoRollingEyes_v1114.safetensors",
+                "SD1_5\\ahegao_v1.safetensors",
+                "SD1_5\\ahriLeagueOfLegends_ahri45Suggested.safetensors",
+                "SD1_5\\akemiHomura_v10.safetensors",
+                "SD1_5\\akiraToriyamaStyle_toriyamaAkira3.safetensors",
+                "SD1_5\\aliceBetty_v10.safetensors",
+                "SD1_5\\aliceInWonderlandBy_v10.safetensors",
+                "SD1_5\\aliceNakiriFoodWars_v10.safetensors",
+                "SD1_5\\aliceNikke_v30.safetensors",
+                "SD1_5\\ancientChineseArchitectural_v10Gugong.safetensors",
+                "SD1_5\\animeExtract_basic.safetensors",
+                "SD1_5\\animeLineartMangaLike_v30MangaLike.safetensors",
+                "SD1_5\\animeTarotCardArtStyleLora_v31.safetensors",
+                "SD1_5\\antigravitytitsv01.safetensors",
+                "SD1_5\\anya_V01.safetensors",
+                "SD1_5\\architecturalDesign_v10.safetensors",
+                "SD1_5\\architectureSketchStyle_v10.safetensors",
+                "SD1_5\\arknightsBLUEPOISON_v114514.safetensors",
+                "SD1_5\\arknightsDUSK_v10.safetensors",
+                "SD1_5\\arknightsSAGA_v10.safetensors",
+                "SD1_5\\arknightsSkadiThe_v10.safetensors",
+                "SD1_5\\arknightsSuzuran_lionv3.safetensors",
+                "SD1_5\\arknightsTexasThe_v10.safetensors",
+                "SD1_5\\aruru_otsuki(starlight).safetensors",
+                "SD1_5\\asunaYuukiSwordArt_v10.safetensors",
+                "SD1_5\\blindbox_v1_mix.safetensors",
+                "SD1_5\\breastinclassBetter_v13.safetensors",
+                "SD1_5\\breastsOnTray_v20.safetensors",
+                "SD1_5\\bridal_hairstyle-10.safetensors",
+                "SD1_5\\bunnysuit.safetensors",
+                "SD1_5\\cMechaMusumeC_cV1.safetensors",
+                "SD1_5\\catLingerieCatCutout_v10.safetensors",
+                "SD1_5\\catLingerie_v10.safetensors",
+                "SD1_5\\char-danzaburoudanuki.safetensors",
+                "SD1_5\\character_pokemon_dawn_v6.safetensors",
+                "SD1_5\\character_pokemon_hilda_v3.safetensors",
+                "SD1_5\\character_pokemon_lillie_v5.safetensors",
+                "SD1_5\\character_pokemon_may_v6.safetensors",
+                "SD1_5\\character_pokemon_serena_v3.safetensors",
+                "SD1_5\\clonionStyleLora_v20.safetensors",
+                "SD1_5\\colored_buzzcut_hairstyle-10.safetensors",
+                "SD1_5\\concept-slimegirls.safetensors",
+                "SD1_5\\conceptCowgirl_v10.safetensors",
+                "SD1_5\\counterfeitLora300_counterfeitLora300.safetensors",
+                "SD1_5\\cute.safetensors",
+                "SD1_5\\cuteGirlMix4_v10.safetensors",
+                "SD1_5\\cuteJointsDollsLora_2.safetensors",
+                "SD1_5\\cyberpunk_edgerunners_offset.safetensors",
+                "SD1_5\\czerosJoiBladerunnerPlayedBy_v1.safetensors",
+                "SD1_5\\daisya.safetensors",
+                "SD1_5\\darkMagicianGirlLora_1.safetensors",
+                "SD1_5\\diffusiondesign_DaftPunk_V1-08.safetensors",
+                "SD1_5\\diffusiondesign_Takahashi_LoRA_v1-08.safetensors",
+                "SD1_5\\dionaGenshinImpact_v10.safetensors",
+                "SD1_5\\doggystyleFromSide_dsv02.safetensors",
+                "SD1_5\\doggystyleSideView_ekunesidedoggstyle.safetensors",
+                "SD1_5\\doggystyle_lora32V1.safetensors",
+                "SD1_5\\downblouseForBoobs_v1.safetensors",
+                "SD1_5\\eastasianDoll_v40.safetensors",
+                "SD1_5\\elegantHanfuRuqun_v10.safetensors",
+                "SD1_5\\emilyBloom_v10.safetensors",
+                "SD1_5\\emperorpenguin-kemonofriends-richy-v1.safetensors",
+                "SD1_5\\emptyEyesLoraUtsurome_v30.safetensors",
+                "SD1_5\\epiNoiseoffset_v2.safetensors",
+                "SD1_5\\fainaBona_v10.safetensors",
+                "SD1_5\\fairFacedConcrete_v10.safetensors",
+                "SD1_5\\faruzanGenshinImpact_v10.safetensors",
+                "SD1_5\\fashionGirl_v20SmallFileSize.safetensors",
+                "SD1_5\\fashionGirl_v36.safetensors",
+                "SD1_5\\femaleNobleClassHanbok_v10.safetensors",
+                "SD1_5\\flannery-v2-epoch-000008.safetensors",
+                "SD1_5\\frd.safetensors",
+                "SD1_5\\gachaSplashLORA_gachaSplashFantasy20.safetensors",
+                "SD1_5\\gachaSplashLORA_gachaSplashFarShot.safetensors",
+                "SD1_5\\gachaSplashLORA_gachaSplashMidShot.safetensors",
+                "SD1_5\\gachaSplashLORA_gachaSplashWideShot.safetensors",
+                "SD1_5\\ganyuGenshinImpact_v10.safetensors",
+                "SD1_5\\glasses-2.safetensors",
+                "SD1_5\\gundamRX78_v2.safetensors",
+                "SD1_5\\gyokai.safetensors",
+                "SD1_5\\hanfuMingDynasty_hanfumingDynastyV10.safetensors",
+                "SD1_5\\hanfu_v30Ming.safetensors",
+                "SD1_5\\hestiaDanmachiLora_v10.safetensors",
+                "SD1_5\\hifuPersonalLora_v10.safetensors",
+                "SD1_5\\hipoly3DModelLora_v10.safetensors",
+                "SD1_5\\holo-10.safetensors",
+                "SD1_5\\holo_locon_v1a.safetensors",
+                "SD1_5\\horseCock_v2.safetensors",
+                "SD1_5\\huTaoGenshinImpact_v10.safetensors",
+                "SD1_5\\hugAndSuckConcept_v1.safetensors",
+                "SD1_5\\hugeAssAndBoobs_v1.safetensors",
+                "SD1_5\\iesk-05.safetensors",
+                "SD1_5\\inniesBetterVaginas_v11.safetensors",
+                "SD1_5\\instantCumshot_v1.safetensors",
+                "SD1_5\\japaneseDollLikeness_v10.safetensors",
+                "SD1_5\\jeanneDarcAlterFate_v10.safetensors",
+                "SD1_5\\jeanneDarcFate_v10.safetensors",
+                "SD1_5\\jeffMilton_v10.safetensors",
+                "SD1_5\\jinxLeagueOfLegends_v10.safetensors",
+                "SD1_5\\jrEastE235SeriesTrain_ver5.safetensors",
+                "SD1_5\\kamisatoAyakaGenshin_v10.safetensors",
+                "SD1_5\\kanameMadoka_v10.safetensors",
+                "SD1_5\\katarinaLeagueOf_v1.safetensors",
+                "SD1_5\\katy_(pokemon)_v1.safetensors",
+                "SD1_5\\keqingGenshinImpact3in1_v10.safetensors",
+                "SD1_5\\keqingGenshinImpact_v10.safetensors",
+                "SD1_5\\kiyokoShimizuHaikyuu_v10.safetensors",
+                "SD1_5\\koreanDollLikeness.safetensors",
+                "SD1_5\\koreanDollLikeness_v10.safetensors",
+                "SD1_5\\lactationConv2D2.5e-5_BF16.safetensors",
+                "SD1_5\\lactation_v10.safetensors",
+                "SD1_5\\last-000030.safetensors",
+                "SD1_5\\liangzi_younger.safetensors",
+                "SD1_5\\linebaby.safetensors",
+                "SD1_5\\linkle_v1.safetensors",
+                "SD1_5\\liyueGenshinImpact_v10.safetensors",
+                "SD1_5\\lora-hanfugirl-v1-5.safetensors",
+                "SD1_5\\lora-hanfugirl-v1.safetensors",
+                "SD1_5\\lora_Spicytail_Holo.safetensors",
+                "SD1_5\\lora_bondage.safetensors",
+                "SD1_5\\lottalewdsLargeMecha_v1.safetensors",
+                "SD1_5\\lottalewdsMechanical_v1.safetensors",
+                "SD1_5\\lucyCyberpunk_35Epochs.safetensors",
+                "SD1_5\\lunasUekuraEkuStyle_uekakuEkuStyleLora.safetensors",
+                "SD1_5\\lycorisRecoilCafe_v10.safetensors",
+                "SD1_5\\lycorisRecoilSchool_v10.safetensors",
+                "SD1_5\\lycorisRecoilWalnut_v10.safetensors",
+                "SD1_5\\makimaChainsawMan_makimaChainsawMan.safetensors",
+                "SD1_5\\makimaChainsawMan_offset.safetensors",
+                "SD1_5\\makimaEyesInpaint_csmakima.safetensors",
+                "SD1_5\\manaStyleLORA9mb_v1.safetensors",
+                "SD1_5\\marnie_v1.safetensors",
+                "SD1_5\\mechaGirlsAndKarukans_karukanV1.safetensors",
+                "SD1_5\\mechaQuadrupedMechas_mechaQuadrupedMechas.safetensors",
+                "SD1_5\\mecha_.safetensors",
+                "SD1_5\\meinaunreal_v41.safetensors",
+                "SD1_5\\mejiroDoberUmamusume_v10.safetensors",
+                "SD1_5\\milkingMachine_v11.safetensors",
+                "SD1_5\\minatoAquaMaidVer_v1.safetensors",
+                "SD1_5\\minimalist_interior.safetensors",
+                "SD1_5\\mission_complete_v011.safetensors",
+                "SD1_5\\mochidukikei.safetensors",
+                "SD1_5\\modernBuildingsStyle_v10.safetensors",
+                "SD1_5\\monaGenshinImpact_v2.safetensors",
+                "SD1_5\\murkysCheekBulge_1.safetensors",
+                "SD1_5\\mxf_dvarchmultiprompt.safetensors",
+                "SD1_5\\my_ServalKemonoFriends_v1.safetensors",
+                "SD1_5\\narwhal_(kemono_friends)_v2.1.safetensors",
+                "SD1_5\\neeko_.safetensors",
+                "SD1_5\\negligee_v10.safetensors",
+                "SD1_5\\neoPolitanRWBYLora_v1.safetensors",
+                "SD1_5\\niaXenobladeChronicles4_v10.safetensors",
+                "SD1_5\\nijiMecha.safetensors",
+                "SD1_5\\nijiStyle.safetensors",
+                "SD1_5\\noelleGenshinImpact_v10.safetensors",
+                "SD1_5\\noraValkyrieRWBY_v10.safetensors",
+                "SD1_5\\oyamaMahiro_oyamaMahiro2.safetensors",
+                "SD1_5\\paimonGenshinImpact_v10.safetensors",
+                "SD1_5\\palina-nvwls-v1-final.safetensors",
+                "SD1_5\\pantyPullPantyDrop_pantypullPantydropV1.safetensors",
+                "SD1_5\\paruko-20.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixLoraVersion.safetensors",
+                "SD1_5\\pastelVector_v10.safetensors",
+                "SD1_5\\pastelmixInspiredV5_v5.safetensors",
+                "SD1_5\\pearl_thong.safetensors",
+                "SD1_5\\pennyPolendinaRWBY_pennyPolendinaV1.safetensors",
+                "SD1_5\\perky_breasts1.safetensors",
+                "SD1_5\\personaCatherineSoejima_1.safetensors",
+                "SD1_5\\plastiq_10.safetensors",
+                "SD1_5\\povBreastGrab_v2.safetensors",
+                "SD1_5\\punishingGreyRaven_luna.safetensors",
+                "SD1_5\\pyrrha nikos.safetensors",
+                "SD1_5\\raidenShogunLora_raidenShogun.safetensors",
+                "SD1_5\\raidenShogunRealistic_raidenshogun.safetensors",
+                "SD1_5\\realisticVaginasGod_sdVSGp1S.safetensors",
+                "SD1_5\\redoOfPovbjer_v2.safetensors",
+                "SD1_5\\rias_gremory_v2.safetensors",
+                "SD1_5\\ridingDildoSexActLora_v10.safetensors",
+                "SD1_5\\riseKujikawaPersona4_v10.safetensors",
+                "SD1_5\\rosa_(pokemon)_v10.safetensors",
+                "SD1_5\\sabrinaYoung_v10.safetensors",
+                "SD1_5\\sangonomiyaKokomi_v10.safetensors",
+                "SD1_5\\sayuGenshinImpact_v10.safetensors",
+                "SD1_5\\seeThroughSilhouette_v11.safetensors",
+                "SD1_5\\serena_v1.safetensors",
+                "SD1_5\\sexy jk.safetensors",
+                "SD1_5\\shawni_v10.safetensors",
+                "SD1_5\\shinjoAkaneSSSS_v1.safetensors",
+                "SD1_5\\shirtTugPoseLORA_shirtTug.safetensors",
+                "SD1_5\\shun.safetensors",
+                "SD1_5\\skirtliftTheAstonishing_skirtliftv1.safetensors",
+                "SD1_5\\slimes_realistic-1.safetensors",
+                "SD1_5\\slitPupilsInpaint_slitPupils.safetensors",
+                "SD1_5\\space_buns_hairstyle.safetensors",
+                "SD1_5\\specimenGirl_10.safetensors",
+                "SD1_5\\ssssGRIDMANShinjou_saV1.safetensors",
+                "SD1_5\\ssssGRIDMANTakarada_trV1.safetensors",
+                "SD1_5\\swholo.safetensors",
+                "SD1_5\\swimmerOra-08.safetensors",
+                "SD1_5\\tableSex_v10.safetensors",
+                "SD1_5\\takaradaRikkaSSSS_v10.safetensors",
+                "SD1_5\\teammagmagrunt-nvwls-v1-final.safetensors",
+                "SD1_5\\tendouAlice_v1.safetensors",
+                "SD1_5\\tentacle-pit-000008.safetensors",
+                "SD1_5\\theovercomer8sContrastFix_sd15.safetensors",
+                "SD1_5\\theovercomer8sContrastFix_sd21768.safetensors",
+                "SD1_5\\thickline_fp16.safetensors",
+                "SD1_5\\tifa_v2.3.safetensors",
+                "SD1_5\\tohsakaRinFate_v10.safetensors",
+                "SD1_5\\tonyTakaStyleLora_1.safetensors",
+                "SD1_5\\trueseifuku_proto.safetensors",
+                "SD1_5\\ukiyoE_ukiyoE.pt",
+                "SD1_5\\undressing_panties_v0.1.safetensors",
+                "SD1_5\\valerie_mache.safetensors",
+                "SD1_5\\venus_bikini.safetensors",
+                "SD1_5\\vwb33tl3.safetensors",
+                "SD1_5\\vwk0mb1.safetensors",
+                "SD1_5\\weissSchneeRWBY_weissSchneeV10.safetensors",
+                "SD1_5\\xRayGlasses_v00.safetensors",
+                "SD1_5\\xayahFromLeagueOf_xayahV1.safetensors",
+                "SD1_5\\xinyanGenshinImpact_v10.safetensors",
+                "SD1_5\\xsarchitectural_11fantasyArchitecture.safetensors",
+                "SD1_5\\xsarchitectural_20manualbuildingmodel.safetensors",
+                "SD1_5\\xsarchitectural_22mangastyle.safetensors",
+                "SD1_5\\xsarchitectural_9scienceFiction.safetensors",
+                "SD1_5\\yangXiaoLong_v1.safetensors",
+                "SD1_5\\zerotwo_offset.safetensors",
+                "SD1_5\\寺田_融合.safetensors",
+                "SD1_5\\巫恋(全身shamare头shamarehead).safetensors",
+                "SDXL\\0.9\\PlagueDoctorXL-lora.safetensors",
+                "SDXL\\0.9\\fcAnimeXL-lora.safetensors",
+                "SDXL\\0.9\\fcBeautyXL.safetensors",
+                "SDXL\\0.9\\fcPawgfC-XL.safetensors",
+                "SDXL\\0.9\\fcStyledXL.safetensors",
+                "SDXL\\0.9\\futuristicScapeXL.safetensors",
+                "SDXL\\0.9\\ilya_kuvshinov-bf16-16-wdxl-000006.safetensors",
+                "SDXL\\AtomicSocietyXL-lora.safetensors",
+                "SDXL\\Billie_lora_sdxl_v2.safetensors",
+                "SDXL\\BlackSunXL-lora.safetensors",
+                "SDXL\\BoutXOval_SDXL_dim32-000005.safetensors",
+                "SDXL\\Bowser.safetensors",
+                "SDXL\\BurumaShortsXL.safetensors",
+                "SDXL\\E235l_SDXL_V1.safetensors",
+                "SDXL\\Empire_SDXL_OnSite.safetensors",
+                "SDXL\\EnokaevaXL2.safetensors",
+                "SDXL\\FGOKAMAV1.safetensors",
+                "SDXL\\Gakkou_SDXL_V1.safetensors",
+                "SDXL\\GarterbeltXL.safetensors",
+                "SDXL\\Haute_CoutureXL.safetensors",
+                "SDXL\\JasmineBWXLDoguMini.safetensors",
+                "SDXL\\JustCum.safetensors",
+                "SDXL\\Neon Punk-V1.safetensors",
+                "SDXL\\PAseer-阿凡达纳美人V2.safetensors",
+                "SDXL\\PostApocalypticXL_v2.safetensors",
+                "SDXL\\SDXLHighDetail_v5-000004.safetensors",
+                "SDXL\\SDXL_holloAI_v1.0.safetensors",
+                "SDXL\\UnderboobXL.safetensors",
+                "SDXL\\WTS - WhatTheSuck - v1.safetensors",
+                "SDXL\\aogami_v23.safetensors",
+                "SDXL\\asphalt-SDXL-m.safetensors",
+                "SDXL\\bl4ckl1ghtxl.safetensors",
+                "SDXL\\cockteaseLoRASDXL.safetensors",
+                "SDXL\\cyberui_sdxl.safetensors",
+                "SDXL\\cyborg_style_xl-alpha.safetensors",
+                "SDXL\\dalcefo_XL-villacotta.safetensors",
+                "SDXL\\edgApronXL.safetensors",
+                "SDXL\\edgFuturisticXL.safetensors",
+                "SDXL\\edgRenaissanceXL.safetensors",
+                "SDXL\\edgWalkureXL.safetensors",
+                "SDXL\\edgleotardXL1.safetensors",
+                "SDXL\\faces_v1.safetensors",
+                "SDXL\\fajyobore-000191.safetensors",
+                "SDXL\\first_nsfw.safetensors",
+                "SDXL\\greg_rutkowski_xl_2.safetensors",
+                "SDXL\\jenna_lora_sdxl_v2-000009.safetensors",
+                "SDXL\\laserXL.safetensors",
+                "SDXL\\last-000005.safetensors",
+                "SDXL\\loha_ghibli-gh_artstyle-0.8_weight-by_AI_Characters.safetensors",
+                "SDXL\\lwmirXL-V1.0.safetensors",
+                "SDXL\\magical_vibrance_XL.safetensors",
+                "SDXL\\megumin.safetensors",
+                "SDXL\\moebzxl.safetensors",
+                "SDXL\\neg4all_bdsqlsz_xl_V6.safetensors",
+                "SDXL\\nurlens_SDXL_V0.1.safetensors",
+                "SDXL\\oil painting.safetensors",
+                "SDXL\\picbookXLloraV1.safetensors",
+                "SDXL\\pixel-art-xl.safetensors",
+                "SDXL\\plowcam_doggystyle.safetensors",
+                "SDXL\\sd_xl_offset_example-lora_1.0.safetensors",
+                "SDXL\\sdxl-1.0-小舞.safetensors",
+                "SDXL\\sdxl_loha_miniature2_v2-000080.safetensors",
+                "SDXL\\sdxl_photorealistic_slider_v1-0.safetensors",
+                "SDXL\\sdxl_power_v4-1000.safetensors",
+                "SDXL\\sketch_last.safetensors",
+                "SDXL\\sl_lye.safetensors",
+                "SDXL\\sl_nana.safetensors",
+                "SDXL\\swhuazi_v1.safetensors",
+                "SDXL\\wegg.safetensors"
+              ]
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            108
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            110,
+            111
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Load LoRA"
+      },
+      "widgets_values": [
+        "On",
+        "None",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 97,
+      "type": "ShowText|pysssss",
+      "pos": [
+        680,
+        1120
+      ],
+      "size": {
+        "0": 310,
+        "1": 80
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 121,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "SD1_5\\arknightsDUSK_v10.safetensors"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "VAEDecode",
+      "pos": [
+        1882.0000003310547,
+        917.9414927460947
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            125
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 93,
+      "type": "CR String To Combo",
+      "pos": [
+        630,
+        510
+      ],
+      "size": {
+        "0": 210,
+        "1": 40
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 120,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "",
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            114,
+            121
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Combo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 47,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        270,
+        920
+      ],
+      "size": {
+        "0": 320,
+        "1": 74
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ckpt_name",
+          "type": "SD1_5\\7th_anime_v2_G.safetensors,SD1_5\\7th_anime_v3_A.safetensors,SD1_5\\7th_anime_v3_B.safetensors,SD1_5\\7th_anime_v3_C.safetensors,SD1_5\\9527_v10.ckpt,SD1_5\\AOM3.safetensors,SD1_5\\AOM3A1.safetensors,SD1_5\\AOM3A2.safetensors,SD1_5\\AOM3A3.safetensors,SD1_5\\AOM3A3_orangemixs.safetensors,SD1_5\\ATitanStrawBerry_fp16.safetensors,SD1_5\\AbyssOrangeMix.safetensors,SD1_5\\AbyssOrangeMix2_hard.safetensors,SD1_5\\AbyssOrangeMix2_nsfw.safetensors,SD1_5\\AbyssOrangeMix2_sfw.safetensors,SD1_5\\AbyssOrangeMix_Night.safetensors,SD1_5\\Abyss_7th_layer.ckpt,SD1_5\\Any-HSceneMix.safetensors,SD1_5\\Anything-V3.0.ckpt,SD1_5\\Basil mix.safetensors,SD1_5\\Basil_mix_fixed.safetensors,SD1_5\\BerryCandy20_v2.fp16.safetensors,SD1_5\\BubblepopAnime_fp32.safetensors,SD1_5\\Bubblepop_fp32.safetensors,SD1_5\\Ccomfyroll_v10.safetensors,SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors,SD1_5\\ComfyrollAnime_v1_fp32_pruned.safetensors,SD1_5\\ComfyrollCutie_v1_fp16.safetensors,SD1_5\\ComfyrollFantasy.safetensors,SD1_5\\ComfyrollReal_v1_fp16.safetensors,SD1_5\\Comfyroll_v1_fp16_pruned.safetensors,SD1_5\\Comfyroll_v1_fp32_pruned.safetensors,SD1_5\\CounterfeitV25_25.safetensors,SD1_5\\Elysium_Anime_V3.safetensors,SD1_5\\HassanBlend1.4-Pruned.ckpt,SD1_5\\HassanBlend1.4.ckpt,SD1_5\\HassanBlend1.4_Safe.safetensors,SD1_5\\Merge_00011_.safetensors,SD1_5\\Nabylon-v1.2-fp16.safetensors,SD1_5\\Nabylon-v1.3-fp16.safetensors,SD1_5\\OldFish_2348V12.safetensors,SD1_5\\ProtoGen_X3.4-pruned-fp16.safetensors,SD1_5\\SE_V1_A.safetensors,SD1_5\\Silicon29-dark.safetensors,SD1_5\\Silicon29.safetensors,SD1_5\\TriPhaze_A.safetensors,SD1_5\\UnstableinkdreamV5-photoreal.safetensors,SD1_5\\UnstableinkdreamV5.safetensors,SD1_5\\X_revA_PW_liberty.safetensors,SD1_5\\YuzuGinger_v1-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v3.5-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v9.5-pruned.safetensors,SD1_5\\YuzuLemonMilk_v1.5-pruned.safetensors,SD1_5\\aToZovyaRPGArtistsTools15_sd15V1.safetensors,SD1_5\\aZovyaPhotoreal_v1.safetensors,SD1_5\\aZovyaPhotoreal_v2.safetensors,SD1_5\\absolutereality_v16.safetensors,SD1_5\\aloeVeraSSimpMaker3K_simpMaker3K1-ema-fp16.safetensors,SD1_5\\analogMadness_analogMadnessV3.safetensors,SD1_5\\analogMadness_v40.safetensors,SD1_5\\anidosmix_A.safetensors,SD1_5\\animefull-final-pruned.ckpt,SD1_5\\anireal_10v.safetensors,SD1_5\\antlersmix_10.safetensors,SD1_5\\anyjuicev32Realistic_anyjuicev32Realistic.safetensors,SD1_5\\anything-v3-fp32-pruned.safetensors,SD1_5\\anything-v4.5-pruned.safetensors,SD1_5\\artErosAerosATribute_aerosNovae.safetensors,SD1_5\\artiusv15_v1.safetensors,SD1_5\\ayonimixAnime_ayonimixAnimeV4.safetensors,SD1_5\\ayonimix_V4VAEBaked.safetensors,SD1_5\\babes_babes11_fp16.safetensors,SD1_5\\balloonmix3.ckpt,SD1_5\\basil mix.ckpt,SD1_5\\bastardAIImpossible_v4Liveaction.safetensors,SD1_5\\bastardAIImpossible_v6Liveaction.safetensors,SD1_5\\berry_mix.ckpt,SD1_5\\bweshmix_a2.safetensors,SD1_5\\camelliamix25D_v10.safetensors,SD1_5\\cetusMix_cetusVersion2.safetensors,SD1_5\\chikmix_V1.safetensors,SD1_5\\chilledReGenericV3_v10.safetensors,SD1_5\\chilloutmix_NiCkpt.ckpt,SD1_5\\chilloutmix_NiPrunedFp32Fix.safetensors,SD1_5\\chinaberry (nofix f222 1.4) part2-fp16.safetensors,SD1_5\\chromav5_.ckpt,SD1_5\\chronos_v10.safetensors,SD1_5\\classicNegative1521_classicNegative768px.safetensors,SD1_5\\classicnegative.safetensors,SD1_5\\cocotifamix_v20This.safetensors,SD1_5\\comfyroll_v10Anime.safetensors,SD1_5\\complexLineart_v1.ckpt,SD1_5\\corneos7thHeavenMix_100.safetensors,SD1_5\\cornflowerStylizedAnime_v9FP32.safetensors,SD1_5\\cutegirlcolorfulmix_v20.safetensors,SD1_5\\cuteyukiTheMostHighlyAcclaimed_kawashow.ckpt,SD1_5\\cuteyukimixAdorable_neochapter.safetensors,SD1_5\\cuteyukimix_X.safetensors,SD1_5\\cyberrealistic_v31.safetensors,SD1_5\\dalcefoPainting_3rd.safetensors,SD1_5\\dalcefoV3Anime_dalcefoV3Anime.safetensors,SD1_5\\darelitesFantasyLeaning_toanimemix.safetensors,SD1_5\\darkSushi25D25D_v20.safetensors,SD1_5\\ddosmix_V2.safetensors,SD1_5\\deliberate_v1.ckpt,SD1_5\\deliberate_v1.safetensors,SD1_5\\deliberate_v11.ckpt,SD1_5\\deliberate_v11.safetensors,SD1_5\\discomixAnime_v1.ckpt,SD1_5\\djzDieselpunkCityV21_0.safetensors,SD1_5\\dosmix_.safetensors,SD1_5\\dreamlikeDiffusion10_10.ckpt,SD1_5\\dreamlikePhotoreal20_dreamlikePhotoreal20.safetensors,SD1_5\\dreamshaper_252Pruned.ckpt,SD1_5\\dreamshaper_252Pruned.safetensors,SD1_5\\dreamshaper_331BakedVae.ckpt,SD1_5\\dreamshaper_331BakedVae.safetensors,SD1_5\\dreamshaper_7.safetensors,SD1_5\\duchaitenStylelikeme_v15Fp16NoEma.safetensors,SD1_5\\duchaitendreamworld_V241.safetensors,SD1_5\\dvarchMultiPrompt_dvarchExterior.safetensors,SD1_5\\elegance_244_fp16.safetensors,SD1_5\\elldrethsRetroMix_v10.safetensors,SD1_5\\elldrethsVividMix_v20VividEr.safetensors,SD1_5\\epicDiffusion_epicDiffusion10.safetensors,SD1_5\\epicDiffusion_epicDiffusion11.safetensors,SD1_5\\epicrealism_newEra.safetensors,SD1_5\\experience_exp65ClipFix.safetensors,SD1_5\\expmixLine_v3.safetensors,SD1_5\\f222.safetensors,SD1_5\\f222_v1.ckpt,SD1_5\\faetastic_.safetensors,SD1_5\\fantasyEroticMales_10.safetensors,SD1_5\\fcanimemixFcAnime_v30.safetensors,SD1_5\\future-diffusion-v1.ckpt,SD1_5\\galaxytimemachinesGTM_v1.safetensors,SD1_5\\genericfemalemix_gefemiV21-inpainting.safetensors,SD1_5\\ghostmix_v12.safetensors,SD1_5\\ghostmix_v20Bakedvae.safetensors,SD1_5\\glow25D_v10.safetensors,SD1_5\\grapefruitHentaiModel_grapefruitv4.safetensors,SD1_5\\guofeng2_v20.ckpt,SD1_5\\hasdx_hasedsdx.safetensors,SD1_5\\hassakuHentaiModel_v11.safetensors,SD1_5\\hassakuHentaiModel_v13.safetensors,SD1_5\\hassanblend1512And_hassanblend1512_fp16.safetensors,SD1_5\\honeyDiffusion_v1.ckpt,SD1_5\\icbinpICantBelieveIts_v8.safetensors,SD1_5\\illuminatiDiffusionV1_v11-unclip-h-fp16.safetensors,SD1_5\\inkpunkDiffusion_v2.ckpt,SD1_5\\isometricDreams_1.safetensors,SD1_5\\jasghPhrasmInky_jasghphrasmV11.safetensors,SD1_5\\jasminiquemix_fruitea.safetensors,SD1_5\\kawaiimixNijiV5Cute_v10.safetensors,SD1_5\\kenshi_01.safetensors,SD1_5\\knollingcase_v1.ckpt,SD1_5\\koreanstyle25D_koreanstyle25DBaked.safetensors,SD1_5\\kotosAbyssproto_v10.safetensors,SD1_5\\lanzzzyAhrender_v10.ckpt,SD1_5\\liberty_main.safetensors,SD1_5\\lyriel_v14.safetensors,SD1_5\\lyriel_v15.safetensors,SD1_5\\majicmixRealistic_v5.safetensors,SD1_5\\makimaChainsawman_beta.ckpt,SD1_5\\mandarine_5.safetensors,SD1_5\\meinahentai_v21.safetensors,SD1_5\\meinamix_meinaV51.safetensors,SD1_5\\meinamix_meinaV8_fp16.safetensors,SD1_5\\meinapastel_V3.safetensors,SD1_5\\meinaunreal_v1Beta.safetensors,SD1_5\\meinaunreal_v41.safetensors,SD1_5\\merongmix_v11.safetensors,SD1_5\\microIsoWorlds_10.ckpt,SD1_5\\mixProV3_v3.safetensors,SD1_5\\mixProV4_v4.safetensors,SD1_5\\mixproyuki77mi_v10.safetensors,SD1_5\\modelshootStyle_modelshoot10.ckpt,SD1_5\\moistmix_v2.safetensors,SD1_5\\momokos_v10.safetensors,SD1_5\\neurogenV11_v11.safetensors,SD1_5\\neverendingDreamNED_bakedVae.safetensors,SD1_5\\noiseOffsetForTrue_v10.safetensors,SD1_5\\nostalgiaClear_nostalgiaClear.safetensors,SD1_5\\nostalgiaMix_nostalgia.safetensors,SD1_5\\novelailatest-pruned.ckpt,SD1_5\\openjourney-v2-unpruned.ckpt,SD1_5\\openjourney-v2.ckpt,SD1_5\\orangechillmix_v70.safetensors,SD1_5\\otakuorangepastelwav_v10.safetensors,SD1_5\\otakupastelwavemix_v10.safetensors,SD1_5\\otakupastelwavemixpr_v10.safetensors,SD1_5\\pastelLinesMix_pastelLinesMix10.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixFull.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.ckpt,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP32.safetensors,SD1_5\\perfectWorld_perfectWorldBakedVAE.safetensors,SD1_5\\perfectWorld_v4Baked.safetensors,SD1_5\\pfg_111Safetensors.safetensors,SD1_5\\pfg_111Safetensors_fp16.safetensors,SD1_5\\photon_v1.safetensors,SD1_5\\popPopcornMix_popPopcornMix.safetensors,SD1_5\\povSkinTexture_povSkinTextureDreamlike.safetensors,SD1_5\\prismaboysmix_v11.safetensors,SD1_5\\protogenDragon_protogenX59_fp16.safetensors,SD1_5\\protogenInfinity_protogenX86.safetensors,SD1_5\\protogenNovaExperimental_protogenX80.safetensors,SD1_5\\protogenV22Anime_22.safetensors,SD1_5\\protogenX53Photorealism_10.safetensors,SD1_5\\protogenX58RebuiltScifi_10.safetensors,SD1_5\\pulpArtDiffusion_v1.ckpt,SD1_5\\qgo10b_qgo10b.safetensors,SD1_5\\ratnikamix_2.safetensors,SD1_5\\rcnzCartoon3d_v20.safetensors,SD1_5\\realdosmix_.safetensors,SD1_5\\realisticSCIModel_version1.safetensors,SD1_5\\realisticVisionV13_v13.safetensors,SD1_5\\realisticVisionV20_v20.safetensors,SD1_5\\reliberate_v10.safetensors,SD1_5\\revAnimated_v11.safetensors,SD1_5\\rpg_V4.safetensors,SD1_5\\samdoartsultmerge.ckpt,SD1_5\\samdoartsultmerge.safetensors,SD1_5\\sianworldmix_v1.safetensors,SD1_5\\starGuardianNeeko_sgNeekoWd13.ckpt,SD1_5\\starlike_v20.safetensors,SD1_5\\storeBoughtGyozaMix_v2.safetensors,SD1_5\\sunshinemix_sunlightmixPruned.safetensors,SD1_5\\synthwavepunk_v2.safetensors,SD1_5\\tangbohu_v10.safetensors,SD1_5\\tenPassion_10.safetensors,SD1_5\\theAllysMixIII_v10.safetensors,SD1_5\\theallysMixIIChurned_v10.safetensors,SD1_5\\toonyou_beta3.safetensors,SD1_5\\uberRealisticPornMerge_urpmv12.safetensors,SD1_5\\uberrealisticDreamy_pfg.safetensors,SD1_5\\ultracolorV4_ultracolorV4.ckpt,SD1_5\\unstableinkdream_75Anime.safetensors,SD1_5\\unstableinkdream_75Photo.safetensors,SD1_5\\unstableinkdream_75balance.safetensors,SD1_5\\unstableinkdream_v6.safetensors,SD1_5\\unstableinkdream_v70.safetensors,SD1_5\\unstableinkdream_v73.safetensors,SD1_5\\v1-5-pruned-emaonly.ckpt,SD1_5\\v2-1_768-ema-pruned.ckpt,SD1_5\\vectorArt_vectorArtBeta.safetensors,SD1_5\\waifusNDungeonsV20_waifusNDungeonsV20.safetensors,SD1_5\\xsarchitectural_v10interiordesignforxs.ckpt,SD1_5\\xxmix9realistic_v30.safetensors,SD1_5\\yabalMixTrue25D_v3.safetensors,SD1_5\\yaoigen_V022_fp16.safetensors,SD1_5\\yesmix_v16Original.safetensors,SD1_5\\yiffymix_yiffymix_fp16.safetensors,SD1_5\\yorrrlmix_v21.safetensors,SDXL\\4Guofeng4_v10Beta.safetensors,SDXL\\7Of9_v20.safetensors,SDXL\\ComfyrollXL2.safetensors,SDXL\\LahCuteCartoonSDXL_alpha.safetensors,SDXL\\LahMysteriousSDXL_v20.safetensors,SDXL\\ambienceSDXL_a1.safetensors,SDXL\\animeArtDiffusionXL_alpha2.safetensors,SDXL\\animeChangefulXLBeta_beta.safetensors,SDXL\\animeChangefulXL_v10ReleasedCandidate.safetensors,SDXL\\animegodxl_v5.safetensors,SDXL\\astreapixieXLAnime_v16.safetensors,SDXL\\bluePencilXL_v001.safetensors,SDXL\\campursariXL_v1.safetensors,SDXL\\copaxCuteXLSDXL10_v10.safetensors,SDXL\\copaxRealisticXLSDXL1_v2.safetensors,SDXL\\copaxTimelessxlSDXL1_v5.safetensors,SDXL\\counterfeitxl_.safetensors,SDXL\\counterfeitxl_v10.safetensors,SDXL\\dreamshaperXL10_alpha2Xl10.safetensors,SDXL\\dreamsmbbxlmixV10SDXL1_v10.safetensors,SDXL\\duchaitenAiartSDXL_v10.safetensors,SDXL\\duchaitenSDXLBeta_v05Beta.safetensors,SDXL\\envyanimexl_v09.safetensors,SDXL\\envyoverdrivexl_v10.safetensors,SDXL\\fantasticCharacters_v55.safetensors,SDXL\\juggernautXL_version3.safetensors,SDXL\\lovexl_v10.safetensors,SDXL\\mbbxlAlpha_v01.safetensors,SDXL\\mbbxlUltimate_v10RC.safetensors,SDXL\\nijiDiffusionXlBase1_v10.safetensors,SDXL\\nijiflat_v02.safetensors,SDXL\\notAnimefullFinalXL_v10.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0411Bakedvae.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors,SDXL\\realcartoonXL_v1.safetensors,SDXL\\realitycheckXL_alpha11.safetensors,SDXL\\reproduction_v1.safetensors,SDXL\\rundiffusionXL_beta.safetensors,SDXL\\sd_xl_base_0.9.safetensors,SDXL\\sd_xl_base_1.0.safetensors,SDXL\\sd_xl_refiner_0.9.safetensors,SDXL\\sd_xl_refiner_1.0.safetensors,SDXL\\sdvn6Realartxl_beta1.safetensors,SDXL\\sdvn7Nijistylexl_v1.safetensors,SDXL\\sdxl10ArienmixxlAsian_v10.safetensors,SDXL\\sdxlFixedvaeFp16_fixedvaeFp16.safetensors,SDXL\\sdxlNijiBeta_sdxlNijiBeta.safetensors,SDXL\\sdxlNijiSpecial_sdxlNijiSE.safetensors,SDXL\\sdxlYamersAnimeUltra_yamersAnimeV2.safetensors,SDXL\\shikianimexl_v10.safetensors,SDXL\\simpleXL_v10.safetensors,SDXL\\simulacrumxl_v10Asuka.safetensors,SDXL\\supermachine_v10.ckpt,SDXL\\talmendoxlSDXL_v11Beta.safetensors,SDXL\\wowXL_v10.safetensors,SDXL\\xl3ExperimentalSD10XL_v10.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v11.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v21BakedVAEFP16Fix.safetensors,SDXL\\xlPainting_v09Beta.safetensors,SDXL\\xlYamersRealistic_v2.safetensors,archive\\mixproyuki77mi_v10.safetensors",
+          "link": 126,
+          "widget": {
+            "name": "ckpt_name",
+            "config": [
+              [
+                "SD1_5\\7th_anime_v2_G.safetensors",
+                "SD1_5\\7th_anime_v3_A.safetensors",
+                "SD1_5\\7th_anime_v3_B.safetensors",
+                "SD1_5\\7th_anime_v3_C.safetensors",
+                "SD1_5\\9527_v10.ckpt",
+                "SD1_5\\AOM3.safetensors",
+                "SD1_5\\AOM3A1.safetensors",
+                "SD1_5\\AOM3A2.safetensors",
+                "SD1_5\\AOM3A3.safetensors",
+                "SD1_5\\AOM3A3_orangemixs.safetensors",
+                "SD1_5\\ATitanStrawBerry_fp16.safetensors",
+                "SD1_5\\AbyssOrangeMix.safetensors",
+                "SD1_5\\AbyssOrangeMix2_hard.safetensors",
+                "SD1_5\\AbyssOrangeMix2_nsfw.safetensors",
+                "SD1_5\\AbyssOrangeMix2_sfw.safetensors",
+                "SD1_5\\AbyssOrangeMix_Night.safetensors",
+                "SD1_5\\Abyss_7th_layer.ckpt",
+                "SD1_5\\Any-HSceneMix.safetensors",
+                "SD1_5\\Anything-V3.0.ckpt",
+                "SD1_5\\Basil mix.safetensors",
+                "SD1_5\\Basil_mix_fixed.safetensors",
+                "SD1_5\\BerryCandy20_v2.fp16.safetensors",
+                "SD1_5\\BubblepopAnime_fp32.safetensors",
+                "SD1_5\\Bubblepop_fp32.safetensors",
+                "SD1_5\\Ccomfyroll_v10.safetensors",
+                "SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors",
+                "SD1_5\\ComfyrollAnime_v1_fp32_pruned.safetensors",
+                "SD1_5\\ComfyrollCutie_v1_fp16.safetensors",
+                "SD1_5\\ComfyrollFantasy.safetensors",
+                "SD1_5\\ComfyrollReal_v1_fp16.safetensors",
+                "SD1_5\\Comfyroll_v1_fp16_pruned.safetensors",
+                "SD1_5\\Comfyroll_v1_fp32_pruned.safetensors",
+                "SD1_5\\CounterfeitV25_25.safetensors",
+                "SD1_5\\Elysium_Anime_V3.safetensors",
+                "SD1_5\\HassanBlend1.4-Pruned.ckpt",
+                "SD1_5\\HassanBlend1.4.ckpt",
+                "SD1_5\\HassanBlend1.4_Safe.safetensors",
+                "SD1_5\\Merge_00011_.safetensors",
+                "SD1_5\\Nabylon-v1.2-fp16.safetensors",
+                "SD1_5\\Nabylon-v1.3-fp16.safetensors",
+                "SD1_5\\OldFish_2348V12.safetensors",
+                "SD1_5\\ProtoGen_X3.4-pruned-fp16.safetensors",
+                "SD1_5\\SE_V1_A.safetensors",
+                "SD1_5\\Silicon29-dark.safetensors",
+                "SD1_5\\Silicon29.safetensors",
+                "SD1_5\\TriPhaze_A.safetensors",
+                "SD1_5\\UnstableinkdreamV5-photoreal.safetensors",
+                "SD1_5\\UnstableinkdreamV5.safetensors",
+                "SD1_5\\X_revA_PW_liberty.safetensors",
+                "SD1_5\\YuzuGinger_v1-pruned.safetensors",
+                "SD1_5\\YuzuLemonChaiLatte_v3.5-pruned.safetensors",
+                "SD1_5\\YuzuLemonChaiLatte_v9.5-pruned.safetensors",
+                "SD1_5\\YuzuLemonMilk_v1.5-pruned.safetensors",
+                "SD1_5\\aToZovyaRPGArtistsTools15_sd15V1.safetensors",
+                "SD1_5\\aZovyaPhotoreal_v1.safetensors",
+                "SD1_5\\aZovyaPhotoreal_v2.safetensors",
+                "SD1_5\\absolutereality_v16.safetensors",
+                "SD1_5\\aloeVeraSSimpMaker3K_simpMaker3K1-ema-fp16.safetensors",
+                "SD1_5\\analogMadness_analogMadnessV3.safetensors",
+                "SD1_5\\analogMadness_v40.safetensors",
+                "SD1_5\\anidosmix_A.safetensors",
+                "SD1_5\\animefull-final-pruned.ckpt",
+                "SD1_5\\anireal_10v.safetensors",
+                "SD1_5\\antlersmix_10.safetensors",
+                "SD1_5\\anyjuicev32Realistic_anyjuicev32Realistic.safetensors",
+                "SD1_5\\anything-v3-fp32-pruned.safetensors",
+                "SD1_5\\anything-v4.5-pruned.safetensors",
+                "SD1_5\\artErosAerosATribute_aerosNovae.safetensors",
+                "SD1_5\\artiusv15_v1.safetensors",
+                "SD1_5\\ayonimixAnime_ayonimixAnimeV4.safetensors",
+                "SD1_5\\ayonimix_V4VAEBaked.safetensors",
+                "SD1_5\\babes_babes11_fp16.safetensors",
+                "SD1_5\\balloonmix3.ckpt",
+                "SD1_5\\basil mix.ckpt",
+                "SD1_5\\bastardAIImpossible_v4Liveaction.safetensors",
+                "SD1_5\\bastardAIImpossible_v6Liveaction.safetensors",
+                "SD1_5\\berry_mix.ckpt",
+                "SD1_5\\bweshmix_a2.safetensors",
+                "SD1_5\\camelliamix25D_v10.safetensors",
+                "SD1_5\\cetusMix_cetusVersion2.safetensors",
+                "SD1_5\\chikmix_V1.safetensors",
+                "SD1_5\\chilledReGenericV3_v10.safetensors",
+                "SD1_5\\chilloutmix_NiCkpt.ckpt",
+                "SD1_5\\chilloutmix_NiPrunedFp32Fix.safetensors",
+                "SD1_5\\chinaberry (nofix f222 1.4) part2-fp16.safetensors",
+                "SD1_5\\chromav5_.ckpt",
+                "SD1_5\\chronos_v10.safetensors",
+                "SD1_5\\classicNegative1521_classicNegative768px.safetensors",
+                "SD1_5\\classicnegative.safetensors",
+                "SD1_5\\cocotifamix_v20This.safetensors",
+                "SD1_5\\comfyroll_v10Anime.safetensors",
+                "SD1_5\\complexLineart_v1.ckpt",
+                "SD1_5\\corneos7thHeavenMix_100.safetensors",
+                "SD1_5\\cornflowerStylizedAnime_v9FP32.safetensors",
+                "SD1_5\\cutegirlcolorfulmix_v20.safetensors",
+                "SD1_5\\cuteyukiTheMostHighlyAcclaimed_kawashow.ckpt",
+                "SD1_5\\cuteyukimixAdorable_neochapter.safetensors",
+                "SD1_5\\cuteyukimix_X.safetensors",
+                "SD1_5\\cyberrealistic_v31.safetensors",
+                "SD1_5\\dalcefoPainting_3rd.safetensors",
+                "SD1_5\\dalcefoV3Anime_dalcefoV3Anime.safetensors",
+                "SD1_5\\darelitesFantasyLeaning_toanimemix.safetensors",
+                "SD1_5\\darkSushi25D25D_v20.safetensors",
+                "SD1_5\\ddosmix_V2.safetensors",
+                "SD1_5\\deliberate_v1.ckpt",
+                "SD1_5\\deliberate_v1.safetensors",
+                "SD1_5\\deliberate_v11.ckpt",
+                "SD1_5\\deliberate_v11.safetensors",
+                "SD1_5\\discomixAnime_v1.ckpt",
+                "SD1_5\\djzDieselpunkCityV21_0.safetensors",
+                "SD1_5\\dosmix_.safetensors",
+                "SD1_5\\dreamlikeDiffusion10_10.ckpt",
+                "SD1_5\\dreamlikePhotoreal20_dreamlikePhotoreal20.safetensors",
+                "SD1_5\\dreamshaper_252Pruned.ckpt",
+                "SD1_5\\dreamshaper_252Pruned.safetensors",
+                "SD1_5\\dreamshaper_331BakedVae.ckpt",
+                "SD1_5\\dreamshaper_331BakedVae.safetensors",
+                "SD1_5\\dreamshaper_7.safetensors",
+                "SD1_5\\duchaitenStylelikeme_v15Fp16NoEma.safetensors",
+                "SD1_5\\duchaitendreamworld_V241.safetensors",
+                "SD1_5\\dvarchMultiPrompt_dvarchExterior.safetensors",
+                "SD1_5\\elegance_244_fp16.safetensors",
+                "SD1_5\\elldrethsRetroMix_v10.safetensors",
+                "SD1_5\\elldrethsVividMix_v20VividEr.safetensors",
+                "SD1_5\\epicDiffusion_epicDiffusion10.safetensors",
+                "SD1_5\\epicDiffusion_epicDiffusion11.safetensors",
+                "SD1_5\\epicrealism_newEra.safetensors",
+                "SD1_5\\experience_exp65ClipFix.safetensors",
+                "SD1_5\\expmixLine_v3.safetensors",
+                "SD1_5\\f222.safetensors",
+                "SD1_5\\f222_v1.ckpt",
+                "SD1_5\\faetastic_.safetensors",
+                "SD1_5\\fantasyEroticMales_10.safetensors",
+                "SD1_5\\fcanimemixFcAnime_v30.safetensors",
+                "SD1_5\\future-diffusion-v1.ckpt",
+                "SD1_5\\galaxytimemachinesGTM_v1.safetensors",
+                "SD1_5\\genericfemalemix_gefemiV21-inpainting.safetensors",
+                "SD1_5\\ghostmix_v12.safetensors",
+                "SD1_5\\ghostmix_v20Bakedvae.safetensors",
+                "SD1_5\\glow25D_v10.safetensors",
+                "SD1_5\\grapefruitHentaiModel_grapefruitv4.safetensors",
+                "SD1_5\\guofeng2_v20.ckpt",
+                "SD1_5\\hasdx_hasedsdx.safetensors",
+                "SD1_5\\hassakuHentaiModel_v11.safetensors",
+                "SD1_5\\hassakuHentaiModel_v13.safetensors",
+                "SD1_5\\hassanblend1512And_hassanblend1512_fp16.safetensors",
+                "SD1_5\\honeyDiffusion_v1.ckpt",
+                "SD1_5\\icbinpICantBelieveIts_v8.safetensors",
+                "SD1_5\\illuminatiDiffusionV1_v11-unclip-h-fp16.safetensors",
+                "SD1_5\\inkpunkDiffusion_v2.ckpt",
+                "SD1_5\\isometricDreams_1.safetensors",
+                "SD1_5\\jasghPhrasmInky_jasghphrasmV11.safetensors",
+                "SD1_5\\jasminiquemix_fruitea.safetensors",
+                "SD1_5\\kawaiimixNijiV5Cute_v10.safetensors",
+                "SD1_5\\kenshi_01.safetensors",
+                "SD1_5\\knollingcase_v1.ckpt",
+                "SD1_5\\koreanstyle25D_koreanstyle25DBaked.safetensors",
+                "SD1_5\\kotosAbyssproto_v10.safetensors",
+                "SD1_5\\lanzzzyAhrender_v10.ckpt",
+                "SD1_5\\liberty_main.safetensors",
+                "SD1_5\\lyriel_v14.safetensors",
+                "SD1_5\\lyriel_v15.safetensors",
+                "SD1_5\\majicmixRealistic_v5.safetensors",
+                "SD1_5\\makimaChainsawman_beta.ckpt",
+                "SD1_5\\mandarine_5.safetensors",
+                "SD1_5\\meinahentai_v21.safetensors",
+                "SD1_5\\meinamix_meinaV51.safetensors",
+                "SD1_5\\meinamix_meinaV8_fp16.safetensors",
+                "SD1_5\\meinapastel_V3.safetensors",
+                "SD1_5\\meinaunreal_v1Beta.safetensors",
+                "SD1_5\\meinaunreal_v41.safetensors",
+                "SD1_5\\merongmix_v11.safetensors",
+                "SD1_5\\microIsoWorlds_10.ckpt",
+                "SD1_5\\mixProV3_v3.safetensors",
+                "SD1_5\\mixProV4_v4.safetensors",
+                "SD1_5\\mixproyuki77mi_v10.safetensors",
+                "SD1_5\\modelshootStyle_modelshoot10.ckpt",
+                "SD1_5\\moistmix_v2.safetensors",
+                "SD1_5\\momokos_v10.safetensors",
+                "SD1_5\\neurogenV11_v11.safetensors",
+                "SD1_5\\neverendingDreamNED_bakedVae.safetensors",
+                "SD1_5\\noiseOffsetForTrue_v10.safetensors",
+                "SD1_5\\nostalgiaClear_nostalgiaClear.safetensors",
+                "SD1_5\\nostalgiaMix_nostalgia.safetensors",
+                "SD1_5\\novelailatest-pruned.ckpt",
+                "SD1_5\\openjourney-v2-unpruned.ckpt",
+                "SD1_5\\openjourney-v2.ckpt",
+                "SD1_5\\orangechillmix_v70.safetensors",
+                "SD1_5\\otakuorangepastelwav_v10.safetensors",
+                "SD1_5\\otakupastelwavemix_v10.safetensors",
+                "SD1_5\\otakupastelwavemixpr_v10.safetensors",
+                "SD1_5\\pastelLinesMix_pastelLinesMix10.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixFull.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.ckpt",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.safetensors",
+                "SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP32.safetensors",
+                "SD1_5\\perfectWorld_perfectWorldBakedVAE.safetensors",
+                "SD1_5\\perfectWorld_v4Baked.safetensors",
+                "SD1_5\\pfg_111Safetensors.safetensors",
+                "SD1_5\\pfg_111Safetensors_fp16.safetensors",
+                "SD1_5\\photon_v1.safetensors",
+                "SD1_5\\popPopcornMix_popPopcornMix.safetensors",
+                "SD1_5\\povSkinTexture_povSkinTextureDreamlike.safetensors",
+                "SD1_5\\prismaboysmix_v11.safetensors",
+                "SD1_5\\protogenDragon_protogenX59_fp16.safetensors",
+                "SD1_5\\protogenInfinity_protogenX86.safetensors",
+                "SD1_5\\protogenNovaExperimental_protogenX80.safetensors",
+                "SD1_5\\protogenV22Anime_22.safetensors",
+                "SD1_5\\protogenX53Photorealism_10.safetensors",
+                "SD1_5\\protogenX58RebuiltScifi_10.safetensors",
+                "SD1_5\\pulpArtDiffusion_v1.ckpt",
+                "SD1_5\\qgo10b_qgo10b.safetensors",
+                "SD1_5\\ratnikamix_2.safetensors",
+                "SD1_5\\rcnzCartoon3d_v20.safetensors",
+                "SD1_5\\realdosmix_.safetensors",
+                "SD1_5\\realisticSCIModel_version1.safetensors",
+                "SD1_5\\realisticVisionV13_v13.safetensors",
+                "SD1_5\\realisticVisionV20_v20.safetensors",
+                "SD1_5\\reliberate_v10.safetensors",
+                "SD1_5\\revAnimated_v11.safetensors",
+                "SD1_5\\rpg_V4.safetensors",
+                "SD1_5\\samdoartsultmerge.ckpt",
+                "SD1_5\\samdoartsultmerge.safetensors",
+                "SD1_5\\sianworldmix_v1.safetensors",
+                "SD1_5\\starGuardianNeeko_sgNeekoWd13.ckpt",
+                "SD1_5\\starlike_v20.safetensors",
+                "SD1_5\\storeBoughtGyozaMix_v2.safetensors",
+                "SD1_5\\sunshinemix_sunlightmixPruned.safetensors",
+                "SD1_5\\synthwavepunk_v2.safetensors",
+                "SD1_5\\tangbohu_v10.safetensors",
+                "SD1_5\\tenPassion_10.safetensors",
+                "SD1_5\\theAllysMixIII_v10.safetensors",
+                "SD1_5\\theallysMixIIChurned_v10.safetensors",
+                "SD1_5\\toonyou_beta3.safetensors",
+                "SD1_5\\uberRealisticPornMerge_urpmv12.safetensors",
+                "SD1_5\\uberrealisticDreamy_pfg.safetensors",
+                "SD1_5\\ultracolorV4_ultracolorV4.ckpt",
+                "SD1_5\\unstableinkdream_75Anime.safetensors",
+                "SD1_5\\unstableinkdream_75Photo.safetensors",
+                "SD1_5\\unstableinkdream_75balance.safetensors",
+                "SD1_5\\unstableinkdream_v6.safetensors",
+                "SD1_5\\unstableinkdream_v70.safetensors",
+                "SD1_5\\unstableinkdream_v73.safetensors",
+                "SD1_5\\v1-5-pruned-emaonly.ckpt",
+                "SD1_5\\v2-1_768-ema-pruned.ckpt",
+                "SD1_5\\vectorArt_vectorArtBeta.safetensors",
+                "SD1_5\\waifusNDungeonsV20_waifusNDungeonsV20.safetensors",
+                "SD1_5\\xsarchitectural_v10interiordesignforxs.ckpt",
+                "SD1_5\\xxmix9realistic_v30.safetensors",
+                "SD1_5\\yabalMixTrue25D_v3.safetensors",
+                "SD1_5\\yaoigen_V022_fp16.safetensors",
+                "SD1_5\\yesmix_v16Original.safetensors",
+                "SD1_5\\yiffymix_yiffymix_fp16.safetensors",
+                "SD1_5\\yorrrlmix_v21.safetensors",
+                "SDXL\\4Guofeng4_v10Beta.safetensors",
+                "SDXL\\7Of9_v20.safetensors",
+                "SDXL\\ComfyrollXL2.safetensors",
+                "SDXL\\LahCuteCartoonSDXL_alpha.safetensors",
+                "SDXL\\LahMysteriousSDXL_v20.safetensors",
+                "SDXL\\ambienceSDXL_a1.safetensors",
+                "SDXL\\animeArtDiffusionXL_alpha2.safetensors",
+                "SDXL\\animeChangefulXLBeta_beta.safetensors",
+                "SDXL\\animeChangefulXL_v10ReleasedCandidate.safetensors",
+                "SDXL\\animegodxl_v5.safetensors",
+                "SDXL\\astreapixieXLAnime_v16.safetensors",
+                "SDXL\\bluePencilXL_v001.safetensors",
+                "SDXL\\campursariXL_v1.safetensors",
+                "SDXL\\copaxCuteXLSDXL10_v10.safetensors",
+                "SDXL\\copaxRealisticXLSDXL1_v2.safetensors",
+                "SDXL\\copaxTimelessxlSDXL1_v5.safetensors",
+                "SDXL\\counterfeitxl_.safetensors",
+                "SDXL\\counterfeitxl_v10.safetensors",
+                "SDXL\\dreamshaperXL10_alpha2Xl10.safetensors",
+                "SDXL\\dreamsmbbxlmixV10SDXL1_v10.safetensors",
+                "SDXL\\duchaitenAiartSDXL_v10.safetensors",
+                "SDXL\\duchaitenSDXLBeta_v05Beta.safetensors",
+                "SDXL\\envyanimexl_v09.safetensors",
+                "SDXL\\envyoverdrivexl_v10.safetensors",
+                "SDXL\\fantasticCharacters_v55.safetensors",
+                "SDXL\\juggernautXL_version3.safetensors",
+                "SDXL\\lovexl_v10.safetensors",
+                "SDXL\\mbbxlAlpha_v01.safetensors",
+                "SDXL\\mbbxlUltimate_v10RC.safetensors",
+                "SDXL\\nijiDiffusionXlBase1_v10.safetensors",
+                "SDXL\\nijiflat_v02.safetensors",
+                "SDXL\\notAnimefullFinalXL_v10.safetensors",
+                "SDXL\\protovisionXLHighFidelity3D_beta0411Bakedvae.safetensors",
+                "SDXL\\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors",
+                "SDXL\\realcartoonXL_v1.safetensors",
+                "SDXL\\realitycheckXL_alpha11.safetensors",
+                "SDXL\\reproduction_v1.safetensors",
+                "SDXL\\rundiffusionXL_beta.safetensors",
+                "SDXL\\sd_xl_base_0.9.safetensors",
+                "SDXL\\sd_xl_base_1.0.safetensors",
+                "SDXL\\sd_xl_refiner_0.9.safetensors",
+                "SDXL\\sd_xl_refiner_1.0.safetensors",
+                "SDXL\\sdvn6Realartxl_beta1.safetensors",
+                "SDXL\\sdvn7Nijistylexl_v1.safetensors",
+                "SDXL\\sdxl10ArienmixxlAsian_v10.safetensors",
+                "SDXL\\sdxlFixedvaeFp16_fixedvaeFp16.safetensors",
+                "SDXL\\sdxlNijiBeta_sdxlNijiBeta.safetensors",
+                "SDXL\\sdxlNijiSpecial_sdxlNijiSE.safetensors",
+                "SDXL\\sdxlYamersAnimeUltra_yamersAnimeV2.safetensors",
+                "SDXL\\shikianimexl_v10.safetensors",
+                "SDXL\\simpleXL_v10.safetensors",
+                "SDXL\\simulacrumxl_v10Asuka.safetensors",
+                "SDXL\\supermachine_v10.ckpt",
+                "SDXL\\talmendoxlSDXL_v11Beta.safetensors",
+                "SDXL\\wowXL_v10.safetensors",
+                "SDXL\\xl3ExperimentalSD10XL_v10.safetensors",
+                "SDXL\\xl6HEPHAISTOSSD10XLSFW_v11.safetensors",
+                "SDXL\\xl6HEPHAISTOSSD10XLSFW_v21BakedVAEFP16Fix.safetensors",
+                "SDXL\\xlPainting_v09Beta.safetensors",
+                "SDXL\\xlYamersRealistic_v2.safetensors",
+                "archive\\mixproyuki77mi_v10.safetensors"
+              ]
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            107
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            109
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors"
+      ]
+    },
+    {
+      "id": 98,
+      "type": "ShowText|pysssss",
+      "pos": [
+        270,
+        1050
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 122,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "SD1_5\\7th_anime_v3_A.safetensors"
+      ]
+    },
+    {
+      "id": 95,
+      "type": "CR String To Combo",
+      "pos": [
+        630,
+        420
+      ],
+      "size": {
+        "0": 210,
+        "1": 40
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 119,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": false,
+                "default": "",
+                "forceInput": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            122,
+            126
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR String To Combo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 91,
+      "type": "CR XY List",
+      "pos": [
+        280,
+        410
+      ],
+      "size": {
+        "0": 310,
+        "1": 410
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 113,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 9999,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "X",
+          "type": "STRING",
+          "links": [
+            119
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "Y",
+          "type": "STRING",
+          "links": [
+            120
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "x_annotation",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "y_annotation",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR XY List"
+      },
+      "widgets_values": [
+        1,
+        "7th_anime_v3_A.safetensors,\ndalcefoV3Anime_dalcefoV3Anime.safetensors,\nComfyrollAnime_v1_fp16_pruned.safetensors,\nmixproyuki77mi_v10.safetensors,\nmeinaunreal_v41.safetensors",
+        "SD1_5\\",
+        "",
+        "",
+        "arknightsDUSK_v10.safetensors,\nArknightsNian_20.safetensors,\nArknightsSuzuran_20.safetensors,\nArknightsSurtr_3In1.safetensors",
+        "SD1_5\\",
+        "",
+        ""
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 101,
+      "type": "SaveImage",
+      "pos": [
+        2190,
+        920
+      ],
+      "size": {
+        "0": 330,
+        "1": 460
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 125
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Test12/CR"
+      ]
+    },
+    {
+      "id": 88,
+      "type": "PrimitiveNode",
+      "pos": [
+        40,
+        420
+      ],
+      "size": {
+        "0": 210,
+        "1": 80
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            113
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "index",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 9999,
+                "step": 1
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1,
+        "increment"
+      ]
+    }
+  ],
+  "links": [
+    [
+      8,
+      11,
+      0,
+      13,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      12,
+      0,
+      13,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      13,
+      0,
+      16,
+      0,
+      "LATENT"
+    ],
+    [
+      15,
+      17,
+      0,
+      16,
+      1,
+      "VAE"
+    ],
+    [
+      107,
+      47,
+      0,
+      94,
+      0,
+      "MODEL"
+    ],
+    [
+      108,
+      94,
+      0,
+      13,
+      0,
+      "MODEL"
+    ],
+    [
+      109,
+      47,
+      1,
+      94,
+      1,
+      "CLIP"
+    ],
+    [
+      110,
+      94,
+      1,
+      11,
+      0,
+      "CLIP"
+    ],
+    [
+      111,
+      94,
+      1,
+      12,
+      0,
+      "CLIP"
+    ],
+    [
+      113,
+      88,
+      0,
+      91,
+      0,
+      "INT"
+    ],
+    [
+      114,
+      93,
+      0,
+      94,
+      2,
+      "None,AM\\AM002_Lada_D.pt,AM\\AM003_Elina_A.pt,AM\\AM008_Linnda.pt,AM\\AM009_Camomile_v2.pt,AM\\AM010_Iriska.pt,AM\\AM019_Carolina_Sampaio.pt,AM\\AM020_Francesca_Rose.pt,AM\\AM023_Valencia.pt,AM\\AM034_Margarita.pt,AM\\AM045_Shayla_v2.pt,AM\\AM046_Amily.pt,AM\\AM055_Junia.pt,AM\\AM058_Kate.pt,AM\\AM066_Agness.pt,AM\\AM109_Georgia.pt,AM\\AM136_Petra_E.pt,AM\\AM171_Zanna.pt,AM\\AM186_Irisha.pt,AM\\AM190_Brigitte.pt,AM\\AM192_Berka.pt,AM\\AM207_Kay_J.pt,AM\\AM209_Chloe_Blue.pt,AM\\AM224_Lika_Star.pt,SD1_5\\2dcharacter.safetensors,SD1_5\\3DMM_V11.safetensors,SD1_5\\AbigailSwimsuitV3[abigailswimsuit,swimsuit,bonnet]-000006.safetensors,SD1_5\\AnyaForger_v10.safetensors,SD1_5\\Architectural_.safetensors,SD1_5\\ArknightsDusk_10.safetensors,SD1_5\\ArknightsNian_20.safetensors,SD1_5\\ArknightsPozyomka_10.safetensors,SD1_5\\ArknightsSurtr_3In1.safetensors,SD1_5\\ArknightsSuzuran_10.safetensors,SD1_5\\ArknightsSuzuran_20.safetensors,SD1_5\\Arnheid.safetensors,SD1_5\\BaltimoreraceV1.safetensors,SD1_5\\BloodsplashOCv1-000050.safetensors,SD1_5\\BondageOutfitV1.safetensors,SD1_5\\CVV2.safetensors,SD1_5\\Cyberpunk-000010.safetensors,SD1_5\\DanglingSpitroastMS.safetensors,SD1_5\\Dark-000010.safetensors,SD1_5\\DesiAEye-Pop-Art-LORA.safetensors,SD1_5\\EnhancedBacklighting_v10.safetensors,SD1_5\\EnvyBeautyMix12.safetensors,SD1_5\\EnvyBeautyMix43.safetensors,SD1_5\\EnvyBeautyMix51.safetensors,SD1_5\\EnvyCuteMix16.safetensors,SD1_5\\EzoredfoxKemonofriends_Kitakitsune.safetensors,SD1_5\\GIGER.safetensors,SD1_5\\GPix.safetensors,SD1_5\\GRAALGLASS.safetensors,SD1_5\\GodPussy1 v3.safetensors,SD1_5\\Holothewisewolf-08.safetensors,SD1_5\\IlyakuvshinovArtistST1-28.safetensors,SD1_5\\Ishtar-v4-07.safetensors,SD1_5\\JaneRogers_v1.0.safetensors,SD1_5\\KagamineRin_kagamineRin.safetensors,SD1_5\\Kazuhiroi_Hori.safetensors,SD1_5\\Kuai.safetensors,SD1_5\\LECO_enhance_straddling_paizuri_last.safetensors,SD1_5\\LassLetsgo.safetensors,SD1_5\\Lillie-10.safetensors,SD1_5\\LizJordan1.safetensors,SD1_5\\LoraBraless_v11.safetensors,SD1_5\\ML-000010.safetensors,SD1_5\\MilkShower_v1.safetensors,SD1_5\\Monroe_V1.safetensors,SD1_5\\Moxin_10.safetensors,SD1_5\\NorseViking_v10.safetensors,SD1_5\\OekakizukiChinaDressV2.safetensors,SD1_5\\PetShamingV1.safetensors,SD1_5\\PinkJune.safetensors,SD1_5\\Pix.safetensors,SD1_5\\RWBYRubyRoseCharacter_lora30.safetensors,SD1_5\\SaileachArknights_40.safetensors,SD1_5\\Selene-10.safetensors,SD1_5\\SenSenchan25Twitter_v10.safetensors,SD1_5\\ShaunaLoraV2-10.safetensors,SD1_5\\StarryShade.safetensors,SD1_5\\Tressa.safetensors,SD1_5\\TreyniV1.safetensors,SD1_5\\Watercolor-000012.safetensors,SD1_5\\WhiteShade.safetensors,SD1_5\\XBV2.safetensors,SD1_5\\Xiaorenshu_v20.safetensors,SD1_5\\YuraOnoda-V1.safetensors,SD1_5\\[LoHa] Longan竜眼 Style (With multires noise version).safetensors,SD1_5\\aMechaMusumeA_arc.safetensors,SD1_5\\accidental_exposure.safetensors,SD1_5\\add_detail.safetensors,SD1_5\\ahegaoRollingEyes_v1114.safetensors,SD1_5\\ahegao_v1.safetensors,SD1_5\\ahriLeagueOfLegends_ahri45Suggested.safetensors,SD1_5\\akemiHomura_v10.safetensors,SD1_5\\akiraToriyamaStyle_toriyamaAkira3.safetensors,SD1_5\\aliceBetty_v10.safetensors,SD1_5\\aliceInWonderlandBy_v10.safetensors,SD1_5\\aliceNakiriFoodWars_v10.safetensors,SD1_5\\aliceNikke_v30.safetensors,SD1_5\\ancientChineseArchitectural_v10Gugong.safetensors,SD1_5\\animeExtract_basic.safetensors,SD1_5\\animeLineartMangaLike_v30MangaLike.safetensors,SD1_5\\animeTarotCardArtStyleLora_v31.safetensors,SD1_5\\antigravitytitsv01.safetensors,SD1_5\\anya_V01.safetensors,SD1_5\\architecturalDesign_v10.safetensors,SD1_5\\architectureSketchStyle_v10.safetensors,SD1_5\\arknightsBLUEPOISON_v114514.safetensors,SD1_5\\arknightsDUSK_v10.safetensors,SD1_5\\arknightsSAGA_v10.safetensors,SD1_5\\arknightsSkadiThe_v10.safetensors,SD1_5\\arknightsSuzuran_lionv3.safetensors,SD1_5\\arknightsTexasThe_v10.safetensors,SD1_5\\aruru_otsuki(starlight).safetensors,SD1_5\\asunaYuukiSwordArt_v10.safetensors,SD1_5\\blindbox_v1_mix.safetensors,SD1_5\\breastinclassBetter_v13.safetensors,SD1_5\\breastsOnTray_v20.safetensors,SD1_5\\bridal_hairstyle-10.safetensors,SD1_5\\bunnysuit.safetensors,SD1_5\\cMechaMusumeC_cV1.safetensors,SD1_5\\catLingerieCatCutout_v10.safetensors,SD1_5\\catLingerie_v10.safetensors,SD1_5\\char-danzaburoudanuki.safetensors,SD1_5\\character_pokemon_dawn_v6.safetensors,SD1_5\\character_pokemon_hilda_v3.safetensors,SD1_5\\character_pokemon_lillie_v5.safetensors,SD1_5\\character_pokemon_may_v6.safetensors,SD1_5\\character_pokemon_serena_v3.safetensors,SD1_5\\clonionStyleLora_v20.safetensors,SD1_5\\colored_buzzcut_hairstyle-10.safetensors,SD1_5\\concept-slimegirls.safetensors,SD1_5\\conceptCowgirl_v10.safetensors,SD1_5\\counterfeitLora300_counterfeitLora300.safetensors,SD1_5\\cute.safetensors,SD1_5\\cuteGirlMix4_v10.safetensors,SD1_5\\cuteJointsDollsLora_2.safetensors,SD1_5\\cyberpunk_edgerunners_offset.safetensors,SD1_5\\czerosJoiBladerunnerPlayedBy_v1.safetensors,SD1_5\\daisya.safetensors,SD1_5\\darkMagicianGirlLora_1.safetensors,SD1_5\\diffusiondesign_DaftPunk_V1-08.safetensors,SD1_5\\diffusiondesign_Takahashi_LoRA_v1-08.safetensors,SD1_5\\dionaGenshinImpact_v10.safetensors,SD1_5\\doggystyleFromSide_dsv02.safetensors,SD1_5\\doggystyleSideView_ekunesidedoggstyle.safetensors,SD1_5\\doggystyle_lora32V1.safetensors,SD1_5\\downblouseForBoobs_v1.safetensors,SD1_5\\eastasianDoll_v40.safetensors,SD1_5\\elegantHanfuRuqun_v10.safetensors,SD1_5\\emilyBloom_v10.safetensors,SD1_5\\emperorpenguin-kemonofriends-richy-v1.safetensors,SD1_5\\emptyEyesLoraUtsurome_v30.safetensors,SD1_5\\epiNoiseoffset_v2.safetensors,SD1_5\\fainaBona_v10.safetensors,SD1_5\\fairFacedConcrete_v10.safetensors,SD1_5\\faruzanGenshinImpact_v10.safetensors,SD1_5\\fashionGirl_v20SmallFileSize.safetensors,SD1_5\\fashionGirl_v36.safetensors,SD1_5\\femaleNobleClassHanbok_v10.safetensors,SD1_5\\flannery-v2-epoch-000008.safetensors,SD1_5\\frd.safetensors,SD1_5\\gachaSplashLORA_gachaSplashFantasy20.safetensors,SD1_5\\gachaSplashLORA_gachaSplashFarShot.safetensors,SD1_5\\gachaSplashLORA_gachaSplashMidShot.safetensors,SD1_5\\gachaSplashLORA_gachaSplashWideShot.safetensors,SD1_5\\ganyuGenshinImpact_v10.safetensors,SD1_5\\glasses-2.safetensors,SD1_5\\gundamRX78_v2.safetensors,SD1_5\\gyokai.safetensors,SD1_5\\hanfuMingDynasty_hanfumingDynastyV10.safetensors,SD1_5\\hanfu_v30Ming.safetensors,SD1_5\\hestiaDanmachiLora_v10.safetensors,SD1_5\\hifuPersonalLora_v10.safetensors,SD1_5\\hipoly3DModelLora_v10.safetensors,SD1_5\\holo-10.safetensors,SD1_5\\holo_locon_v1a.safetensors,SD1_5\\horseCock_v2.safetensors,SD1_5\\huTaoGenshinImpact_v10.safetensors,SD1_5\\hugAndSuckConcept_v1.safetensors,SD1_5\\hugeAssAndBoobs_v1.safetensors,SD1_5\\iesk-05.safetensors,SD1_5\\inniesBetterVaginas_v11.safetensors,SD1_5\\instantCumshot_v1.safetensors,SD1_5\\japaneseDollLikeness_v10.safetensors,SD1_5\\jeanneDarcAlterFate_v10.safetensors,SD1_5\\jeanneDarcFate_v10.safetensors,SD1_5\\jeffMilton_v10.safetensors,SD1_5\\jinxLeagueOfLegends_v10.safetensors,SD1_5\\jrEastE235SeriesTrain_ver5.safetensors,SD1_5\\kamisatoAyakaGenshin_v10.safetensors,SD1_5\\kanameMadoka_v10.safetensors,SD1_5\\katarinaLeagueOf_v1.safetensors,SD1_5\\katy_(pokemon)_v1.safetensors,SD1_5\\keqingGenshinImpact3in1_v10.safetensors,SD1_5\\keqingGenshinImpact_v10.safetensors,SD1_5\\kiyokoShimizuHaikyuu_v10.safetensors,SD1_5\\koreanDollLikeness.safetensors,SD1_5\\koreanDollLikeness_v10.safetensors,SD1_5\\lactationConv2D2.5e-5_BF16.safetensors,SD1_5\\lactation_v10.safetensors,SD1_5\\last-000030.safetensors,SD1_5\\liangzi_younger.safetensors,SD1_5\\linebaby.safetensors,SD1_5\\linkle_v1.safetensors,SD1_5\\liyueGenshinImpact_v10.safetensors,SD1_5\\lora-hanfugirl-v1-5.safetensors,SD1_5\\lora-hanfugirl-v1.safetensors,SD1_5\\lora_Spicytail_Holo.safetensors,SD1_5\\lora_bondage.safetensors,SD1_5\\lottalewdsLargeMecha_v1.safetensors,SD1_5\\lottalewdsMechanical_v1.safetensors,SD1_5\\lucyCyberpunk_35Epochs.safetensors,SD1_5\\lunasUekuraEkuStyle_uekakuEkuStyleLora.safetensors,SD1_5\\lycorisRecoilCafe_v10.safetensors,SD1_5\\lycorisRecoilSchool_v10.safetensors,SD1_5\\lycorisRecoilWalnut_v10.safetensors,SD1_5\\makimaChainsawMan_makimaChainsawMan.safetensors,SD1_5\\makimaChainsawMan_offset.safetensors,SD1_5\\makimaEyesInpaint_csmakima.safetensors,SD1_5\\manaStyleLORA9mb_v1.safetensors,SD1_5\\marnie_v1.safetensors,SD1_5\\mechaGirlsAndKarukans_karukanV1.safetensors,SD1_5\\mechaQuadrupedMechas_mechaQuadrupedMechas.safetensors,SD1_5\\mecha_.safetensors,SD1_5\\meinaunreal_v41.safetensors,SD1_5\\mejiroDoberUmamusume_v10.safetensors,SD1_5\\milkingMachine_v11.safetensors,SD1_5\\minatoAquaMaidVer_v1.safetensors,SD1_5\\minimalist_interior.safetensors,SD1_5\\mission_complete_v011.safetensors,SD1_5\\mochidukikei.safetensors,SD1_5\\modernBuildingsStyle_v10.safetensors,SD1_5\\monaGenshinImpact_v2.safetensors,SD1_5\\murkysCheekBulge_1.safetensors,SD1_5\\mxf_dvarchmultiprompt.safetensors,SD1_5\\my_ServalKemonoFriends_v1.safetensors,SD1_5\\narwhal_(kemono_friends)_v2.1.safetensors,SD1_5\\neeko_.safetensors,SD1_5\\negligee_v10.safetensors,SD1_5\\neoPolitanRWBYLora_v1.safetensors,SD1_5\\niaXenobladeChronicles4_v10.safetensors,SD1_5\\nijiMecha.safetensors,SD1_5\\nijiStyle.safetensors,SD1_5\\noelleGenshinImpact_v10.safetensors,SD1_5\\noraValkyrieRWBY_v10.safetensors,SD1_5\\oyamaMahiro_oyamaMahiro2.safetensors,SD1_5\\paimonGenshinImpact_v10.safetensors,SD1_5\\palina-nvwls-v1-final.safetensors,SD1_5\\pantyPullPantyDrop_pantypullPantydropV1.safetensors,SD1_5\\paruko-20.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixLoraVersion.safetensors,SD1_5\\pastelVector_v10.safetensors,SD1_5\\pastelmixInspiredV5_v5.safetensors,SD1_5\\pearl_thong.safetensors,SD1_5\\pennyPolendinaRWBY_pennyPolendinaV1.safetensors,SD1_5\\perky_breasts1.safetensors,SD1_5\\personaCatherineSoejima_1.safetensors,SD1_5\\plastiq_10.safetensors,SD1_5\\povBreastGrab_v2.safetensors,SD1_5\\punishingGreyRaven_luna.safetensors,SD1_5\\pyrrha nikos.safetensors,SD1_5\\raidenShogunLora_raidenShogun.safetensors,SD1_5\\raidenShogunRealistic_raidenshogun.safetensors,SD1_5\\realisticVaginasGod_sdVSGp1S.safetensors,SD1_5\\redoOfPovbjer_v2.safetensors,SD1_5\\rias_gremory_v2.safetensors,SD1_5\\ridingDildoSexActLora_v10.safetensors,SD1_5\\riseKujikawaPersona4_v10.safetensors,SD1_5\\rosa_(pokemon)_v10.safetensors,SD1_5\\sabrinaYoung_v10.safetensors,SD1_5\\sangonomiyaKokomi_v10.safetensors,SD1_5\\sayuGenshinImpact_v10.safetensors,SD1_5\\seeThroughSilhouette_v11.safetensors,SD1_5\\serena_v1.safetensors,SD1_5\\sexy jk.safetensors,SD1_5\\shawni_v10.safetensors,SD1_5\\shinjoAkaneSSSS_v1.safetensors,SD1_5\\shirtTugPoseLORA_shirtTug.safetensors,SD1_5\\shun.safetensors,SD1_5\\skirtliftTheAstonishing_skirtliftv1.safetensors,SD1_5\\slimes_realistic-1.safetensors,SD1_5\\slitPupilsInpaint_slitPupils.safetensors,SD1_5\\space_buns_hairstyle.safetensors,SD1_5\\specimenGirl_10.safetensors,SD1_5\\ssssGRIDMANShinjou_saV1.safetensors,SD1_5\\ssssGRIDMANTakarada_trV1.safetensors,SD1_5\\swholo.safetensors,SD1_5\\swimmerOra-08.safetensors,SD1_5\\tableSex_v10.safetensors,SD1_5\\takaradaRikkaSSSS_v10.safetensors,SD1_5\\teammagmagrunt-nvwls-v1-final.safetensors,SD1_5\\tendouAlice_v1.safetensors,SD1_5\\tentacle-pit-000008.safetensors,SD1_5\\theovercomer8sContrastFix_sd15.safetensors,SD1_5\\theovercomer8sContrastFix_sd21768.safetensors,SD1_5\\thickline_fp16.safetensors,SD1_5\\tifa_v2.3.safetensors,SD1_5\\tohsakaRinFate_v10.safetensors,SD1_5\\tonyTakaStyleLora_1.safetensors,SD1_5\\trueseifuku_proto.safetensors,SD1_5\\ukiyoE_ukiyoE.pt,SD1_5\\undressing_panties_v0.1.safetensors,SD1_5\\valerie_mache.safetensors,SD1_5\\venus_bikini.safetensors,SD1_5\\vwb33tl3.safetensors,SD1_5\\vwk0mb1.safetensors,SD1_5\\weissSchneeRWBY_weissSchneeV10.safetensors,SD1_5\\xRayGlasses_v00.safetensors,SD1_5\\xayahFromLeagueOf_xayahV1.safetensors,SD1_5\\xinyanGenshinImpact_v10.safetensors,SD1_5\\xsarchitectural_11fantasyArchitecture.safetensors,SD1_5\\xsarchitectural_20manualbuildingmodel.safetensors,SD1_5\\xsarchitectural_22mangastyle.safetensors,SD1_5\\xsarchitectural_9scienceFiction.safetensors,SD1_5\\yangXiaoLong_v1.safetensors,SD1_5\\zerotwo_offset.safetensors,SD1_5\\寺田_融合.safetensors,SD1_5\\巫恋(全身shamare头shamarehead).safetensors,SDXL\\0.9\\PlagueDoctorXL-lora.safetensors,SDXL\\0.9\\fcAnimeXL-lora.safetensors,SDXL\\0.9\\fcBeautyXL.safetensors,SDXL\\0.9\\fcPawgfC-XL.safetensors,SDXL\\0.9\\fcStyledXL.safetensors,SDXL\\0.9\\futuristicScapeXL.safetensors,SDXL\\0.9\\ilya_kuvshinov-bf16-16-wdxl-000006.safetensors,SDXL\\AtomicSocietyXL-lora.safetensors,SDXL\\Billie_lora_sdxl_v2.safetensors,SDXL\\BlackSunXL-lora.safetensors,SDXL\\BoutXOval_SDXL_dim32-000005.safetensors,SDXL\\Bowser.safetensors,SDXL\\BurumaShortsXL.safetensors,SDXL\\E235l_SDXL_V1.safetensors,SDXL\\Empire_SDXL_OnSite.safetensors,SDXL\\EnokaevaXL2.safetensors,SDXL\\FGOKAMAV1.safetensors,SDXL\\Gakkou_SDXL_V1.safetensors,SDXL\\GarterbeltXL.safetensors,SDXL\\Haute_CoutureXL.safetensors,SDXL\\JasmineBWXLDoguMini.safetensors,SDXL\\JustCum.safetensors,SDXL\\Neon Punk-V1.safetensors,SDXL\\PAseer-阿凡达纳美人V2.safetensors,SDXL\\PostApocalypticXL_v2.safetensors,SDXL\\SDXLHighDetail_v5-000004.safetensors,SDXL\\SDXL_holloAI_v1.0.safetensors,SDXL\\UnderboobXL.safetensors,SDXL\\WTS - WhatTheSuck - v1.safetensors,SDXL\\aogami_v23.safetensors,SDXL\\asphalt-SDXL-m.safetensors,SDXL\\bl4ckl1ghtxl.safetensors,SDXL\\cockteaseLoRASDXL.safetensors,SDXL\\cyberui_sdxl.safetensors,SDXL\\cyborg_style_xl-alpha.safetensors,SDXL\\dalcefo_XL-villacotta.safetensors,SDXL\\edgApronXL.safetensors,SDXL\\edgFuturisticXL.safetensors,SDXL\\edgRenaissanceXL.safetensors,SDXL\\edgWalkureXL.safetensors,SDXL\\edgleotardXL1.safetensors,SDXL\\faces_v1.safetensors,SDXL\\fajyobore-000191.safetensors,SDXL\\first_nsfw.safetensors,SDXL\\greg_rutkowski_xl_2.safetensors,SDXL\\jenna_lora_sdxl_v2-000009.safetensors,SDXL\\laserXL.safetensors,SDXL\\last-000005.safetensors,SDXL\\loha_ghibli-gh_artstyle-0.8_weight-by_AI_Characters.safetensors,SDXL\\lwmirXL-V1.0.safetensors,SDXL\\magical_vibrance_XL.safetensors,SDXL\\megumin.safetensors,SDXL\\moebzxl.safetensors,SDXL\\neg4all_bdsqlsz_xl_V6.safetensors,SDXL\\nurlens_SDXL_V0.1.safetensors,SDXL\\oil painting.safetensors,SDXL\\picbookXLloraV1.safetensors,SDXL\\pixel-art-xl.safetensors,SDXL\\plowcam_doggystyle.safetensors,SDXL\\sd_xl_offset_example-lora_1.0.safetensors,SDXL\\sdxl-1.0-小舞.safetensors,SDXL\\sdxl_loha_miniature2_v2-000080.safetensors,SDXL\\sdxl_photorealistic_slider_v1-0.safetensors,SDXL\\sdxl_power_v4-1000.safetensors,SDXL\\sketch_last.safetensors,SDXL\\sl_lye.safetensors,SDXL\\sl_nana.safetensors,SDXL\\swhuazi_v1.safetensors,SDXL\\wegg.safetensors"
+    ],
+    [
+      116,
+      96,
+      0,
+      13,
+      3,
+      "LATENT"
+    ],
+    [
+      119,
+      91,
+      0,
+      95,
+      0,
+      "STRING"
+    ],
+    [
+      120,
+      91,
+      1,
+      93,
+      0,
+      "STRING"
+    ],
+    [
+      121,
+      93,
+      0,
+      97,
+      0,
+      "STRING"
+    ],
+    [
+      122,
+      95,
+      0,
+      98,
+      0,
+      "STRING"
+    ],
+    [
+      125,
+      16,
+      0,
+      101,
+      0,
+      "IMAGE"
+    ],
+    [
+      126,
+      95,
+      0,
+      47,
+      0,
+      "SD1_5\\7th_anime_v2_G.safetensors,SD1_5\\7th_anime_v3_A.safetensors,SD1_5\\7th_anime_v3_B.safetensors,SD1_5\\7th_anime_v3_C.safetensors,SD1_5\\9527_v10.ckpt,SD1_5\\AOM3.safetensors,SD1_5\\AOM3A1.safetensors,SD1_5\\AOM3A2.safetensors,SD1_5\\AOM3A3.safetensors,SD1_5\\AOM3A3_orangemixs.safetensors,SD1_5\\ATitanStrawBerry_fp16.safetensors,SD1_5\\AbyssOrangeMix.safetensors,SD1_5\\AbyssOrangeMix2_hard.safetensors,SD1_5\\AbyssOrangeMix2_nsfw.safetensors,SD1_5\\AbyssOrangeMix2_sfw.safetensors,SD1_5\\AbyssOrangeMix_Night.safetensors,SD1_5\\Abyss_7th_layer.ckpt,SD1_5\\Any-HSceneMix.safetensors,SD1_5\\Anything-V3.0.ckpt,SD1_5\\Basil mix.safetensors,SD1_5\\Basil_mix_fixed.safetensors,SD1_5\\BerryCandy20_v2.fp16.safetensors,SD1_5\\BubblepopAnime_fp32.safetensors,SD1_5\\Bubblepop_fp32.safetensors,SD1_5\\Ccomfyroll_v10.safetensors,SD1_5\\ComfyrollAnime_v1_fp16_pruned.safetensors,SD1_5\\ComfyrollAnime_v1_fp32_pruned.safetensors,SD1_5\\ComfyrollCutie_v1_fp16.safetensors,SD1_5\\ComfyrollFantasy.safetensors,SD1_5\\ComfyrollReal_v1_fp16.safetensors,SD1_5\\Comfyroll_v1_fp16_pruned.safetensors,SD1_5\\Comfyroll_v1_fp32_pruned.safetensors,SD1_5\\CounterfeitV25_25.safetensors,SD1_5\\Elysium_Anime_V3.safetensors,SD1_5\\HassanBlend1.4-Pruned.ckpt,SD1_5\\HassanBlend1.4.ckpt,SD1_5\\HassanBlend1.4_Safe.safetensors,SD1_5\\Merge_00011_.safetensors,SD1_5\\Nabylon-v1.2-fp16.safetensors,SD1_5\\Nabylon-v1.3-fp16.safetensors,SD1_5\\OldFish_2348V12.safetensors,SD1_5\\ProtoGen_X3.4-pruned-fp16.safetensors,SD1_5\\SE_V1_A.safetensors,SD1_5\\Silicon29-dark.safetensors,SD1_5\\Silicon29.safetensors,SD1_5\\TriPhaze_A.safetensors,SD1_5\\UnstableinkdreamV5-photoreal.safetensors,SD1_5\\UnstableinkdreamV5.safetensors,SD1_5\\X_revA_PW_liberty.safetensors,SD1_5\\YuzuGinger_v1-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v3.5-pruned.safetensors,SD1_5\\YuzuLemonChaiLatte_v9.5-pruned.safetensors,SD1_5\\YuzuLemonMilk_v1.5-pruned.safetensors,SD1_5\\aToZovyaRPGArtistsTools15_sd15V1.safetensors,SD1_5\\aZovyaPhotoreal_v1.safetensors,SD1_5\\aZovyaPhotoreal_v2.safetensors,SD1_5\\absolutereality_v16.safetensors,SD1_5\\aloeVeraSSimpMaker3K_simpMaker3K1-ema-fp16.safetensors,SD1_5\\analogMadness_analogMadnessV3.safetensors,SD1_5\\analogMadness_v40.safetensors,SD1_5\\anidosmix_A.safetensors,SD1_5\\animefull-final-pruned.ckpt,SD1_5\\anireal_10v.safetensors,SD1_5\\antlersmix_10.safetensors,SD1_5\\anyjuicev32Realistic_anyjuicev32Realistic.safetensors,SD1_5\\anything-v3-fp32-pruned.safetensors,SD1_5\\anything-v4.5-pruned.safetensors,SD1_5\\artErosAerosATribute_aerosNovae.safetensors,SD1_5\\artiusv15_v1.safetensors,SD1_5\\ayonimixAnime_ayonimixAnimeV4.safetensors,SD1_5\\ayonimix_V4VAEBaked.safetensors,SD1_5\\babes_babes11_fp16.safetensors,SD1_5\\balloonmix3.ckpt,SD1_5\\basil mix.ckpt,SD1_5\\bastardAIImpossible_v4Liveaction.safetensors,SD1_5\\bastardAIImpossible_v6Liveaction.safetensors,SD1_5\\berry_mix.ckpt,SD1_5\\bweshmix_a2.safetensors,SD1_5\\camelliamix25D_v10.safetensors,SD1_5\\cetusMix_cetusVersion2.safetensors,SD1_5\\chikmix_V1.safetensors,SD1_5\\chilledReGenericV3_v10.safetensors,SD1_5\\chilloutmix_NiCkpt.ckpt,SD1_5\\chilloutmix_NiPrunedFp32Fix.safetensors,SD1_5\\chinaberry (nofix f222 1.4) part2-fp16.safetensors,SD1_5\\chromav5_.ckpt,SD1_5\\chronos_v10.safetensors,SD1_5\\classicNegative1521_classicNegative768px.safetensors,SD1_5\\classicnegative.safetensors,SD1_5\\cocotifamix_v20This.safetensors,SD1_5\\comfyroll_v10Anime.safetensors,SD1_5\\complexLineart_v1.ckpt,SD1_5\\corneos7thHeavenMix_100.safetensors,SD1_5\\cornflowerStylizedAnime_v9FP32.safetensors,SD1_5\\cutegirlcolorfulmix_v20.safetensors,SD1_5\\cuteyukiTheMostHighlyAcclaimed_kawashow.ckpt,SD1_5\\cuteyukimixAdorable_neochapter.safetensors,SD1_5\\cuteyukimix_X.safetensors,SD1_5\\cyberrealistic_v31.safetensors,SD1_5\\dalcefoPainting_3rd.safetensors,SD1_5\\dalcefoV3Anime_dalcefoV3Anime.safetensors,SD1_5\\darelitesFantasyLeaning_toanimemix.safetensors,SD1_5\\darkSushi25D25D_v20.safetensors,SD1_5\\ddosmix_V2.safetensors,SD1_5\\deliberate_v1.ckpt,SD1_5\\deliberate_v1.safetensors,SD1_5\\deliberate_v11.ckpt,SD1_5\\deliberate_v11.safetensors,SD1_5\\discomixAnime_v1.ckpt,SD1_5\\djzDieselpunkCityV21_0.safetensors,SD1_5\\dosmix_.safetensors,SD1_5\\dreamlikeDiffusion10_10.ckpt,SD1_5\\dreamlikePhotoreal20_dreamlikePhotoreal20.safetensors,SD1_5\\dreamshaper_252Pruned.ckpt,SD1_5\\dreamshaper_252Pruned.safetensors,SD1_5\\dreamshaper_331BakedVae.ckpt,SD1_5\\dreamshaper_331BakedVae.safetensors,SD1_5\\dreamshaper_7.safetensors,SD1_5\\duchaitenStylelikeme_v15Fp16NoEma.safetensors,SD1_5\\duchaitendreamworld_V241.safetensors,SD1_5\\dvarchMultiPrompt_dvarchExterior.safetensors,SD1_5\\elegance_244_fp16.safetensors,SD1_5\\elldrethsRetroMix_v10.safetensors,SD1_5\\elldrethsVividMix_v20VividEr.safetensors,SD1_5\\epicDiffusion_epicDiffusion10.safetensors,SD1_5\\epicDiffusion_epicDiffusion11.safetensors,SD1_5\\epicrealism_newEra.safetensors,SD1_5\\experience_exp65ClipFix.safetensors,SD1_5\\expmixLine_v3.safetensors,SD1_5\\f222.safetensors,SD1_5\\f222_v1.ckpt,SD1_5\\faetastic_.safetensors,SD1_5\\fantasyEroticMales_10.safetensors,SD1_5\\fcanimemixFcAnime_v30.safetensors,SD1_5\\future-diffusion-v1.ckpt,SD1_5\\galaxytimemachinesGTM_v1.safetensors,SD1_5\\genericfemalemix_gefemiV21-inpainting.safetensors,SD1_5\\ghostmix_v12.safetensors,SD1_5\\ghostmix_v20Bakedvae.safetensors,SD1_5\\glow25D_v10.safetensors,SD1_5\\grapefruitHentaiModel_grapefruitv4.safetensors,SD1_5\\guofeng2_v20.ckpt,SD1_5\\hasdx_hasedsdx.safetensors,SD1_5\\hassakuHentaiModel_v11.safetensors,SD1_5\\hassakuHentaiModel_v13.safetensors,SD1_5\\hassanblend1512And_hassanblend1512_fp16.safetensors,SD1_5\\honeyDiffusion_v1.ckpt,SD1_5\\icbinpICantBelieveIts_v8.safetensors,SD1_5\\illuminatiDiffusionV1_v11-unclip-h-fp16.safetensors,SD1_5\\inkpunkDiffusion_v2.ckpt,SD1_5\\isometricDreams_1.safetensors,SD1_5\\jasghPhrasmInky_jasghphrasmV11.safetensors,SD1_5\\jasminiquemix_fruitea.safetensors,SD1_5\\kawaiimixNijiV5Cute_v10.safetensors,SD1_5\\kenshi_01.safetensors,SD1_5\\knollingcase_v1.ckpt,SD1_5\\koreanstyle25D_koreanstyle25DBaked.safetensors,SD1_5\\kotosAbyssproto_v10.safetensors,SD1_5\\lanzzzyAhrender_v10.ckpt,SD1_5\\liberty_main.safetensors,SD1_5\\lyriel_v14.safetensors,SD1_5\\lyriel_v15.safetensors,SD1_5\\majicmixRealistic_v5.safetensors,SD1_5\\makimaChainsawman_beta.ckpt,SD1_5\\mandarine_5.safetensors,SD1_5\\meinahentai_v21.safetensors,SD1_5\\meinamix_meinaV51.safetensors,SD1_5\\meinamix_meinaV8_fp16.safetensors,SD1_5\\meinapastel_V3.safetensors,SD1_5\\meinaunreal_v1Beta.safetensors,SD1_5\\meinaunreal_v41.safetensors,SD1_5\\merongmix_v11.safetensors,SD1_5\\microIsoWorlds_10.ckpt,SD1_5\\mixProV3_v3.safetensors,SD1_5\\mixProV4_v4.safetensors,SD1_5\\mixproyuki77mi_v10.safetensors,SD1_5\\modelshootStyle_modelshoot10.ckpt,SD1_5\\moistmix_v2.safetensors,SD1_5\\momokos_v10.safetensors,SD1_5\\neurogenV11_v11.safetensors,SD1_5\\neverendingDreamNED_bakedVae.safetensors,SD1_5\\noiseOffsetForTrue_v10.safetensors,SD1_5\\nostalgiaClear_nostalgiaClear.safetensors,SD1_5\\nostalgiaMix_nostalgia.safetensors,SD1_5\\novelailatest-pruned.ckpt,SD1_5\\openjourney-v2-unpruned.ckpt,SD1_5\\openjourney-v2.ckpt,SD1_5\\orangechillmix_v70.safetensors,SD1_5\\otakuorangepastelwav_v10.safetensors,SD1_5\\otakupastelwavemix_v10.safetensors,SD1_5\\otakupastelwavemixpr_v10.safetensors,SD1_5\\pastelLinesMix_pastelLinesMix10.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixFull.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.ckpt,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP16.safetensors,SD1_5\\pastelMixStylizedAnime_pastelMixPrunedFP32.safetensors,SD1_5\\perfectWorld_perfectWorldBakedVAE.safetensors,SD1_5\\perfectWorld_v4Baked.safetensors,SD1_5\\pfg_111Safetensors.safetensors,SD1_5\\pfg_111Safetensors_fp16.safetensors,SD1_5\\photon_v1.safetensors,SD1_5\\popPopcornMix_popPopcornMix.safetensors,SD1_5\\povSkinTexture_povSkinTextureDreamlike.safetensors,SD1_5\\prismaboysmix_v11.safetensors,SD1_5\\protogenDragon_protogenX59_fp16.safetensors,SD1_5\\protogenInfinity_protogenX86.safetensors,SD1_5\\protogenNovaExperimental_protogenX80.safetensors,SD1_5\\protogenV22Anime_22.safetensors,SD1_5\\protogenX53Photorealism_10.safetensors,SD1_5\\protogenX58RebuiltScifi_10.safetensors,SD1_5\\pulpArtDiffusion_v1.ckpt,SD1_5\\qgo10b_qgo10b.safetensors,SD1_5\\ratnikamix_2.safetensors,SD1_5\\rcnzCartoon3d_v20.safetensors,SD1_5\\realdosmix_.safetensors,SD1_5\\realisticSCIModel_version1.safetensors,SD1_5\\realisticVisionV13_v13.safetensors,SD1_5\\realisticVisionV20_v20.safetensors,SD1_5\\reliberate_v10.safetensors,SD1_5\\revAnimated_v11.safetensors,SD1_5\\rpg_V4.safetensors,SD1_5\\samdoartsultmerge.ckpt,SD1_5\\samdoartsultmerge.safetensors,SD1_5\\sianworldmix_v1.safetensors,SD1_5\\starGuardianNeeko_sgNeekoWd13.ckpt,SD1_5\\starlike_v20.safetensors,SD1_5\\storeBoughtGyozaMix_v2.safetensors,SD1_5\\sunshinemix_sunlightmixPruned.safetensors,SD1_5\\synthwavepunk_v2.safetensors,SD1_5\\tangbohu_v10.safetensors,SD1_5\\tenPassion_10.safetensors,SD1_5\\theAllysMixIII_v10.safetensors,SD1_5\\theallysMixIIChurned_v10.safetensors,SD1_5\\toonyou_beta3.safetensors,SD1_5\\uberRealisticPornMerge_urpmv12.safetensors,SD1_5\\uberrealisticDreamy_pfg.safetensors,SD1_5\\ultracolorV4_ultracolorV4.ckpt,SD1_5\\unstableinkdream_75Anime.safetensors,SD1_5\\unstableinkdream_75Photo.safetensors,SD1_5\\unstableinkdream_75balance.safetensors,SD1_5\\unstableinkdream_v6.safetensors,SD1_5\\unstableinkdream_v70.safetensors,SD1_5\\unstableinkdream_v73.safetensors,SD1_5\\v1-5-pruned-emaonly.ckpt,SD1_5\\v2-1_768-ema-pruned.ckpt,SD1_5\\vectorArt_vectorArtBeta.safetensors,SD1_5\\waifusNDungeonsV20_waifusNDungeonsV20.safetensors,SD1_5\\xsarchitectural_v10interiordesignforxs.ckpt,SD1_5\\xxmix9realistic_v30.safetensors,SD1_5\\yabalMixTrue25D_v3.safetensors,SD1_5\\yaoigen_V022_fp16.safetensors,SD1_5\\yesmix_v16Original.safetensors,SD1_5\\yiffymix_yiffymix_fp16.safetensors,SD1_5\\yorrrlmix_v21.safetensors,SDXL\\4Guofeng4_v10Beta.safetensors,SDXL\\7Of9_v20.safetensors,SDXL\\ComfyrollXL2.safetensors,SDXL\\LahCuteCartoonSDXL_alpha.safetensors,SDXL\\LahMysteriousSDXL_v20.safetensors,SDXL\\ambienceSDXL_a1.safetensors,SDXL\\animeArtDiffusionXL_alpha2.safetensors,SDXL\\animeChangefulXLBeta_beta.safetensors,SDXL\\animeChangefulXL_v10ReleasedCandidate.safetensors,SDXL\\animegodxl_v5.safetensors,SDXL\\astreapixieXLAnime_v16.safetensors,SDXL\\bluePencilXL_v001.safetensors,SDXL\\campursariXL_v1.safetensors,SDXL\\copaxCuteXLSDXL10_v10.safetensors,SDXL\\copaxRealisticXLSDXL1_v2.safetensors,SDXL\\copaxTimelessxlSDXL1_v5.safetensors,SDXL\\counterfeitxl_.safetensors,SDXL\\counterfeitxl_v10.safetensors,SDXL\\dreamshaperXL10_alpha2Xl10.safetensors,SDXL\\dreamsmbbxlmixV10SDXL1_v10.safetensors,SDXL\\duchaitenAiartSDXL_v10.safetensors,SDXL\\duchaitenSDXLBeta_v05Beta.safetensors,SDXL\\envyanimexl_v09.safetensors,SDXL\\envyoverdrivexl_v10.safetensors,SDXL\\fantasticCharacters_v55.safetensors,SDXL\\juggernautXL_version3.safetensors,SDXL\\lovexl_v10.safetensors,SDXL\\mbbxlAlpha_v01.safetensors,SDXL\\mbbxlUltimate_v10RC.safetensors,SDXL\\nijiDiffusionXlBase1_v10.safetensors,SDXL\\nijiflat_v02.safetensors,SDXL\\notAnimefullFinalXL_v10.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0411Bakedvae.safetensors,SDXL\\protovisionXLHighFidelity3D_beta0520Bakedvae.safetensors,SDXL\\realcartoonXL_v1.safetensors,SDXL\\realitycheckXL_alpha11.safetensors,SDXL\\reproduction_v1.safetensors,SDXL\\rundiffusionXL_beta.safetensors,SDXL\\sd_xl_base_0.9.safetensors,SDXL\\sd_xl_base_1.0.safetensors,SDXL\\sd_xl_refiner_0.9.safetensors,SDXL\\sd_xl_refiner_1.0.safetensors,SDXL\\sdvn6Realartxl_beta1.safetensors,SDXL\\sdvn7Nijistylexl_v1.safetensors,SDXL\\sdxl10ArienmixxlAsian_v10.safetensors,SDXL\\sdxlFixedvaeFp16_fixedvaeFp16.safetensors,SDXL\\sdxlNijiBeta_sdxlNijiBeta.safetensors,SDXL\\sdxlNijiSpecial_sdxlNijiSE.safetensors,SDXL\\sdxlYamersAnimeUltra_yamersAnimeV2.safetensors,SDXL\\shikianimexl_v10.safetensors,SDXL\\simpleXL_v10.safetensors,SDXL\\simulacrumxl_v10Asuka.safetensors,SDXL\\supermachine_v10.ckpt,SDXL\\talmendoxlSDXL_v11Beta.safetensors,SDXL\\wowXL_v10.safetensors,SDXL\\xl3ExperimentalSD10XL_v10.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v11.safetensors,SDXL\\xl6HEPHAISTOSSD10XLSFW_v21BakedVAEFP16Fix.safetensors,SDXL\\xlPainting_v09Beta.safetensors,SDXL\\xlYamersRealistic_v2.safetensors,archive\\mixproyuki77mi_v10.safetensors"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
